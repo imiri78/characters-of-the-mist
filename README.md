@@ -15,7 +15,6 @@ This application is more than just a character sheet; it's a full-fledged charac
 * **Robust State Management:** With a state-of-the-art Undo/Redo system (`Ctrl+Z` / `Ctrl+Y`), you can easily fix mistakes whether they happen on the character sheet or in the Drawer. 
 * **Command Palette:** For the power users out there, press `Ctrl+K` to summon the **Command Palette**.  Find and execute any action in the app without ever touching your mouse. 
 * **Full Localization & Theming:** The app is available in multiple languages and features multiple color themes assorted to the Mist TTRPGs, along with a light/dark mode toggle. 
-* **Progressive Web App (PWA):** Install the app directly to your desktop or mobile device for a native-like experience and offline access. 
 * **Legacy Data Migration:** A built-in tool helps you seamlessly migrate character sheets from the old alpha version of the app to the new format. 
 
 ---
@@ -32,6 +31,34 @@ This project is built with a modern, robust, and scalable tech stack to ensure a
 * **Command Palette:** [cmdk](https://cmdk.paco.me/) 
 * **Localization:** [next-intl](https://next-intl-docs.vercel.app/) 
 * **PWA:** [next-pwa](https://www.npmjs.com/package/next-pwa) 
+
+---
+### 🌍 Contributing to Translations
+
+I'm thrilled you're interested in helping translate Characters of the Mist! The application is built with localization in mind, and contributions from the community are warmly welcome. The entire tutorial is also fully localized. The process is straightforward, even if you're not a developer.
+
+Here’s how you can add a new language:
+
+1.  **Get the Template File**
+    All translation keys are located in the English source file at `src/messages/en.json`. This is the file you will use as a template.
+
+2.  **Create Your Language File**
+    Make a copy of `en.json` in the same directory (`src/messages/`) and rename it to your language’s two-letter ISO 639-1 code (e.g., `de.json` for German, `es.json` for Spanish).
+
+3.  **Translate the Values**
+    Open your new language file and translate the text on the **right side** of the colons.
+    > **Important:** Please do not translate the JSON "keys" on the left side, as these are used by the application to find the correct text.
+    >
+    > *Example:*
+    > ```json
+    > // "key": "value"    vvv  Translate this part  vvv
+    > "welcome_title": "Welcome to Characters of the Mist!", 
+    > ```
+
+4.  **Submit a Pull Request**
+    Once you're done, please submit a Pull Request on GitHub with your changes. I'll review it, merge it into the project, make your translation available and add you to the credits!
+
+Thank you so much for helping make this tool accessible to more people!
 
 ---
 ## 📜 License
