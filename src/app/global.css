@@ -248,17 +248,7 @@
    --card-popover-fg: 43 31% 25%;
 }
 .card-type-origin {
-   --card-header-bg: 210 8% 42%;
-   --card-header-fg: 0 0% 94%;
-   --card-paper-bg: 39 62% 92%;
-   --card-paper-fg: 214 14% 22%;
-   --card-accent: 214 14% 22%;
-   --card-border: 214 14% 22%;
-   --card-popover-bg: 44 42% 77%;
-   --card-popover-fg: 43 31% 25%;
-}
-.card-type-adventure {
-   --card-header-bg: 103 21% 38%;
+   --card-header-bg: 131 8% 51%;
    --card-header-fg: 0 0% 94%;
    --card-paper-bg: 39 62% 92%;
    --card-paper-fg: 214 14% 22%;
@@ -267,12 +257,22 @@
    --card-popover-bg: 44 42% 77%;
    --card-popover-fg: 43 31% 25%;
 }
-.card-type-greatness {
-   --card-header-bg: 27 69% 45%;
+.card-type-adventure {
+   --card-header-bg: 15 30% 49%;
    --card-header-fg: 0 0% 94%;
    --card-paper-bg: 39 62% 92%;
    --card-paper-fg: 214 14% 22%;
    --card-accent: 28 69% 56%;
+   --card-border: 214 14% 22%;
+   --card-popover-bg: 44 42% 77%;
+   --card-popover-fg: 43 31% 25%;
+}
+.card-type-greatness {
+   --card-header-bg: 235 10% 51%;
+   --card-header-fg: 0 0% 94%;
+   --card-paper-bg: 39 62% 92%;
+   --card-paper-fg: 214 14% 22%;
+   --card-accent: 214 14% 22%;
    --card-border: 214 14% 22%;
    --card-popover-bg: 44 42% 77%;
    --card-popover-fg: 43 31% 25%;
