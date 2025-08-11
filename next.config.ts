@@ -13,7 +13,22 @@ const withPWA = withPWAInit({
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
-  /* config options here */
+   images: {
+      remotePatterns: [
+         {
+            protocol: 'https',
+            hostname: 'i.creativecommons.org',
+            port: '',
+            pathname: '/l/by-nc-sa/**',
+         },
+         {
+            protocol: 'https',
+            hostname: 'storage.ko-fi.com',
+            port: '',
+            pathname: '/cdn/brandasset/**',
+         },
+      ],
+   },
 };
 
 export default withNextIntl(withPWA(nextConfig));
