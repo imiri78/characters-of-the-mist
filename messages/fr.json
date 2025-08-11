@@ -1,0 +1,573 @@
+{
+   "Notifications": {
+      "general": {
+         "importFailed": "Import du fichier échoué. Les données sont corrompues ou incorrectes.",
+         "exportSuccess": "Fichier exporté.",
+         "invalidExportType": "Cet objet ne peut pas être exporté.",
+         "appReset": "Réinitialisation de l'application terminée. Actualisation..."
+      },
+      "character": {
+         "savedToDrawer": "Personnage en cours sauvegardé à la racine du Tiroir.",
+         "exported": "Personnage en cours exporté vers les téléchargements.",
+         "exportFailedNoChar": "Export échoué, aucun personnage trouvé.",
+         "imported": "Fichier personnage exporté avec succès.",
+         "reset": "Fiche de personnage réinitialisée avec succès.",
+         "componentImported": "Fichier de composant importé avec succès."
+      },
+      "card": {
+         "created": "Carte créée avec succès.",
+         "updated": "Carte mise à jour avec succès."
+      },
+      "drawer": {
+         "itemCreated": "Objet créé dans le Tiroir.",
+         "itemRenamed": "Objet renommé.",
+         "itemDeleted": "Objet supprimé.",
+         "itemMoved": "Objet déplacé.",
+         "folderCreated": "Dossier créé dans le Tiroir.",
+         "folderRenamed": "Dossier renommé.",
+         "folderDeleted": "Dossier supprimé.",
+         "folderMoved": "Dossier déplacé.",
+         "importSuccess": "Fichier importé dans le tiroir avec succès.",
+         "exported": "Tiroir exporté avec succès.",
+         "deleted": "Tiroir supprimé avec succès."
+      },
+      "migration": {
+         "legacyDataDownloaded": "Données anciennes téléchargées avec succès.",
+         "success": "Migration réussie.",
+         "failed": "Il y a eu une erreur lors de la migration des anciennes données de personnage.",
+         "unsupported": "Votre personnage de l'ancienne version utilise un système de jeu qui n'est pas encore compatible. Préservez les données en lieu sûr dans l'attente d'une mise à jour.",
+         "folderError": "Le dossier MIGRATION principal n'a pas pu être créé."
+      }
+   },
+   "Errors": {
+      "localStorageDisabled_title": "Erreur Critique de Stockage",
+      "localStorageDisabled_description": "Il semblerait que pour une raison ou pour une autre, le stockage local de votre navigateur n'est pas accessible par l'application. Characters of the Mist dépend uniquement du stockage local de votre navigateur pour la persistance et la gestion des données, et n'utilise aucun serveur. Cela signifie que l'application ne peut pas fonctionner dans votre cas."
+   },
+
+
+
+   "CharacterSheetPage": {
+      "loading": "Chargement du Personnage...",
+
+      "newCharacterName": "Nouveau Personnage",
+      "characterNamePlaceholder": "Nom du Personnage...",
+
+      "addCard": "Ajouter une Carte",
+      "dropToLoadCharacter": "Déposez un Objet Fiche de Personnage ici pour charger le personnage entier. Soyez prudent, cette action remplacera votre personnage actif.",
+      "dropToImport": "Déposez votre fichier ici pour importer le composant dans votre fiche de personnage active. Si le fichier est une fiche de personnage entière, elle remplacera votre personnage actif.",
+
+      "SidebarMenu": {
+         "sidebarTitle": "Menu",
+
+         "editMode": "Mode Édition",
+         "playMode": "Mode Jeu",
+
+         "openDrawer": "Ouvrir le Tiroir",
+         "closeDrawer": "Fermer le Tiroir",
+
+         "saveToDrawer": "Sauvegarder le Perso.",
+         "exportCharacter": "Exporter le Perso.",
+         "importCharacter": "Importer le Perso.",
+         "importComponent": "Importer un Composant",
+
+         "resetCharacter": "Réinitialiser le Perso.",
+         "resetConfirmTitle": "Êtes vous certain de vouloir réinitialiser votre Personnage?",
+         "resetConfirmDescription": "Cette action est destructive. Votre personnage active sera supprimé et remplacé par une fiche de personnage vierge. Tant que vous n'actualisez pas l'application, vous pouvez revenir en arrière avec la fonction Undo.",
+         "resetConfirmCancelButton": "Annuler",
+         "resetConfirmButton": "Réinitialiser le Perso.",
+
+         "settings": "Paramètres",
+         "info": "À Propos",
+         "patchNotes": "Patch Notes"
+      }
+   },
+   "Actions": {
+      "undo": "Undo",
+      "redo": "Redo"
+   },
+   "Drawer": {
+      "title": "Tiroir",
+      "toggleView": "Change la vue des Objets du tiroir entre prévisualisation riche et liste simple",
+
+      "emptyFolder": "Ce Dossier est vide. Il est temps de le remplir !",
+      "addFolder": "Créer un Dossier",
+
+      "dropToImport": "Déposez vos fichiers ici pour les importer dans votre Tiroir",
+
+      "Actions": {
+         "addFolderTitle": "Créer un nouveau Dossier",
+         "createFolder": "Créer le Dossier",
+
+         "nameItemTitle": "Quel nom voulez-vous attribuer à cet Objet ?",
+
+         "rename": "Renommer",
+         "renameFolderTitle": "Vous renommez ce Dossier.",
+         "renameItemTitle": "Vous renommez cet Objet.",
+         "saveChanges": "Enregistrer",
+
+         "delete": "Supprimer",
+         "deleteFolderTitle": "Êtes-vous certain de vouloir supprimer ce Dossier ?",
+         "deleteItemTitle": "Êtes-vous certain de vouloir supprimer cet Objet ?",
+         "deleteFolderMessage": "Le Dossier ainsi que tout ce qu'il contient sera supprimé.",
+         "deleteItemMessage": "L'Objet sera supprimé de votre Tiroir.",
+         "confirmDelete": "Supprimer",
+
+         "move": "Déplacer",
+         "moveVerb": "Déplacement en cours",
+         "moveHere": "Déplacer ici",
+         "moveFolderTitle": "Déplacement d'un Dossier dans le Tiroir",
+         "moveItemTitle": "Déplacement d'un Objet dans le Tiroir",
+         "moveToRoot": "Retourner à la racine",
+         "moveUp": "Retour",
+
+         "export": "Exporter",
+         "exportFull": "Exporter votre Tiroir entier",
+         "import": "Importer un fichier dans le Dossier actif",
+         "cancel": "Annuler",
+
+         "defaultNames": {
+            "characterCard": "Carte de Perso.",
+            "fullSheet": "Fiche de Perso.",
+            "characterTheme": "Carte de Thème",
+            "groupTheme": "Thème de Groupe",
+            "statusTracker": "Suivi de Statut",
+            "storyTagTracker": "Suivi de Trait Narratif",
+            "defaultItem": "Nouvel Objet"
+         }
+      },
+
+      "Types": {
+         "unavailablePreview": "Prévisualisation non disponible pour cet Objet.",
+
+         "LEGENDS": "Legends in the Mist",
+         "OTHERSCAPE": "Otherscape",
+         "CITY": "City of Mist",
+
+         "LEGENDS_FULL_CHARACTER_SHEET": "Fiche de Perso.",
+         "LEGENDS_CHARACTER_CARD": "Carte de Héros",
+         "LEGENDS_CHARACTER_THEME": "Thème de Héros",
+         "LEGENDS_GROUP_THEME": "Thème de Compagnie",
+         "LEGENDS_STATUS_TRACKER": "Suivi de Statut",
+         "LEGENDS_STORY_TAG_TRACKER": "Suivi de Trait Narratif",
+
+         "cards": "Carte(s)",
+         "trackers": "Suivi(s)"
+      }
+   },
+
+
+
+   "CreateCardDialog": {
+      "title": "Créer une Carte de Thème",
+      "editTitle": "Éditer une Carte de Thème",
+      "description": "Utilisez les options suivantes pour créer une Carte de Thème. Vous pouvez créer un thème customisé si vous le souhaitez.",
+      "editDescription": "Utilisez les options suivantes pour modifier votre thème, ou le type de votre Carte de Thème. Vous pouvez créer un thème customisé si vous le souhaitez.",
+      "createButton": "Confirmer la Carte",
+      "updateButton": "Confirmer les Modifications",
+
+      "selectPlaceholder": "Type de Carte...",
+      "cardTypeLabel": "Type de Carte",
+      "themeCard": "Thème de Héros",
+      "fellowshipCard": "Thème de Compagnie",
+
+      "selectThemeTypePlaceholder": "Sélectionnez un type...",
+      "themeTypeLabel": "Type de Thème",
+
+      "selectThemebookPlaceholder": "Sélectionnez ou écrivez un thème...",
+      "searchThemebookPlaceholder": "Cherchez ou créez un thème...",
+      "noThemebookFound": "Thème introuvable dans les thèmes par défaut. Vous pouvez l'utiliser comme thème customisé !",
+      "themebookLabel": "Thème",
+      
+      "startingTagsLabel": "Traits de Départ",
+      "powerTagCountLabel": "Traits d'Atout",
+      "weaknessTagCountLabel": "Traits de Contrainte"
+   },
+   "SettingsDialog": {
+      "title": "Paramètres de l'Application",
+      "description": "Vous trouverez ici des paramètres pour l'application en général comme la palette de thème, le mode sombre ou clair, etc...",
+
+      "language": "Langue",
+
+      "accentColor": "Palette",
+      "appearance": "Mode",
+
+      "light": "Mode Clair",
+      "dark": "Mode Sombre",
+
+      "cardView": {
+         "title": "Verso de Cartes",
+         "sideBySide": "Côte à Côte",
+         "flipping": "Recto/Verso"
+      },
+
+      "tutorial": "Tutoriel de l'Appli.",
+      "tutorialButton": "Lancer le Tutoriel",
+
+      "migration": {
+         "label": "Migration",
+         "button": "Migrer des anciens personnages"
+      },
+
+      "dangerZone": {
+         "title": "Zone dangereuse",
+         "description": "Ces options sont très destructives, les utiliser est à vos risques et périls. Vous devrez confirmer vos choix.",
+
+
+         "deleteDrawerButton": "Supprimer le Tiroir",
+         "deleteDrawerDialog": {
+            "title": "Supprimer le Tiroir entier",
+            "description": "Vous êtes sur le point de supprimer votre tiroir entier, avec tous ses objets et dossiers. Êtes vous absolument certain que c'est ce que vous voulez faire ?",
+
+            "confirm": "Oui, supprime mon Tiroir."
+         },
+
+         "resetButton": "Réinitialiser l'Appli.",
+         "resetDialog": {
+            "title": "Réinitialisation totale de l'Application",
+            "description": "Vous êtes sur le point de réinitialiser l'application, ce qui va supprimer toutes vos données. Êtes vous absolument certain que c'est ce que vous voulez faire ?",
+            "confirmationPrompt": "Pour procéder, veuillez écrire le texte suivant dans la zone d'entrée ci-dessous :",
+
+            "cancel": "Non, je veux prserver mes données",
+            "confirm": "Oui, supprime tout."
+         }
+      }
+   },
+   "InfoDialog": {
+      "title": "À Propos de Characters of the Mist",
+      "description": "Informations, crédits, et licence pour l'application.",
+      "close": "Fermer",
+      "tabs": {
+         "about": "À Propos",
+         "license": "Licence",
+         "credits": "Crédits"
+      },
+      "content": {
+         "about": "#### Qu'est-ce que Characters of the Mist ?\n\nCharacters of the Mist est un créateur et gestionnaire de personnages **non officiel**, créé par un fan pour les JdR d'[Amit Moshe et Son of Oak Game Studio LLC](https://cityofmist.co). Il est développé de A à Z avec un design moderne et adaptatif, et toutes vos données sont sauvegardées directement dans votre navigateur pour une confidentialité et un contrôle total. Cet outil n'est en aucun cas approuvé par Amit Moshe ou Son of Oak Game Studio LLC.\n\n---\n\n#### Que peut faire cet outil ?\n\nCet outil est conçu pour vous aider à créer et à mettre à jour votre fiche de personnage rapidement et facilement. Il vous permet de modifier vos Cartes de Thème, vos Statuts et votre Nom, et sauvegarde tout automatiquement. Au-delà des bases, il est rempli de fonctionnalités puissantes pour faire de la gestion de votre personnage un jeu d'enfant :\n\n* Un **Tiroir** polyvalent qui agit comme un système de fichiers complet pour les composants de votre personnage, avec une organisation complète par glisser-déposer et une vue compacte pour gérer de nombreux éléments.\n\n* Du **glisser-déposer** intuitif pour presque tout : réorganisez vos cartes et suivis, déplacez des éléments entre les dossiers, ou même chargez un personnage entier en le faisant glisser depuis le panneau.\n\n* Une **fiche de personnage entièrement dynamique** avec des cartes flexibles. Vous pouvez même passer à une **vue côte à côte** si vous préférez voir le recto et le verso des cartes en même temps.\n\n* Un puissant **système Undo & Redo** (`Ctrl+Z` / `Ctrl+Y`) qui vous permettra de corriger vos erreurs, qu'elles se soient produites dans le Tiroir ou sur votre Fiche de Personnage.\n\n* Une **Palette de commandes** (`Ctrl+K` or `Cmd+K`) qui vous permet de trouver et d'utiliser n'importe quelle fonctionnalité de l'application sans toucher à votre souris.\n\n* Une **personnalisation liée au jeu** avec plusieurs thèmes de couleurs assortis aux JdR de l'univers Mist et un interrupteur pour le mode clair/sombre afin de vous approprier l'application.\n\n---\n\n#### Cet outil peut-il être utilisé comme une Table Virtuelle (VTT) ?\n\nEn l'état actuel, cet outil n'est qu'un gestionnaire de personnages. Il ne prend pas en charge les cartes de combat (battlemaps), les aides de jeu (handouts), les lanceurs de dés ou d'autres automatisations. Vous êtes libre de créer un fork de ce projet et d'ajouter ces fonctionnalités, tant que les termes de la licence sont respectés.\n\n---\n\n#### Puis-je signaler un problème avec l'application ?\n\nVous pouvez m'envoyer un message sur [le Discord officiel de Tools of the Mist](https://discord.gg/c7GBPyTcWW) si vous rencontrez un problème avec l'application, et je verrai ce que je peux faire. Gardez cependant à l'esprit que cette application est distribuée EN L'ÉTAT, sans aucune garantie.",
+         "license": "#### Sous quelle licence ce code est-il distribué ?\n\nCette application est sous la [Licence Creative Commons 4.0 BY-NC-SA](http://creativecommons.org/licenses/by-nc-sa/4.0/).\n\nCela signifie que vous êtes libre de copier, redistribuer, remixer, transformer, et développer à partir du matériel. Cependant, vous devez donner le crédit approprié, fournir un lien vers la licence, indiquer si des modifications ont été apportées, ne pas utiliser le code à des fins commerciales, et distribuer vos contributions sous la même licence.",
+         "credits": "#### Crédits & Attributions\n\nUn grand Merci à [Son of Oak Game Studio LLC](https://cityofmist.co) pour avoir créé City of Mist, Metro:OTHERSCAPE et Legends in the Mist.",
+         "localization": "#### Traductions\n\nMerci à tous les traducteurs et traductrices qui ont aidé à rendre Characters of the Mist accessible dans d'autres langues que l'Anglais !",
+         "support": "#### Vous aimez cette application ?\n\nSongez à me soutenir !"
+      },
+      "license_credit": "Characters of the Mist a été créé et est maintenu par Altervayne (Discord: @altervayne) et est sous la Licence Creative Commons 4.0 BY-NC-SA.",
+      "kofi_alt": "Soutenez-moi sur Ko-fi"
+   },
+   "PatchNotesDialog": {
+      "title": "Characters of the Mist - Patch Notes",
+      "description": "Vous trouverez ici les dernières patch notes. Celles-ci ne sont pas traduites.",
+
+      "versionLabel": "Version",
+      "selectVersion": "Sélectionnez une version...",
+
+      "pageCounterLabel": "Page",
+
+      "close": "Fermer"
+   },
+   "MigrationDialog": {
+      "title": "Migrer des anciennes données de personnage",
+      "description": "Ici, vous pouvez migrer des données de personnage provenant de la version alpha de Characters in the Mist, vers la nouvelle version. Le Migrateur déposera les fichiers à jour à la racine de votre Tiroir.",
+      "thankYou": "Si vous êtes ici, vous avez probablement utilisé la version alpha de Characters of the Mist. Je souhaite vous remercier personnellement d'utiliser mon application malgré ses nombreux défauts. Amicalement,",
+
+      "dropzone": {
+         "inactive": "En attente d'un fichier...",
+         "active": "Fichier détecté !",
+         "fileTypes": "anciens fichiers .json"
+      },
+
+      "cancel": "Fermer le Migrateur",
+      "migrateButton": "Commencer la Migration"
+   },
+   "LegacyDataDialog": {
+      "title": "Anciennes données trouvées !",
+      "info": "Des anciennes données provenant de la version Alpha de Characters of the Mist ont été trouvées dans votre navigateur.",
+      "description": "L'Application va supprimer ces données comme mesure de nettoyage. Avant cela, vous pouvez les télécharger pour les utiliser avec l'outil de migration si vous le souhaitez.",
+      "warning": "En appuyant sur Effacer, l'application supprimera ces données, et elles seront perdues pour toujours. Vous ne pouvez pas annuler cette action. Appuyer sur Télécharger indiquera à votre navigateur de télécharger ces données.",
+
+      "confirmationLabel": "Si vous souhaitez supprimer vos anciennes données, écrivez le texte de confirmation suivant dans la zone de saisie ci-dessous :",
+
+      "dismissButton": "Effacer",
+      "downloadButton": "Télécharger"
+   },
+   "WelcomeDialog": {
+      "title": "Bienvenue dans Characters of the Mist !",
+      "description": "Cette application est un gestionnaire et créateur de personnage non-officiel pour les JdR de Son of Oak Game Studios. Toutes vos données sont sauvegardées dans votre navigateur, ce qui assure votre contrôle total dessus.",
+      "featuresTitle": "Fonctionnalités principales :",
+      "feature1": "Une fiche de personnage dynamique avec une intégration poussée de mécaniques de glisser-déposer.",
+      "feature2": "Une Palette de Commandes (Ctrl+K) pour des commandes rapides en utilisant uniquement le clavier.",
+      "feature3": "Un système de fichiers dans votre Tiroir pour organiser vos personnages et composants.",
+      "feature4": "Un système d'annulation et de restauration (Undo/Redo) robuste pour réparer vos erreurs.",
+      "callToAction": "Il y a un tutoriel simple pour débuter à votre disposition, qui peut être lancé à l'aide du bouton ci-dessous. Alternativement, vous pouvez aller lire les notes de mises à jour (non traduites). Si vous souhaitez directement rentrer dans l'application, vous pouvez simplement fermer cette fenêtre.",
+      "needHelp": "Si vous avez besoin d'aide, ou trouvez un bug, n'hésitez pas à me joindre sur le serveur discord Tools of the Mist. Vous trouverez un lien vous y menant dans la fenêtre \"À Propos\" du menu latéral. Merci beaucoup d'utiliser Characters of the Mist, je vous souhaite de bien vous amuser !",
+      "startTutorialButton": "Débuter le Tutoriel",
+      "patchNotesButton": "Voir les Patch Notes"
+   },
+
+
+
+   "CommandPalette": {
+      "placeholder_1": "Vos désirs sont des ordres...",
+      "placeholder_2": "Préparez votre incantation...",
+      "placeholder_3": "Invoquez la volonté des Dieux...",
+      "placeholder_4": "Connexion au système...",
+      "placeholder_5": "Déchaînez le Chaos...",
+      "placeholder_6": "Vos ordres sont mes désirs...",
+      "placeholder_7": " ↑ ↑ ↓ ↓ ← → ← → B A ...",
+      "placeholder_8": "Parfois, je rêve de fromage...",
+      "placeholder_9": "C'est fin, c'est très fin, ça se mange sans faim...",
+      "placeholder_10": "Allez, on se fait ça vite fait...",
+      "placeholder_11": "Laissez-moi deviner... On vous a volé votre sucrerie...",
+      "placeholder_12": "Ah, vous voilà enfin réveillé...",
+      "placeholder_13": "À TABLE !!!",
+      "placeholder_14": "Pour ceux qui viendront après...",
+      "placeholder_15": "J'étais fou une fois, ils m'ont mis dans une pièce...",
+      "placeholder_16": "Vous avez une tâche, Messire...",
+      "placeholder_17": "Encore vous ? Vous n'avez pas de souris ? Tant pis...",
+      "placeholder_18": "Quelque chose cloche, je le sens...",
+      "placeholder_19": "Les Voleurs Fantômes vont voler votre cœur...",
+      "placeholder_20": "J'espère que vous avez remboursé Tom Nook...",
+      "placeholder_21": "Le gras, c'est la vie...",
+      "placeholder_22": "Non, y'a le blanc de dinde...",
+      "placeholder_23": "Comment est votre blanquette ?",
+      "placeholder_24": "Je veux le même à la maison...",
+      "placeholder_25": "Ce doit être le pire cuivre que j'aie jamais vu...",
+
+      "placeholders": {
+         "renameCharacter": "Nouveau nom de Personnage...",
+
+
+         "newCardName": "Nom du Trait Principal de la Carte...",
+         "themeType": "Sélectionnez le Type de Carte...",
+         "themebook": "Sélectionnez ou créez un Thème...",
+         "mainTagName": "Entrez le nom du Trait Principal...",
+         "powerTags": "Nombre de Traits d'Atout...",
+         "weaknessTags": "Nombre de Traits de Contrainte...",
+
+
+         "trackerType": "Choisissez un type de Suivi...",
+         "trackerName": "Entrez le nom du Suivi..."
+      },
+
+      "actions": {
+         "renameTo": "Renommer en : \"{name}\"",
+         "createWith": "Créer avec : \"{name}\"",
+         "setPowerTags": "Nombre de Traits d'Atout: {count}",
+         "setWeaknessTags": "Nombre de Traits de Contrainte: {count}"
+      },
+
+      "themes": {
+         "theme-neutral": "Neutre",
+         "theme-legends": "Legends in the Mist"
+      },
+
+      "empty": "Aucune commande trouvée.",
+      "label": "Palette de Commandes",
+
+      "groups": {
+         "general": "Général",
+         "settings": "Paramètres",
+         "export": "Exports",
+         "character": "Fiche de Personnage",
+         "creation": "Création",
+
+
+         "themePalette": "Choisissez une nouvelle Palette",
+
+         "chooseThemeType": "Choisissez un Type",
+         "chooseThemebook": "Choisissez un Thème"
+      },
+
+      "commands": {
+         "toggleEdit": "Basculer : Mode Édition",
+         "toggleDrawer": "Basculer : Tiroir",
+         "openSettings": "Ouvrir : Paramètres",
+
+         "setThemeModeLight": "Définir : Mode de Couleur : Clair",
+         "setThemeModeDark": "Définir : Mode de Couleur : Sombre",
+         "setThemePalette": "Définir : Palette : [...]",
+         "viewFlipping": "Définir : Vue des Cartes : Recto/Verso",
+         "viewSideBySide": "Définir : Vue des Cartes : Côte à Côte",
+
+         "exportCharacter": "Exporter : Fiche de Personnage",
+         "exportDrawer": "Exporter : Tiroir",
+
+         "renameCharacter": "Renommer : Personnage",
+         "resetCharacter": "Réinitialiser : Personnage",
+
+         "createCard": "Créer : Carte de Thème",
+         "createTracker": "Créer : Suivi",
+         
+         "cardTypeCharacter": "Type : Thème de Personnage",
+         "cardTypeFellowship": "Type : Thème de Groupe",
+
+         "trackerTypeStatus": "Type : Suivi de Statut",
+         "trackerTypeStoryTag": "Type : Suivi de Trait Narratif"
+      }
+   },
+   "Tutorial": {
+      "welcome_title": "Bienvenue dans Characters of the Mist !",
+      "welcome_content": "Ce court tutoriel vous guidera à travers les fonctionnalités principales. Vous pouvez quitter à tout moment en appuyant sur le 'X' en haut à droite de cette petite fenêtre, ou n'importe où à l'extérieur. Si vous quittez par accident, vous pouvez relancer le tutoriel depuis le menu des Paramètres.",
+
+      "sidebar_title": "Menu Latéral Principal",
+      "sidebar_content": "Ceci est la barre latérale principale. Elle contient des actions globales comme basculer le mode édition, ouvrir le tiroir de fichiers, et accéder aux paramètres.",
+
+      "playArea_title": "Fiche de Personnage",
+      "playArea_content": "C'est ce que Characters of the Mist peut appeler votre \"Zone de Jeu\" ou \"Fiche de Personnage\". Elle contient vos Suivis et vos Cartes. Ils sont tous déplaçables par glisser-déposer, ce qui vous permet de les réorganiser ou de les stocker dans le Tiroir. Nous y reviendrons plus tard. Vous pouvez déposer un fichier externe ici pour l'importer.",
+
+      "characterName_title": "Nom du Personnage",
+      "characterName_content": "Vous pouvez modifier le nom de votre personnage ici à tout moment. Vos modifications sont sauvegardées automatiquement.",
+
+      "trackers_title": "Suivis",
+      "trackers_content": "Cette zone contient vos suivis de Statut et de Trait Narratif. Vous pouvez en ajouter de nouveaux lorsque vous êtes en 'Mode Édition'. Chaque Suivi a une poignée de déplacement qui apparaît en le survolant avec votre souris. En l'utilisant, vous pouvez les déplacer ou les exporter.",
+
+      "cards_title": "Cartes",
+      "cards_content": "Cette zone contient les Cartes de votre personnage, que ce soit une Carte de Thème ou une Carte de Héros. Chaque Carte, comme les Suivis, a une poignée de déplacement qui apparaît au survol. Vous y trouverez une prise pour les déplacer et quelques boutons pour les retourner, les supprimer (en Mode Édition) ou les exporter.",
+
+      "menuCollapse_title": "Réduire le Menu",
+      "menuCollapse_content": "Ce bouton vous permet de réduire la barre latérale en une version beaucoup plus fine, avec uniquement des icônes sur les boutons.",
+
+      "menuUndoRedo_title": "Undo/Redo",
+      "menuUndoRedo_content": "Ces boutons vous permettent d'Annuler (Undo) et de Rétablir (Redo) des actions sur votre Fiche de Personnage. Si votre dernière action concernait la Fiche de Personnage, vous pouvez également utiliser CTRL+Z et CTRL+Y.",
+
+      "menuEditDrawer_title": "Mode Édition et Tiroir",
+      "menuEditDrawer_content": "Ces deux boutons vous permettent d'activer le Mode Édition ou d'ouvrir votre Tiroir. Nous y reviendrons dans un instant.",
+
+      "saveCharacter_title": "Sauvegarder un Personnage",
+      "saveCharacter_content": "Ce bouton vous permet de sauvegarder votre Personnage actuel comme un fichier à l'intérieur de votre Tiroir. Plus d'informations à ce sujet plus tard.",
+
+      "exportCharacter_title": "Exporter un Personnage",
+      "exportCharacter_content": "Ce bouton vous permet d'exporter votre Personnage actuel, invitant votre navigateur à télécharger un fichier.",
+
+      "importCharacter_title": "Importer un Personnage",
+      "importCharacter_content": "Ce bouton vous invite à choisir un fichier. Si vous lui donnez un fichier de Personnage de Characters of the Mist, il le chargera dans l'application comme votre nouveau Personnage actif.",
+
+      "importComponent_title": "Importer un Composant",
+      "importComponent_content": "Ce bouton vous invite également à choisir un fichier. Si vous lui donnez un fichier de Carte ou de Suivi de Characters of the Mist, il le chargera et l'ajoutera à votre Personnage actuel.",
+
+      "resetCharacter_title": "Réinitialiser votre Personnage",
+      "resetCharacter_content": "Ce bouton supprime complètement votre Personnage actif, transformant votre Fiche de Personnage en une page blanche pour recommencer à zéro.",
+
+      "settings_title": "Paramètres",
+      "settings_content": "Ce bouton ouvre le menu des Paramètres, où vous pouvez accéder à des fonctionnalités comme le choix de la palette de couleurs de l'application, le mode clair ou sombre, ou réinitialiser toutes vos données. C'est aussi là que vous trouverez l'outil de Migration, qui vous permet de migrer les anciennes données de Characters of the Mist vers cette nouvelle version.",
+
+      "appInfo_title": "À Propos de l'Appli",
+      "appInfo_content": "Ce bouton ouvre un menu d'information contenant une section générale \"À Propos\" pour cette application, des informations de licence et les crédits.",
+
+      "patchNotes_title": "Patch Notes",
+      "patchNotes_content": "Ce bouton ouvre un menu où vous pouvez consulter l'historique des patch notes de l'application.",
+
+      "editMode_title": "Mode Édition",
+      "editMode_content": "Ce bouton vous permet d'entrer en 'Mode Édition'. Celui-ci vous autorise à ajouter, supprimer et modifier des cartes et des suivis.",
+
+      "playMode_title": "Mode Jeu",
+      "playMode_content": "Quand le Mode Édition est activé, ce bouton vous permet désormais de revenir au 'Mode Jeu', un affichage allégé de vos cartes et suivis. En Mode Jeu, seules les fonctionnalités de base sont disponibles pour éviter de surcharger l'interface.",
+
+      "addStatus_title": "Ajouter un Statut",
+      "addStatus_content": "En Mode Édition, vous pouvez maintenant voir un bouton pour ajouter un nouveau suivi de Statut.",
+
+      "addStoryTag_title": "Ajouter un Trait Narratif",
+      "addStoryTag_content": "De même, vous pouvez maintenant voir un bouton pour ajouter un nouveau suivi de Trait Narratif.",
+
+      "addCard_title": "Ajouter de Nouvelles Cartes",
+      "addCard_content": "De plus, ce bouton est maintenant apparu dans votre liste de cartes, ce qui vous permet de créer une Carte.",
+
+      "menuDrawer_title": "Ouvrir/Fermer le Tiroir",
+      "menuDrawer_content": "Ce bouton ouvre le Tiroir, où tous vos personnages, thèmes et objets sont stockés. Allons voir le Tiroir de plus près.",
+
+      "drawer_title": "Le Tiroir",
+      "drawer_content": "Ceci est votre Tiroir, un système de stockage puissant que vous pouvez utiliser pour sauvegarder, archiver et organiser des objets individuels comme des Cartes et des Suivis, mais aussi des Fiches de Personnage complètes. Vous pouvez déposer un fichier externe ici pour l'importer.",
+
+      "drawerUndoRedo_title": "Undo/Redo",
+      "drawerUndoRedo_content": "Similairement au menu latéral, le Tiroir possède une paire de boutons Undo/Redo. Ces boutons vous permettent d'annuler (Undo) ou de rétablir (Redo) des actions à l'intérieur du Tiroir. Tout comme avec la Fiche de Personnage, si votre dernière action concernait le Tiroir, vous pouvez utiliser CTRL+Z et CTRL+Y.",
+
+      "drawerRichView_title": "Vue Riche",
+      "drawerRichView_content": "Par défaut, le Tiroir affiche les objets avec ce que Characters of the Mist appelle une \"Vue Riche\". C'est essentiellement un aperçu de l'en-tête de la carte, ou le suivi complet. Cela peut prendre beaucoup de place et vous empêcher de voir de nombreux objets à la fois, vous pouvez donc l'activer et le désactiver ici.",
+
+      "drawerFolders_title": "Dossiers",
+      "drawerFolders_content": "C'est ici que se trouvent vos Dossiers. Vous trouverez un bouton \"Ajouter un Dossier\" ici, qui vous permettra de créer un nouveau dossier à votre emplacement actuel. Les dossiers ont un menu contextuel auquel vous pouvez accéder en appuyant sur les \"...\" à droite. Vous pouvez déplacer les dossiers avec la poignée de glissement à gauche !",
+
+      "drawerItems_title": "Objets",
+      "drawerItems_content": "C'est ici que se trouvent vos Objets. Les Objets sont des Fiches de Personnage, des Cartes ou des Suivis. Vous pouvez ajouter des Objets en sauvegardant votre Personnage, ou en les glissant-déposant depuis votre Fiche de Personnage vers le Tiroir. Chaque Objet possède également un menu contextuel avec plusieurs options, et peut être déplacé.",
+
+      "drawerImport_title": "Importer un Fichier",
+      "drawerImport_content": "Vous pouvez importer un fichier externe dans votre Tiroir. Le fichier doit être un fichier valide de Characters of the Mist, c'est-à-dire un Tiroir, une Fiche de Personnage, une Carte, un Dossier ou un Suivi.",
+
+      "drawerExport_title": "Exporter votre Tiroir",
+      "drawerExport_content": "Ce bouton vous permet d'exporter votre Tiroir COMPLET dans un fichier.",
+
+      "commandPalette_title": "Palette de Commandes",
+      "commandPalette_content": "Bien que ce tutoriel ne s'étende pas trop dessus, Characters of the Mist offre une puissante Palette de Commandes qui vous permet d'utiliser les fonctionnalités de l'application avec rien de plus que votre clavier ! Pour l'utiliser, appuyez simplement sur CTRL+K. Gardez à l'esprit que cette fonctionnalité est orientée vers les utilisateurs avancés.",
+
+      "closingWords_title": "La Fin",
+      "closingWords_content": "C'est tout ce que ce court tutoriel a à vous apprendre. N'hésitez pas à explorer des fonctionnalités plus complexes, et si vous trouvez un bug, un problème, ou si vous avez besoin d'aide, n'hésitez pas à me contacter sur le Discord officiel de Tools of the Mist. Vous trouverez le lien dans la section \"À Propos de l'Appli\". Merci beaucoup d'utiliser Characters of the Mist !"
+   },
+
+
+
+   "CardRenderer": {
+      "themeCardPlaceholder": "Carte de Thème : {title}",
+      "listCardPlaceholder": "Carte Liste : {title}"
+   },
+   "ThemeCard": {
+      "fellowshipTitle": "Thème de Compagnie",
+
+      "placeholderName": "Trait principal...",
+      "noName": "SANS NOM",
+      "power": "ATOUT",
+      "weakness": "CONTRAINTE",
+      
+      "questTitle": "Quête",
+      "noQuest": "TEXTE DE QUÊTE VIDE",
+      "questPlaceholder": "Entrez votre texte de Quête...",
+
+      "improvements": "Améliorations Spéciales",
+      "addImprovement": "Ajouter une Amélioration"
+   },
+   "TagItem": {
+      "placeholder": "Entrez votre Trait...",
+      "noName": "SANS NOM"
+   },
+   "PipTracker": {
+      "abandon": "ABANDON",
+      "improve": "AMÉLIORE",
+      "milestone": "JALON",
+      "promise": "PROMESSE"
+   },
+   "HeroCard": {
+      "title": "Carte de Héros",
+      "noName": "SANS NOM",
+      "characterNamePlaceholder": "Nom du Personnage...",
+
+      "relationships": "Relations de Compagnie",
+      "addRelationship": "Créer une relation",
+      "companion": "Compagnon",
+      "companionPlaceholder": "Camarade",
+      "relationship": "Relation",
+      "relationshipCompanionNoName": "SANS NOM",
+      "relationshipPlaceholder": "Relation",
+      "relationshipRelationNoName": "SANS NOM",
+
+      "quintessences": "Quintessences",
+      "addQuintessence": "Créer une Quintessence"
+   },
+   "backpack": {
+      "title": "Sac à dos",
+      "addItem": "Ajouter un Objet",
+      "noName": "SANS OBJET",
+      "placeholder": "Entrez votre objet..."
+   },
+   "quintessences": {
+      "placeholder": "Entrez votre quintessence...",
+      "noName": "SANS NOM"
+   },
+   "improvements": {
+      "placeholder": "Entrez votre amélioration...",
+      "noName": "SANS NOM"
+   },
+   "Trackers": {
+      "addStatus": "Ajouter un Statut",
+      "addStoryTag": "Ajouter un Trait Narratif",
+      "statusPlaceholder": "Votre statut...",
+      "statusNoName": "SANS NOM",
+      "storyTagPlaceholder": "Votre Trait Narratif...",
+      "storyTagNoName": "SANS NOM"
+   }
+}

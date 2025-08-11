@@ -1,0 +1,299 @@
+'use client';
+
+// -- React Imports --
+import React, { useEffect, useRef, useState } from 'react';
+
+// -- Next Imports --
+import { useTranslations } from 'next-intl';
+
+// -- Other Library Imports --
+import { motion } from 'framer-motion';
+import { DraggableAttributes } from '@dnd-kit/core';
+import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
+
+// -- Basic UI Imports --
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+
+// -- Icon Imports --
+import { PlusCircle, Users, Sparkles } from 'lucide-react';
+
+// -- Utils Imports --
+import { cn } from '@/lib/utils';
+
+// -- Component Imports --
+import { CardHeaderMolecule } from '../molecules/card-header';
+import { CardSectionHeader } from '@/components/molecules/card-section-header';
+import { PipTracker } from '@/components/molecules/pip-tracker';
+import { FellowshipRelationshipItem } from '@/components/molecules/fellowship-relationship-item';
+import { ToolbarHandle } from '../molecules/toolbar-handle';
+import { BlandTagItem } from '../molecules/bland-tag-item';
+
+// -- Store and Hook Imports --
+import { useCharacterActions } from '@/lib/stores/characterStore';
+import { useAppSettingsStore } from '@/lib/stores/appSettingsStore';
+import { useManualScroll } from '@/hooks/useManualScroll';
+
+// -- Type Imports --
+import { Card as CardData, LegendsHeroDetails } from '@/lib/types/character';
+
+
+
+interface HeroCardProps {
+  card: CardData;
+  isEditing?: boolean;
+  isSnapshot?: boolean;
+  isDrawerPreview?: boolean;
+  dragAttributes?: DraggableAttributes;
+  dragListeners?: SyntheticListenerMap;
+  onExport?: () => void;
+}
+
+
+
+const HeroCardContent = React.forwardRef<HTMLDivElement, HeroCardProps>(
+   ({ card, isEditing=false, isSnapshot, isDrawerPreview, dragAttributes, dragListeners, onExport }, ref) => {
+      const t = useTranslations('HeroCard');
+      const tBackpack = useTranslations('backpack');
+      const actions = useCharacterActions();
+      const details = card.details as LegendsHeroDetails;
+
+      const isSideBySideView = useAppSettingsStore((state) => state.isSideBySideView);
+      const [isHovered, setIsHovered] = useState(false);
+
+      const relationshipsScrollRef = useRef<HTMLDivElement>(null);
+      const quintessencesScrollRef = useRef<HTMLDivElement>(null);
+      const backpackScrollRef = useRef<HTMLDivElement>(null);
+
+      useManualScroll(relationshipsScrollRef);
+      useManualScroll(quintessencesScrollRef);
+      useManualScroll(backpackScrollRef);
+
+
+      
+      const handleDetailChange = (field: keyof LegendsHeroDetails, value: LegendsHeroDetails[keyof LegendsHeroDetails]) => {
+         actions.updateCardDetails(card.id, { ...details, [field]: value });
+      };
+
+
+
+      // ##########################################
+      // ###   CHARACTER NAME INPUT DEBOUNCER   ###
+      // ##########################################
+
+      const [localCharName, setLocalCharName] = useState(details.characterName);
+
+      useEffect(() => {
+         const handler = setTimeout(() => {
+            if (details.characterName !== localCharName) {
+               actions.updateCharacterName(localCharName);
+            }
+         }, 500);
+         return () => clearTimeout(handler);
+      }, [localCharName, details.characterName, actions]);
+
+      useEffect(() => {
+         setLocalCharName(details.characterName);
+      }, [details.characterName]);
+
+
+
+      const CardFront = (
+         <Card className={cn(
+            "w-[250px] h-[600px] flex flex-col border-2 shadow-lg p-0 overflow-hidden gap-0",
+            "bg-card-paper-bg text-card-paper-fg border-card-accent",
+            "relative z-0",
+            "card-type-hero",
+            {"h-[120px] shadow-none pointer-events-none border-2 border-card-border": isDrawerPreview}
+         )}>
+            <CardHeader className="p-0">
+               <CardHeaderMolecule title={t('title')}></CardHeaderMolecule>
+            </CardHeader>
+            
+            <CardContent className="flex-grow flex flex-col p-0 overflow-hidden min-h-0">
+               <div className="w-full text-center px-2 py-1 mb-1 flex-shrink-0">
+                  {isEditing ? (
+                     <Input
+                        className="text-2xl font-bold text-center bg-transparent border-none shadow-none"
+                        value={localCharName || ''}
+                        onChange={(e) => setLocalCharName(e.target.value)}
+                        placeholder={t('characterNamePlaceholder')}
+                     />
+                  ) : (
+                     <h2 className="text-2xl font-bold">{details.characterName || `[${t('noName')}]`}</h2>
+                  )}
+               </div>
+
+               <div className="flex flex-col h-[45%]">
+                  <CardSectionHeader title={t('relationships')} icon={Users} />
+                  <div className="flex flex-col flex-grow align-middle overflow-y-auto overscroll-contain" ref={relationshipsScrollRef}>
+                     <div className="flex bg-card-accent/15">
+                        <p className="flex-grow text-sm text-center py-1 border-b-1">{t('companion')}</p>
+                        <p className="flex-grow text-sm text-center py-1 border-b-1">{t('relationship')}</p>
+                     </div>
+                     {details.fellowshipRelationships.map((relation, index) => (
+                        <FellowshipRelationshipItem key={relation.id} cardId={card.id} relationship={relation} isEditing={isEditing} index={index} />
+                     ))}
+                     {isEditing && (
+                        <Button variant="ghost" size="sm" className="m-2 border-1 border-dashed cursor-pointer" onClick={() => actions.addRelationship(card.id)}>
+                           <PlusCircle className="h-4 w-4 mr-2" /> {t('addRelationship')}
+                        </Button>
+                     )}
+                  </div>
+               </div>
+
+               <div className="flex justify-around items-center py-2 px-2 flex-shrink-0 w-[100%] border-t border-black/30">
+                  <PipTracker 
+                     label="promise" 
+                     value={details.promise} 
+                     onUpdate={(val) => handleDetailChange('promise', val)}
+                     maxPips={5}
+                  />
+               </div>
+
+               <div className="flex flex-col flex-grow overflow-hidden">
+                  <CardSectionHeader title={t('quintessences')} icon={Sparkles} />
+                  <div className="flex flex-col flex-grow align-middle overflow-y-scroll overscroll-contain" ref={quintessencesScrollRef}>
+                     {details.quintessences.map((quint, index) => (
+                        <BlandTagItem 
+                           key={quint.id} 
+                           cardId={card.id} 
+                           tag={quint} 
+                           listName="quintessences" 
+                           isEditing={isEditing} 
+                           index={index} 
+                        />
+                     ))}
+                     {isEditing && (
+                        <Button variant="ghost" size="sm" className="m-2 border-1 border-dashed cursor-pointer" onClick={() => actions.addBlandTag(card.id, 'quintessences')}>
+                           <PlusCircle className="h-4 w-4 mr-2" /> {t('addQuintessence')}
+                        </Button>
+                     )}
+                  </div>
+               </div>
+            </CardContent>
+         </Card>
+      );
+
+      const CardBack = (
+         <Card className={cn(
+            "w-[250px] h-[600px] flex flex-col border-2 shadow-lg p-0 overflow-hidden gap-0",
+            "bg-card-paper-bg text-card-paper-fg border-card-accent",
+            "relative z-0",
+            "card-type-hero",
+            {"h-[120px] shadow-none pointer-events-none border-2 border-card-border": isDrawerPreview}
+         )}>
+            <CardHeaderMolecule title={t('title')} />
+            <CardSectionHeader title={`${tBackpack('title')}`}></CardSectionHeader>
+            <CardContent className="flex-grow flex flex-col p-0 overflow-hidden min-h-0">
+               <div className="flex-grow space-y-0 overflow-y-auto overscroll-contain" ref={backpackScrollRef}>
+                  {details.backpack.map((tag, index) => (
+                     <BlandTagItem 
+                        key={tag.id}
+                        cardId={card.id}
+                        tag={tag}
+                        listName="backpack"
+                        isEditing={isEditing}
+                        index={index}
+                     />
+                  ))}
+                  {isEditing && (
+                     <div className="p-2 w-full">
+                        <Button variant="ghost" size="sm" className="w-full border-1 border-dashed cursor-pointer" onClick={() => actions.addBlandTag(card.id, 'backpack')}>
+                           <PlusCircle className="h-4 w-4 mr-2" /> {tBackpack('addItem')}
+                        </Button>
+                     </div>
+                  )}
+               </div>
+            </CardContent>
+         </Card>
+      );
+
+
+
+      if (isSideBySideView && !isDrawerPreview) {
+         return (
+            <motion.div
+               ref={ref}
+               onHoverStart={() => setIsHovered(true)}
+               onHoverEnd={() => setIsHovered(false)}
+               className="relative"
+            >
+               <ToolbarHandle 
+                  isEditing={isEditing}
+                  isHovered={isHovered}
+                  dragAttributes={dragAttributes}
+                  dragListeners={dragListeners}
+                  onExport={onExport}
+                  cardTheme="card-type-hero"
+               />
+               <div ref={ref} className="flex gap-1 items-start">
+                  {CardFront}
+                  {CardBack}
+               </div>
+            </motion.div>
+         );
+      }
+
+
+
+      return (
+         <motion.div
+            ref={ref}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
+            className="relative"
+         >
+         
+            <motion.div
+               className="w-full h-full"
+               style={{ transformStyle: 'preserve-3d' }}
+               initial={isSnapshot ? { rotateY: card.isFlipped ? 180 : 0 } : { rotateY: 0 }}
+               animate={{ rotateY: card.isFlipped ? 180 : 0 }}
+               transition={{ duration: 0.5, ease: 'easeInOut' }}
+            >
+
+               {!isDrawerPreview &&
+                  <ToolbarHandle 
+                     isEditing={isEditing}
+                     isHovered={isHovered}
+                     onFlip={() => actions.flipCard(card.id)}
+                     dragAttributes={dragAttributes}
+                     dragListeners={dragListeners}
+                     onExport={onExport}
+                     cardTheme="card-type-hero"
+                  />   
+               }
+
+               {/* ============================================
+                        CARD FRONT (Hero Details)
+                  ============================================ */}
+               <div style={{ backfaceVisibility: 'hidden' }}>
+                  {CardFront}
+               </div>
+
+               {/* ============================================
+                           CARD BACK (Backpack)
+                  ============================================ */}
+               <div className="absolute top-0 left-0 w-full h-full" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
+                  {CardBack}
+               </div>
+            </motion.div>
+         </motion.div>
+      );
+   }
+);
+HeroCardContent.displayName = 'HeroCardContent';
+
+
+
+export const HeroCard = React.forwardRef<HTMLDivElement, HeroCardProps>(
+  (props, ref) => {
+    if (props.card.details.game !== 'LEGENDS') {
+      return null;
+    }
+    return <HeroCardContent {...props} ref={ref} />;
+  }
+);
+HeroCard.displayName = 'HeroCard';
