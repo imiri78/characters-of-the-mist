@@ -381,6 +381,11 @@ body {
    gap: 3px;
 }
 
+.driver-popover.cotm-driver .driver-popover-navigation-btns button:hover {
+   background-color: hsl(var(--primary));
+   opacity: 0.7;
+}
+
 .driver-popover.cotm-driver .driver-popover-close-btn {
    text-align: top;
    background: none;
