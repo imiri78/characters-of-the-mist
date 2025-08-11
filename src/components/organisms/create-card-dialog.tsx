@@ -104,7 +104,7 @@ export function CreateCardDialog({ isOpen, onOpenChange, onConfirm, mode, cardDa
 
             <div className="grid gap-4 py-6">
                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="card-type" className="text-right">{t('cardTypeLabel')}</Label>
+                  <Label htmlFor="card-type" className="text-left">{t('cardTypeLabel')}</Label>
                   <Select value={cardType} onValueChange={(value: CardTypeSelection) => setCardType(value)} disabled={mode === 'edit'}>
                      <SelectTrigger id="card-type" className="col-span-3 hover:bg-muted border-primary">
                         <SelectValue placeholder={t('selectPlaceholder')} />
@@ -119,7 +119,7 @@ export function CreateCardDialog({ isOpen, onOpenChange, onConfirm, mode, cardDa
                {cardType === 'CHARACTER_THEME' && (
                   <>
                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="theme-type" className="text-right">{t('themeTypeLabel')}</Label>
+                        <Label htmlFor="theme-type" className="text-left">{t('themeTypeLabel')}</Label>
                         <Select value={themeType} onValueChange={handleThemeTypeChange}>
                            <SelectTrigger id="theme-type" className="col-span-3 hover:bg-muted border-primary">
                               <SelectValue placeholder={t('selectThemeTypePlaceholder')} />
@@ -131,7 +131,7 @@ export function CreateCardDialog({ isOpen, onOpenChange, onConfirm, mode, cardDa
                      </div>
 
                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="themebook" className="text-right">{t('themebookLabel')}</Label>
+                        <Label htmlFor="themebook" className="text-left">{t('themebookLabel')}</Label>
                         <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
                            <PopoverTrigger asChild>
                               <Button

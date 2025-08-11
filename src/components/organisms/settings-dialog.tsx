@@ -170,7 +170,7 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
 
                <div className="grid gap-6 py-4">
                   <div className="grid grid-cols-3 items-center gap-4">
-                     <Label htmlFor="language-select" className="text-right">
+                     <Label htmlFor="language-select" className="text-left">
                         {t('language')}
                      </Label>
                      <Select value={locale} onValueChange={handleLocaleChange}>
@@ -187,7 +187,7 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
                      </Select>
                   </div>
                   <div className="grid grid-cols-3 items-center gap-4">
-                     <Label htmlFor="theme-select">{t('accentColor')}</Label>
+                     <Label htmlFor="theme-select" className="text-left">{t('accentColor')}</Label>
                      <Select value={colorTheme} onValueChange={setColorTheme}>
                         <SelectTrigger id="theme-select" className="col-span-2 cursor-pointer">
                            <SelectValue placeholder="Select a theme" />
@@ -203,7 +203,7 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
                   </div>
 
                   <div className="grid grid-cols-3 items-center gap-4">
-                     <Label>{t('appearance')}</Label>
+                     <Label className="text-left">{t('appearance')}</Label>
                      <div className="col-span-2 flex items-center gap-2">
                         <Button
                            variant={resolvedTheme === 'light' ? 'default' : 'outline'}
@@ -223,7 +223,7 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
                   </div>
 
                   <div className="grid grid-cols-3 items-center gap-4">
-                     <Label>{t('cardView.title')}</Label>
+                     <Label className="text-left">{t('cardView.title')}</Label>
                      <div className="col-span-2 flex items-center space-x-2">
                         <Button
                            variant={!isSideBySideView ? 'default' : 'outline'}
@@ -243,7 +243,7 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
                   </div>
 
                   <div className="grid grid-cols-3 items-center gap-4">
-                     <Label>{t('migration.label')}</Label>
+                     <Label className="text-left">{t('migration.label')}</Label>
                      <Button onClick={() => setIsMigrationDialogOpen(true)} className="col-span-2 cursor-pointer">
                         <DatabaseBackup className="mr-2 h-4 w-4" />
                         {t('migration.button')}
@@ -251,7 +251,7 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
                   </div>
 
                   <div className="grid grid-cols-3 items-center gap-4">
-                     <Label>{t('tutorial')}</Label>
+                     <Label className="text-left">{t('tutorial')}</Label>
                      <Button onClick={onStartTour} className="col-span-2 cursor-pointer">
                         <PlayCircle className="mr-2 h-4 w-4" />
                         {t('tutorialButton')}

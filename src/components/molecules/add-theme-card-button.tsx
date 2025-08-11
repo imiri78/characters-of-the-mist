@@ -29,7 +29,7 @@ export function AddCardButton({ onClick }: AddCardButtonProps) {
          onClick={onClick}
          className={cn(
             "cursor-pointer flex flex-col gap-4 items-center justify-center w-[250px] h-[600px]",
-            "rounded-lg border-2 border-dashed border-bg text-bg border-border text-muted-foreground bg-muted/50",
+            "rounded-lg border-2 border-dashed border-bg text-bg border-border text-muted-foreground text-center bg-muted/50",
             "hover:text-foreground hover:border-foreground transition-all duration-150"
          )}
       >

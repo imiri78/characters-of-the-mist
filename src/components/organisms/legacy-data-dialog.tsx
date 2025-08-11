@@ -69,7 +69,7 @@ export function LegacyDataDialog({ isOpen, onOpenChange }: LegacyDataDialogProps
             </AlertDialogHeader>
 
             <div className="space-y-2 py-2">
-               <Label htmlFor="dismiss-confirmation">{t('confirmationLabel')}</Label>
+               <Label htmlFor="dismiss-confirmation" className="text-left">{t('confirmationLabel')}</Label>
                <p className="w-full text-center text-sm font-bold text-destructive">{CONFIRMATION_PHRASE}</p>
                <Input
                   id="dismiss-confirmation"
