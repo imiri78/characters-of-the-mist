@@ -176,6 +176,7 @@ interface CreateCard_ThemebookPageProps {
 }
 const CreateCard_ThemebookPage = ({ themeType, inputValue, onSelect }: CreateCard_ThemebookPageProps) => {
    const t = useTranslations('CommandPalette');
+   const tData = useTranslations();
    const availableThemebooks = legendsThemebooks[themeType] || [];
    const text = t('actions.createWith', { name: inputValue || '...' });
 
@@ -185,9 +186,9 @@ const CreateCard_ThemebookPage = ({ themeType, inputValue, onSelect }: CreateCar
             <CornerDownLeft className="mr-2 h-4 w-4" />
             <span>{text}</span>
          </Command.Item>
-         {availableThemebooks.map(themebook => (
-            <Command.Item key={themebook} value={themebook} onSelect={() => onSelect(themebook)} className={commonItemClass}>
-               {themebook}
+         {availableThemebooks.map(book => (
+            <Command.Item key={book.value} value={book.value} onSelect={() => onSelect(book.value)} className={commonItemClass}>
+               {tData(book.key as string)}
             </Command.Item>
          ))}
       </Command.Group>
