@@ -18,7 +18,7 @@ import { WelcomeDialog } from '@/components/organisms/welcome-dialog';
 
 // -- Store and Hook Imports --
 import { useAppGeneralStateStore, useAppGeneralStateActions } from '@/lib/stores/appGeneralStateStore';
-import { useAppSettingsStore } from '@/lib/stores/appSettingsStore';
+import { useAppSettingsActions, useAppSettingsStore } from '@/lib/stores/appSettingsStore';
 import { useAppTourDriver } from '@/hooks/useAppTourDriver';
 
 
@@ -51,7 +51,8 @@ export const AppStartManagerProvider = ({ children }: { children: React.ReactNod
    const isLegacyDataDialogOpen = useAppGeneralStateStore((state) => state.isLegacyDataDialogOpen);
    const isWelcomeDialogOpen = useAppGeneralStateStore((state) => state.isWelcomeDialogOpen);
    const isPatchNotesOpen = useAppGeneralStateStore((state) => state.isPatchNotesOpen);
-   const { setLegacyDataDialogOpen, setWelcomeDialogOpen, setPatchNotesOpen, setInitialPatchNotesVersion, setSidebarCollapsed, setSettingsOpen, setDrawerOpen } = useAppGeneralStateActions();
+   const { setLegacyDataDialogOpen, setWelcomeDialogOpen, setPatchNotesOpen, setInitialPatchNotesVersion, setSettingsOpen, setDrawerOpen } = useAppGeneralStateActions();
+   const { setSidebarCollapsed } = useAppSettingsActions();
    const { startTour } = useAppTourDriver();
 
 
