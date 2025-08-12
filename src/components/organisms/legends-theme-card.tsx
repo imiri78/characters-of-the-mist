@@ -18,7 +18,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 // -- Icon Imports --
-import { Flame, Circle, CircleDot, PlusCircle } from 'lucide-react';
+import { Flame, Circle, PlusCircle, Disc2 } from 'lucide-react';
 
 // -- Utils Imports --
 import { cn } from '@/lib/utils';
@@ -182,7 +182,7 @@ export const LegendsThemeCard = React.forwardRef<HTMLDivElement, ThemeCardProps>
                   <div className="w-6">
                      {!isEditing && (
                         <Button variant="ghost" size="icon" className="h-6 w-6 cursor-pointer" onClick={() => handleDetailChange('mainTag', { ...details.mainTag, isActive: !details.mainTag.isActive })}>
-                           {details.mainTag.isActive ? <CircleDot className="h-5 w-5 text-primary" /> : <Circle className="h-4 w-4" />}
+                           {details.mainTag.isActive ? <Disc2 className="h-5 w-5 text-card-paper" /> : <Circle className="h-4 w-4" />}
                         </Button>
                      )}
                   </div>
@@ -194,7 +194,7 @@ export const LegendsThemeCard = React.forwardRef<HTMLDivElement, ThemeCardProps>
                         onChange={(e) => setLocalMainTagName(e.target.value)}
                      />
                   ) : (
-                     <h2 className={cn("text-xl font-bold", details.mainTag.isScratched && 'line-through opacity-50')}>
+                     <h2 className={cn("text-xl font-bold", details.mainTag.isScratched ? 'line-through opacity-50' : details.mainTag.isActive && 'underline')}>
                         {details.mainTag.name || `[${t('noName')}]`}
                      </h2>
                   )}

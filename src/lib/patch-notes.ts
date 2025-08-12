@@ -5,6 +5,21 @@ export interface PatchNote {
 
 export const patchNotes: PatchNote[] = [
    {
+      version: '1.0.1',
+      content: `
+### Nothing too exciting here
+This is mainly a patch adding a small requested feature I found particularly interesting, and fixing a few UI bugs I dug up.
+
+### ✨ Features
+* **Card-specific view-mode**: You can now change a card's view mode from Side-by-Side, Flip, or having it follow your global preferences.
+
+### 🐛 Bugfixes
+* Incorrect colors on the tracking button for a card's main tag.
+* The tracking button on tags was hard to notice when enabled, fixed with a new icon, and with tag underlining for good measure.
+* Some texts weren't properly aligned in the French locale, because of erroneously set alignment properties.
+`
+   },
+   {
       version: '1.0.0',
       content: `
 ### 🎉 Version 1.0.0 - The Proper Release!

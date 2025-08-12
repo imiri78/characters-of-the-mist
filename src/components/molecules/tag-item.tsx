@@ -11,7 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 // -- Icon Imports --
-import { Circle, CircleDot, Flame, Trash2 } from 'lucide-react';
+import { Circle, Disc2, Flame, Trash2 } from 'lucide-react';
 
 // -- Utils Imports --
 import { cn } from '@/lib/utils';
@@ -81,7 +81,7 @@ export function TagItem({ cardId, tag, tagType, isEditing, index }: TagItemProps
          <div className="flex items-center justify-center w-6">
             {tagType === 'power' && !isEditing && (
                <Button variant="ghost" size="icon" className="h-6 w-6 cursor-pointer" onClick={() => handleUpdate({ isActive: !tag.isActive })}>
-                  {tag.isActive ? <CircleDot className="h-5 w-5 text-card-paper" /> : <Circle className="h-4 w-4" />}
+                  {tag.isActive ? <Disc2 className="h-5 w-5 text-card-paper" /> : <Circle className="h-4 w-4" />}
                </Button>
             )}
          </div>
@@ -94,7 +94,7 @@ export function TagItem({ cardId, tag, tagType, isEditing, index }: TagItemProps
                placeholder={t('placeholder')}
             />
          ) : (
-            <p className={cn('text-sm text-center py-1', tag.isScratched && 'line-through')}>
+            <p className={cn('text-sm text-center py-1', tag.isScratched ? 'line-through' : tag.isActive && 'underline')}>
                {tag.name || `[${t('noName')}]`}
             </p>
          )}
