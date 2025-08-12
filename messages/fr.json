@@ -43,6 +43,13 @@
       "localStorageDisabled_title": "Erreur Critique de Stockage",
       "localStorageDisabled_description": "Il semblerait que pour une raison ou pour une autre, le stockage local de votre navigateur n'est pas accessible par l'application. Characters of the Mist dépend uniquement du stockage local de votre navigateur pour la persistance et la gestion des données, et n'utilise aucun serveur. Cela signifie que l'application ne peut pas fonctionner dans votre cas."
    },
+   "Tooltips": {
+      "ViewMode": {
+         "SideBySide": "Vue Côte-à-Côte forcée",
+         "Flipping": "Vue Recto-Verso forcée",
+         "Global": "Vue accordée aux paramètres globaux"
+      }
+   },
 
 
 

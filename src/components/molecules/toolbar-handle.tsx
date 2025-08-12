@@ -10,12 +10,17 @@ import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
 
 // -- Basic UI Imports --
 import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 // -- Icon Imports --
-import { Trash2, GripVertical, RefreshCw, Edit2, Upload } from 'lucide-react';
+import { Trash2, GripVertical, RefreshCw, Edit2, Upload, Globe, FlipHorizontal, BookOpen } from 'lucide-react';
 
 // -- Utils Imports --
 import { cn } from '@/lib/utils';
+
+// -- Type Imports --
+import { CardViewMode } from '@/lib/types/character';
+import { useTranslations } from 'next-intl';
 
 
 
@@ -27,6 +32,8 @@ interface ToolbarHandleProps {
    onFlip?: () => void;
    onEditCard?: () => void;
    onExport?: () => void;
+   onCycleViewMode?: () => void;
+   cardViewMode?: CardViewMode | null;
    dragAttributes?: DraggableAttributes;
    dragListeners?: SyntheticListenerMap;
    side?: "left" | "right" | "top" | "bottom";
@@ -64,7 +71,23 @@ const variants: sideVariants = {
 
 
 
-export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete, onFlip, onEditCard, onExport, dragAttributes, dragListeners, side = "left" }: ToolbarHandleProps) {
+const ViewModeIcon = ({ mode }: { mode: CardViewMode | null | undefined }) => {
+   if (mode === 'SIDE_BY_SIDE') return <BookOpen className="h-4 w-4" />;
+   if (mode === 'FLIP') return <FlipHorizontal className="h-4 w-4" />;
+   return <Globe className="h-4 w-4" />;
+};
+
+const ViewModeTooltip = ({ mode }: { mode: CardViewMode | null | undefined }) => {
+   const t = useTranslations('Tooltips');
+
+   if (mode === 'SIDE_BY_SIDE') return <p>{t('ViewMode.SideBySide')}</p>;
+   if (mode === 'FLIP') return <p>{t('ViewMode.Flipping')}</p>;
+   return <p>{t('ViewMode.Global')}</p>;
+};
+
+
+
+export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete, onFlip, onEditCard, onExport, onCycleViewMode, cardViewMode, dragAttributes, dragListeners, side = "left" }: ToolbarHandleProps) {
    return (
       <AnimatePresence>
          {isHovered && (
@@ -131,6 +154,22 @@ export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete, onFli
                   <div className="flex items-center justify-center cursor-grab text-card-popover-fg h-7 w-7" {...dragAttributes} {...dragListeners}>
                      <GripVertical />
                   </div>
+
+                  {onCycleViewMode && (
+                     <Tooltip>
+                        <TooltipTrigger asChild>
+                           <Button
+                              variant="outline"
+                              size="icon"
+                              className="h-7 w-7 cursor-pointer bg-card-paper-bg text-card-paper-fg"
+                              onClick={onCycleViewMode}
+                           >
+                              <ViewModeIcon mode={cardViewMode} />
+                           </Button>
+                        </TooltipTrigger>
+                        <TooltipContent side='left'><ViewModeTooltip mode={cardViewMode} /></TooltipContent>
+                     </Tooltip>
+                  )}
 
                   { isEditing && onDelete &&
                      <Button 

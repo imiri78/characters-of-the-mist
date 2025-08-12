@@ -43,6 +43,13 @@
       "localStorageDisabled_title": "Critical Storage Error",
       "localStorageDisabled_description": "It seems that for one reason or another, your browser's local storage is not accessible for the App. Characters of the Mist relies solely on browser local storage for data management and persistance, and does not use a server at all. This means that in your case, it cannot run."
    },
+   "Tooltips": {
+      "ViewMode": {
+         "SideBySide": "Side by Side view mode forced",
+         "Flipping": "Flipping view mode forced",
+         "Global": "View mode follows global settings"
+      }
+   },
 
 
 

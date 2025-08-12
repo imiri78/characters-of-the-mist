@@ -1,7 +1,7 @@
 'use client';
 
 // -- React Imports --
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 // -- Next Imports --
 import { useTranslations } from 'next-intl';
@@ -37,7 +37,7 @@ import { useAppSettingsStore } from '@/lib/stores/appSettingsStore';
 import { useManualScroll } from '@/hooks/useManualScroll';
 
 // -- Type Imports --
-import { Card as CardData, LegendsFellowshipDetails, LegendsThemeDetails } from '@/lib/types/character';
+import { Card as CardData, CardViewMode, LegendsFellowshipDetails, LegendsThemeDetails } from '@/lib/types/character';
 
 
 
@@ -68,8 +68,10 @@ export const LegendsThemeCard = React.forwardRef<HTMLDivElement, ThemeCardProps>
       const actions = useCharacterActions();
       const details = card.details as LegendsThemeDetails | LegendsFellowshipDetails;
 
-      const isSideBySideView = useAppSettingsStore((state) => state.isSideBySideView);
       const [isHovered, setIsHovered] = useState(false);
+
+      const globalCardViewMode = useAppSettingsStore((state) => state.isSideBySideView ? 'SIDE_BY_SIDE' : 'FLIP');
+      const effectiveViewMode = useMemo(() => card.viewMode || globalCardViewMode, [card.viewMode, globalCardViewMode]);
 
       const tagsScrollRef = useRef<HTMLDivElement>(null);
       const questScrollRef = useRef<HTMLDivElement>(null);
@@ -95,6 +97,20 @@ export const LegendsThemeCard = React.forwardRef<HTMLDivElement, ThemeCardProps>
 
       const handleDetailChange = (field: keyof (LegendsThemeDetails | LegendsFellowshipDetails), value: DetailValue) => {
          actions.updateCardDetails(card.id, { ...details, [field]: value });
+      };
+
+
+
+      const handleCycleViewMode = () => {
+         let nextMode: CardViewMode | null = null;
+         if (card.viewMode === 'SIDE_BY_SIDE') {
+            nextMode = 'FLIP';
+         } else if (card.viewMode === 'FLIP') {
+            nextMode = null;
+         } else {
+            nextMode = 'SIDE_BY_SIDE';
+         }
+         actions.updateCardViewMode(card.id, nextMode);
       };
 
 
@@ -267,7 +283,7 @@ export const LegendsThemeCard = React.forwardRef<HTMLDivElement, ThemeCardProps>
 
 
 
-      if (isSideBySideView && !isDrawerPreview) {
+      if (effectiveViewMode === 'SIDE_BY_SIDE' && !isDrawerPreview) {
          return (
             <motion.div
                ref={ref}
@@ -284,8 +300,10 @@ export const LegendsThemeCard = React.forwardRef<HTMLDivElement, ThemeCardProps>
                   cardTheme={cardTypeClass}
                   onEditCard={onEditCard}
                   onExport={onExport}
+                  onCycleViewMode={handleCycleViewMode}
+                  cardViewMode={card.viewMode}
                />
-               <div ref={ref} className="flex gap-1 items-start">
+               <div className="flex gap-1 items-start">
                   {CardFront}
                   {CardBack}
                </div>
@@ -321,6 +339,8 @@ export const LegendsThemeCard = React.forwardRef<HTMLDivElement, ThemeCardProps>
                      cardTheme={cardTypeClass}
                      onEditCard={onEditCard}
                      onExport={onExport}
+                     onCycleViewMode={handleCycleViewMode}
+                     cardViewMode={card.viewMode}
                   />
                }
 

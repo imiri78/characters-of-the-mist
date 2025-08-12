@@ -12,7 +12,7 @@ import { deepReId } from '../utils/drawer';
 import { useAppGeneralStateStore } from './appGeneralStateStore';
 
 // -- Type Imports --
-import { Character, Card, Tag, LegendsThemeDetails, StatusTracker, StoryTagTracker, Tracker, LegendsHeroDetails, LegendsFellowshipDetails, FellowshipRelationship, BlandTag, CardDetails } from '@/lib/types/character';
+import { Character, Card, Tag, LegendsThemeDetails, StatusTracker, StoryTagTracker, Tracker, LegendsHeroDetails, LegendsFellowshipDetails, FellowshipRelationship, BlandTag, CardDetails, CardViewMode } from '@/lib/types/character';
 import { GeneralItemType } from '../types/drawer';
 import { CreateCardOptions } from '../types/creation';
 
@@ -42,6 +42,7 @@ interface CharacterState {
       updateCardDetails: (cardId: string, newDetails: Partial<CardDetails>) => void;
       reorderCards: (startIndex: number, endIndex: number) => void;
       flipCard: (cardId: string) => void;
+      updateCardViewMode: (cardId: string, viewMode: CardViewMode | null) => void;
       // --- Tag Actions --- 
       addTag: (cardId: string, listName: TagListName) => void;
       updateTag: (cardId: string, listName: TagListName, tagId: string, updatedTag: Partial<Tag>) => void;
@@ -286,6 +287,15 @@ export const useCharacterStore = create<CharacterState>()(
                         ...card,
                         isFlipped: !card.isFlipped,
                      }))
+                  });
+               },
+               updateCardViewMode: (cardId, viewMode) => {
+                  set(state => {
+                     useAppGeneralStateStore.getState().actions.setLastModifiedStore('character');
+                     return updateCardInState(state, cardId, card => ({
+                        ...card,
+                        viewMode: viewMode,
+                     }));
                   });
                },
                // --- Tag Actions ---

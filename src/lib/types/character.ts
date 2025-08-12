@@ -101,11 +101,14 @@ export type CardDetails =
 // |###   GENERIC INTERFACES   ###|
 // *##############################*
 
+export type CardViewMode = 'FLIP' | 'SIDE_BY_SIDE';
+
 export interface Card {
    id: string;
    title: string;
    order: number;
    isFlipped: boolean;
+   viewMode?: CardViewMode | null;
    cardType: GeneralItemType; 
    details: CardDetails;
 }

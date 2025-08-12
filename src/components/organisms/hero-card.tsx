@@ -1,7 +1,7 @@
 'use client';
 
 // -- React Imports --
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 // -- Next Imports --
 import { useTranslations } from 'next-intl';
@@ -36,7 +36,7 @@ import { useAppSettingsStore } from '@/lib/stores/appSettingsStore';
 import { useManualScroll } from '@/hooks/useManualScroll';
 
 // -- Type Imports --
-import { Card as CardData, LegendsHeroDetails } from '@/lib/types/character';
+import { Card as CardData, CardViewMode, LegendsHeroDetails } from '@/lib/types/character';
 
 
 
@@ -59,8 +59,10 @@ const HeroCardContent = React.forwardRef<HTMLDivElement, HeroCardProps>(
       const actions = useCharacterActions();
       const details = card.details as LegendsHeroDetails;
 
-      const isSideBySideView = useAppSettingsStore((state) => state.isSideBySideView);
       const [isHovered, setIsHovered] = useState(false);
+
+      const globalCardViewMode = useAppSettingsStore((state) => state.isSideBySideView ? 'SIDE_BY_SIDE' : 'FLIP');
+      const effectiveViewMode = useMemo(() => card.viewMode || globalCardViewMode, [card.viewMode, globalCardViewMode]);
 
       const relationshipsScrollRef = useRef<HTMLDivElement>(null);
       const quintessencesScrollRef = useRef<HTMLDivElement>(null);
@@ -74,6 +76,20 @@ const HeroCardContent = React.forwardRef<HTMLDivElement, HeroCardProps>(
       
       const handleDetailChange = (field: keyof LegendsHeroDetails, value: LegendsHeroDetails[keyof LegendsHeroDetails]) => {
          actions.updateCardDetails(card.id, { ...details, [field]: value });
+      };
+
+
+
+      const handleCycleViewMode = () => {
+         let nextMode: CardViewMode | null = null;
+         if (card.viewMode === 'SIDE_BY_SIDE') {
+            nextMode = 'FLIP';
+         } else if (card.viewMode === 'FLIP') {
+            nextMode = null;
+         } else {
+            nextMode = 'SIDE_BY_SIDE';
+         }
+         actions.updateCardViewMode(card.id, nextMode);
       };
 
 
@@ -212,7 +228,7 @@ const HeroCardContent = React.forwardRef<HTMLDivElement, HeroCardProps>(
 
 
 
-      if (isSideBySideView && !isDrawerPreview) {
+      if (effectiveViewMode === 'SIDE_BY_SIDE' && !isDrawerPreview) {
          return (
             <motion.div
                ref={ref}
@@ -226,6 +242,8 @@ const HeroCardContent = React.forwardRef<HTMLDivElement, HeroCardProps>(
                   dragAttributes={dragAttributes}
                   dragListeners={dragListeners}
                   onExport={onExport}
+                  onCycleViewMode={handleCycleViewMode}
+                  cardViewMode={card.viewMode}
                   cardTheme="card-type-hero"
                />
                <div ref={ref} className="flex gap-1 items-start">
@@ -262,6 +280,8 @@ const HeroCardContent = React.forwardRef<HTMLDivElement, HeroCardProps>(
                      dragAttributes={dragAttributes}
                      dragListeners={dragListeners}
                      onExport={onExport}
+                     onCycleViewMode={handleCycleViewMode}
+                     cardViewMode={card.viewMode}
                      cardTheme="card-type-hero"
                   />   
                }
