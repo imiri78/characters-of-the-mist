@@ -140,13 +140,13 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
       useDrawerStore.persist.clearStorage();
       useAppSettingsStore.persist.clearStorage();
       setTimeout(() => window.location.reload(), 500);
-      toast.success(tNotifications('appReset'));
+      toast.success(tNotifications('general.appReset'));
    };
 
    const handleDeleteDrawer = () => {
       useDrawerStore.persist.clearStorage();
       setTimeout(() => window.location.reload(), 500);
-      toast.success(tNotifications('drawerDeleted'));
+      toast.success(tNotifications('drawer.deleted'));
    }
 
    const handleLocaleChange = (newLocale: string) => {
