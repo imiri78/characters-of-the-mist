@@ -97,7 +97,7 @@ export function StatusTrackerCard({ tracker, isEditing=false, isDrawerPreview, d
                dragListeners={dragListeners}
                onExport={onExport}
                cardTheme='card-type-tracker'
-               side="left"
+               side="top"
             />
          )}
 
