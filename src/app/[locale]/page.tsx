@@ -95,7 +95,7 @@ function SortableCardItem({ card, isEditing, isBeingDragged, onEditCard, onExpor
    });
 
    const style = {
-      transform: CSS.Transform.toString(transform),
+      transform: CSS.Translate.toString(transform),
       transition,
    };
 
@@ -122,7 +122,7 @@ function SortableTrackerItem({ tracker, isEditing, isBeingDragged, onExport }: {
    });
 
    const style = {
-      transform: CSS.Transform.toString(transform),
+      transform: CSS.Translate.toString(transform),
       transition,
    };
 
