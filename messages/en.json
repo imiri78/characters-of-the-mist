@@ -582,5 +582,43 @@
       "statusNoName": "NO STATUS",
       "storyTagPlaceholder": "Fill your story tag...",
       "storyTagNoName": "NO STORY TAG"
+   },
+
+
+
+   "LegendsData": {
+      "themebook": {
+         "circumstance": "Circumstance",
+         "past": "Past",
+         "devotion": "Devotion",
+         "mystery": "Mystery",
+         "people": "People",
+         "possessions": "Possessions",
+         "personality": "Personality",
+         "tradeAndSkill": "Trade & Skill",
+         "trait": "Trait",
+         "hedgeMagic": "Hedge Magic",
+         "prodigiousSkill": "Prodigious Skill",
+         "duty": "Duty",
+         "relic": "Relic",
+         "uncannyBeing": "Uncanny Being",
+         "thaumaturgy": "Thaumaturgy",
+         "rulership": "Rulership",
+         "destiny": "Destiny",
+         "mastery": "Mastery",
+         "monstrocity": "Monstrocity",
+         "grandThaumaturgy": "Grand Thaumaturgy"
+      }
+   },
+   "ThemeTypes": {
+      "Origin": "Origin",
+      "Adventure": "Adventure",
+      "Greatness": "Greatness",
+
+      "Logos": "Logos",
+      "Mythos": "Mythos",
+
+      "Self": "Self",
+      "Noise": "Noise"
    }
 }

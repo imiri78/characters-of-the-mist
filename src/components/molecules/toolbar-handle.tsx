@@ -3,6 +3,9 @@
 // -- React Imports --
 import React from 'react';
 
+// -- Next Imports --
+import { useTranslations } from 'next-intl';
+
 // -- Other Library Imports --
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { DraggableAttributes } from '@dnd-kit/core';
@@ -20,7 +23,6 @@ import { cn } from '@/lib/utils';
 
 // -- Type Imports --
 import { CardViewMode } from '@/lib/types/character';
-import { useTranslations } from 'next-intl';
 
 
 

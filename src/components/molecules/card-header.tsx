@@ -3,6 +3,15 @@
 // -- React Imports --
 import React from 'react';
 
+// -- Next Imports --
+import { useTranslations } from 'next-intl';
+
+// -- Icon Imports --
+import { Leaf, Swords, Crown } from 'lucide-react';
+
+// -- Basic UI Imports --
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+
 // -- Utils Imports --
 import { cn } from '@/lib/utils';
 
@@ -13,6 +22,41 @@ interface CardHeaderMoleculeProps {
    type?: string;
    className?: string;
 }
+
+
+
+const ThemeTypeIcon = ({ type }: { type: string }) => {
+   const t = useTranslations('ThemeTypes');
+   const translationKey = type as string
+
+   let IconComponent;
+   switch (type) {
+      case 'Origin':
+         IconComponent = <Leaf className="h-5 w-5" strokeWidth={2.5}/>;
+         break;
+      case 'Adventure':
+         IconComponent = <Swords className="h-5 w-5" strokeWidth={2.5}/>;
+         break;
+      case 'Greatness':
+         IconComponent = <Crown className="h-5 w-5" strokeWidth={2.5}/>;
+         break;
+      default:
+         return <p>{type}</p>;
+   }
+
+   return (
+      <TooltipProvider delayDuration={300}>
+         <Tooltip>
+            <TooltipTrigger asChild>
+               <div>{IconComponent}</div>
+            </TooltipTrigger>
+            <TooltipContent>
+               <p>{t(translationKey as string)}</p>
+            </TooltipContent>
+         </Tooltip>
+      </TooltipProvider>
+   );
+};
 
 
 
@@ -28,7 +72,7 @@ export function CardHeaderMolecule({ title, type, className }: CardHeaderMolecul
          )}
       >
          <p>{title}</p>
-         {type && <p>{type}</p>}
+         {type && <ThemeTypeIcon type={type} />}
       </div>
    );
 }

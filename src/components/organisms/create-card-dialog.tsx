@@ -43,6 +43,7 @@ interface CreateCardDialogProps {
 
 export function CreateCardDialog({ isOpen, onOpenChange, onConfirm, mode, cardData, modal = true }: CreateCardDialogProps) {
    const t = useTranslations('CreateCardDialog');
+   const tTheme = useTranslations();
    
    const [cardType, setCardType] = useState<'CHARACTER_THEME' | 'GROUP_THEME' | ''>('');
    const [themeType, setThemeType] = useState<LegendsThemeTypes>('Origin');
@@ -50,7 +51,7 @@ export function CreateCardDialog({ isOpen, onOpenChange, onConfirm, mode, cardDa
    const [powerTagsCount, setPowerTagsCount] = useState(2);
    const [weaknessTagsCount, setWeaknessTagsCount] = useState(1);
    const [popoverOpen, setPopoverOpen] = useState(false);
-
+   const [searchQuery, setSearchQuery] = useState('');
 
    
    const availableThemebooks = useMemo(() => {
@@ -59,6 +60,11 @@ export function CreateCardDialog({ isOpen, onOpenChange, onConfirm, mode, cardDa
       }
       return [];
    }, [themeType]);
+
+   const selectedThemebookDisplay = useMemo(() => {
+      const selected = availableThemebooks.find(book => book.value === themebook);
+      return selected ? tTheme(selected.key as string) : t('selectThemebookPlaceholder');
+   }, [themebook, availableThemebooks, tTheme, t]);
 
    useEffect(() => {
       if (isOpen && mode === 'edit' && cardData) {
@@ -73,6 +79,7 @@ export function CreateCardDialog({ isOpen, onOpenChange, onConfirm, mode, cardDa
          setThemeType('Origin');
          setThemebook('');
       }
+      setSearchQuery('');
    }, [isOpen, mode, cardData]);
 
    const handleConfirm = () => {
@@ -141,7 +148,7 @@ export function CreateCardDialog({ isOpen, onOpenChange, onConfirm, mode, cardDa
                                  className="col-span-3 justify-between"
                                  disabled={!themeType}
                               >
-                                 {themebook || t('selectThemebookPlaceholder')}
+                                 {selectedThemebookDisplay}
                                  <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                               </Button>
                            </PopoverTrigger>
@@ -149,28 +156,29 @@ export function CreateCardDialog({ isOpen, onOpenChange, onConfirm, mode, cardDa
                               <Command>
                                  <CommandInput 
                                     placeholder={t('searchThemebookPlaceholder')}
-                                    value={themebook}
-                                    onValueChange={setThemebook}
+                                    value={searchQuery}
+                                    onValueChange={setSearchQuery}
                                  />
                                  <CommandList>
                                     <CommandEmpty>{t('noThemebookFound')}</CommandEmpty>
                                     <CommandGroup onWheel={(e) => e.stopPropagation()}>
                                        {availableThemebooks.map((book) => (
                                           <CommandItem
-                                             key={book}
-                                             value={book}
+                                             key={book.value}
+                                             value={book.value}
                                              onSelect={(currentValue) => {
-                                             setThemebook(currentValue === themebook ? "" : currentValue);
-                                             setPopoverOpen(false);
+                                                setThemebook(currentValue === themebook ? "" : currentValue);
+                                                setPopoverOpen(false);
+                                                setSearchQuery('');
                                              }}
                                           >
                                              <Check
                                                 className={cn(
                                                 "mr-2 h-4 w-4",
-                                                themebook === book ? "opacity-100" : "opacity-0"
+                                                themebook === book.value ? "opacity-100" : "opacity-0"
                                                 )}
                                              />
-                                             {book}
+                                             {tTheme(book.key as string)}
                                           </CommandItem>
                                        ))}
                                     </CommandGroup>

@@ -576,5 +576,43 @@
       "statusNoName": "SANS NOM",
       "storyTagPlaceholder": "Votre Trait Narratif...",
       "storyTagNoName": "SANS NOM"
+   },
+
+
+
+   "LegendsData": {
+      "themebook": {
+         "circumstance": "Circonstance",
+         "past": "Passé",
+         "devotion": "Dévotion",
+         "mystery": "Mystère",
+         "people": "Relations",
+         "possessions": "Possessions",
+         "personality": "Personnalité",
+         "tradeAndSkill": "Métier & Compétence",
+         "trait": "Trait",
+         "hedgeMagic": "Magie Populaire",
+         "prodigiousSkill": "Compétence Prodigieuse",
+         "duty": "Devoir",
+         "relic": "Relique",
+         "uncannyBeing": "Être Étrange",
+         "thaumaturgy": "Thaumaturgie",
+         "rulership": "Gouvernance",
+         "destiny": "Destin",
+         "mastery": "Maîtrise",
+         "monstrocity": "Monstruosité",
+         "grandThaumaturgy": "Grande Thaumaturgie"
+      }
+   },
+   "ThemeTypes": {
+      "Origin": "Origine",
+      "Adventure": "Aventure",
+      "Greatness": "Grandeur",
+
+      "Logos": "Logos",
+      "Mythos": "Mythos",
+
+      "Self": "Soi",
+      "Noise": "Bruit"
    }
 }

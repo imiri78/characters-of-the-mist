@@ -12,6 +12,8 @@ This is mainly a patch adding a small requested feature I found particularly int
 
 ### ✨ Features
 * **Card-specific view-mode**: You can now change a card's view mode from Side-by-Side, Flip, or having it follow your global preferences.
+* **Theme Types now display as icons**: Because honestly, it's cute, and I think it looks nicer. They have a tooltip now so you know exactly what the icon means.
+* **Localized themebook names**: Because our non-english peers deserve to know what those themebooks mean, too.
 
 ### 🐛 Bugfixes
 * Incorrect colors on the tracking button for a card's main tag.
