@@ -207,6 +207,12 @@
          "flipping": "Recto/Verso"
       },
 
+      "trackerEdit": {
+         "title": "Forcer les Suivis en mode Édition",
+         "unlocked": "Libre",
+         "locked": "Forcé"
+      },
+
       "tutorial": "Tutoriel de l'Appli.",
       "tutorialButton": "Lancer le Tutoriel",
 
