@@ -21,7 +21,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Input } from '../ui/input';
 
 // -- Icon Imports --
-import { Sun, Moon, BookOpen, FlipHorizontal, AlertTriangle, Trash2, OctagonMinus, DatabaseBackup, PlayCircle } from 'lucide-react';
+import { Sun, Moon, BookOpen, FlipHorizontal, AlertTriangle, Trash2, OctagonMinus, DatabaseBackup, PlayCircle, Lock, UnlockIcon } from 'lucide-react';
 
 // -- Component Imports --
 import { MigrationDialog } from './migration-dialog';
@@ -125,8 +125,8 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
 
    const { resolvedTheme, setTheme: setMode } = useTheme(); 
    
-   const { theme: colorTheme, isSideBySideView } = useAppSettingsStore();
-   const { setTheme: setColorTheme, setSideBySideView } = useAppSettingsActions();
+   const { theme: colorTheme, isSideBySideView, isTrackersAlwaysEditable } = useAppSettingsStore();
+   const { setTheme: setColorTheme, setSideBySideView, setTrackersAlwaysEditable } = useAppSettingsActions();
 
    const colorThemeOptions = ['theme-neutral', 'theme-legends'];
    /* const colorThemeOptions = ['theme-neutral', 'theme-legends', 'theme-otherscape', 'theme-city']; */
@@ -238,6 +238,26 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
                            className="flex-1 w-full cursor-pointer text-wrap"
                         >
                            <BookOpen className="mr-2 h-4 w-4" /> {t('cardView.sideBySide')}
+                        </Button>
+                     </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 items-center gap-4">
+                     <Label className="text-left">{t('trackerEdit.title')}</Label>
+                     <div className="col-span-2 flex items-center space-x-2">
+                        <Button
+                           variant={!isTrackersAlwaysEditable ? 'default' : 'outline'}
+                           onClick={() => setTrackersAlwaysEditable(false)}
+                           className="flex-1 w-full cursor-pointer text-wrap"
+                        >
+                           <UnlockIcon className="mr-2 h-4 w-4" /> {t('trackerEdit.unlocked')}
+                        </Button>
+                        <Button
+                           variant={isTrackersAlwaysEditable ? 'default' : 'outline'}
+                           onClick={() => setTrackersAlwaysEditable(true)}
+                           className="flex-1 w-full cursor-pointer text-wrap"
+                        >
+                           <Lock className="mr-2 h-4 w-4" /> {t('trackerEdit.locked')}
                         </Button>
                      </div>
                   </div>

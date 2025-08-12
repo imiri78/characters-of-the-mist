@@ -29,6 +29,7 @@ import { useCharacterActions } from '@/lib/stores/characterStore';
 
 // -- Type Imports --
 import { StatusTracker } from '@/lib/types/character';
+import { useAppSettingsStore } from '@/lib/stores/appSettingsStore';
 
 
 
@@ -47,6 +48,9 @@ export function StatusTrackerCard({ tracker, isEditing=false, isDrawerPreview, d
    const t = useTranslations('Trackers');
    const { updateStatus, removeStatus } = useCharacterActions();
    const [isHovered, setIsHovered] = useState(false);
+
+   const isTrackersAlwaysEditable = useAppSettingsStore((s) => s.isTrackersAlwaysEditable);
+   const isEffectivelyEditing = isEditing || isTrackersAlwaysEditable;
 
    const handleTierClick = (tierIndex: number) => {
       if (isDrawerPreview) return;
@@ -87,7 +91,7 @@ export function StatusTrackerCard({ tracker, isEditing=false, isDrawerPreview, d
       >
          {!isDrawerPreview && (
             <ToolbarHandle
-               isEditing={isEditing}
+               isEditing={isEffectivelyEditing}
                isHovered={isHovered}
                dragAttributes={dragAttributes}
                dragListeners={dragListeners}
@@ -110,7 +114,7 @@ export function StatusTrackerCard({ tracker, isEditing=false, isDrawerPreview, d
                "text-card-header-fg bg-card-header-bg"
             )}>
                <div className="flex-grow p-1">
-                  {isEditing ? (
+                  {isEffectivelyEditing ? (
                      <Input
                         value={localName}
                         onChange={(e) => setLocalName(e.target.value)}
@@ -121,7 +125,7 @@ export function StatusTrackerCard({ tracker, isEditing=false, isDrawerPreview, d
                      <p className="text-base font-semibold px-2">{tracker.name ? tracker.name : `[${t('statusNoName')}]`}</p>
                   )}
                </div>
-               {isEditing && (
+               {isEffectivelyEditing && (
                   <Button
                      variant="ghost"
                      size="icon"

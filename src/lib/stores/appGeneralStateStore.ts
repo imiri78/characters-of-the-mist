@@ -28,9 +28,6 @@ interface AppGeneralState {
    // --- App Tour ---
    isTourOpen: boolean;
 
-   // --- Sidebar ---
-   isSidebarCollapsed: boolean;
-
    // --- Edit Mode ---
    isEditing: boolean;
 
@@ -58,10 +55,6 @@ interface AppGeneralState {
 
       // --- App Tour ---
       setTourOpen: (isOpen: boolean) => void;
-
-      // --- Sidebar ---
-      setSidebarCollapsed: (isCollapsed: boolean) => void;
-      toggleSidebarCollapsed: () => void;
 
       // --- Edit Mode ---
       setIsEditing: (isEditing: boolean) => void;
@@ -96,9 +89,6 @@ export const useAppGeneralStateStore = create<AppGeneralState>((set) => ({
    // --- App Tour ---
    isTourOpen: false,
 
-   // --- Sidebar ---
-   isSidebarCollapsed: false,
-
    // --- Edit Mode ---
    isEditing: false,
 
@@ -126,10 +116,6 @@ export const useAppGeneralStateStore = create<AppGeneralState>((set) => ({
 
       // --- App Tour ---
       setTourOpen: (isOpen) => set({ isTourOpen: isOpen }),
-
-      // --- Sidebar Actions ---
-      setSidebarCollapsed: (isCollapsed) => set({ isSidebarCollapsed: isCollapsed }),
-      toggleSidebarCollapsed: () => set((state) => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
 
       // --- Edit Mode ---
       setIsEditing: (isEditing) => set({ isEditing }),

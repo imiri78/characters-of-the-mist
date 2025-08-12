@@ -14,6 +14,7 @@ This is mainly a patch adding a small requested feature I found particularly int
 * **Card-specific view-mode**: You can now change a card's view mode from Side-by-Side, Flip, or having it follow your global preferences.
 * **Theme Types now display as icons**: Because honestly, it's cute, and I think it looks nicer. They have a tooltip now so you know exactly what the icon means.
 * **Localized themebook names**: Because our non-english peers deserve to know what those themebooks mean, too.
+* **Trackers can now be locked in edit mode**: Following another request, you can now globally lock trackers in edit mode from your app settings. (This means the "Add" button for statuses and story tags will always be visible, they will always be deletable, and their name will always be editable.)
 
 ### 🐛 Bugfixes
 * Incorrect colors on the tracking button for a card's main tag.

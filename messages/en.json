@@ -207,6 +207,12 @@
          "flipping": "Flip enabled"
       },
 
+      "trackerEdit": {
+         "title": "Force Trackers in Edit Mode",
+         "unlocked": "Freed",
+         "locked": "Forced"
+      },
+
       "tutorial": "App Tutorial",
       "tutorialButton": "Launch the Tutorial",
 

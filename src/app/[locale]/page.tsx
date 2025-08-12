@@ -47,7 +47,7 @@ import { InfoDialog } from '@/components/organisms/info-dialog';
 import { useCharacterStore, useCharacterActions } from '@/lib/stores/characterStore';
 import { useDrawerActions, useDrawerStore } from '@/lib/stores/drawerStore';
 import { useAppGeneralStateActions, useAppGeneralStateStore } from '@/lib/stores/appGeneralStateStore';
-import { useAppSettingsStore } from '@/lib/stores/appSettingsStore';
+import { useAppSettingsActions, useAppSettingsStore } from '@/lib/stores/appSettingsStore';
 import { useCommandPaletteActions } from '@/hooks/useCommandPaletteActions';
 import { useAppTourDriver } from '@/hooks/useAppTourDriver';
 
@@ -157,13 +157,17 @@ export default function CharacterSheetPage() {
    const isCompactDrawer = useAppSettingsStore((state) => state.isCompactDrawer);
 
    // --- General App Stores ---
+   const isTrackersAlwaysEditable = useAppSettingsStore((state) => state.isTrackersAlwaysEditable)
    const isDrawerOpen = useAppGeneralStateStore((state) => state.isDrawerOpen);
-   const isSidebarCollapsed = useAppGeneralStateStore((state) => state.isSidebarCollapsed);
+   const isSidebarCollapsed = useAppSettingsStore((state) => state.isSidebarCollapsed);
    const isEditing = useAppGeneralStateStore((state) => state.isEditing);
    const isSettingsOpen = useAppGeneralStateStore((state) => state.isSettingsOpen);
    const isInfoOpen = useAppGeneralStateStore((state) => state.isInfoOpen);
    const isTourOpen = useAppGeneralStateStore((state) => state.isInfoOpen);
-   const { setDrawerOpen, setSidebarCollapsed, toggleSidebarCollapsed, setIsEditing, setSettingsOpen, setInfoOpen, setPatchNotesOpen } = useAppGeneralStateActions();
+   const { setDrawerOpen, setIsEditing, setSettingsOpen, setInfoOpen, setPatchNotesOpen } = useAppGeneralStateActions();
+   const { setSidebarCollapsed, toggleSidebarCollapsed } = useAppSettingsActions();
+
+   const areTrackersEditable = isEditing || isTrackersAlwaysEditable;
 
    // --- Utility & Library States ---
    const [isClient, setIsClient] = useState(false);
@@ -680,7 +684,7 @@ export default function CharacterSheetPage() {
                                        onExport={() => handleExportComponent(tracker)}
                                     />
                                  ))}
-                                 {isEditing && (
+                                 {areTrackersEditable && (
                                     <Button
                                        data-tour="add-status-button"
                                        variant="ghost"
@@ -709,7 +713,7 @@ export default function CharacterSheetPage() {
                                        onExport={() => handleExportComponent(tracker)}
                                     />
                                  ))}
-                                 {isEditing && (
+                                 {areTrackersEditable && (
                                     <Button
                                        data-tour="add-story-tag-button" 
                                        variant="ghost" 

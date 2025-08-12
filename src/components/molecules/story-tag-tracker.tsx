@@ -29,6 +29,7 @@ import { useCharacterActions } from '@/lib/stores/characterStore';
 
 // -- Type Imports --
 import { StoryTagTracker } from '@/lib/types/character';
+import { useAppSettingsStore } from '@/lib/stores/appSettingsStore';
 
 
 
@@ -47,6 +48,9 @@ export function StoryTagTrackerCard({ tracker, isEditing=false, isDrawerPreview,
    const t = useTranslations('Trackers');
    const { updateStoryTag, removeStoryTag } = useCharacterActions();
    const [isHovered, setIsHovered] = useState(false);
+
+   const isTrackersAlwaysEditable = useAppSettingsStore((s) => s.isTrackersAlwaysEditable);
+   const isEffectivelyEditing = isEditing || isTrackersAlwaysEditable;
 
 
 
@@ -79,7 +83,7 @@ export function StoryTagTrackerCard({ tracker, isEditing=false, isDrawerPreview,
       >
          {!isDrawerPreview && (
             <ToolbarHandle
-               isEditing={isEditing}
+               isEditing={isEffectivelyEditing}
                isHovered={isHovered}
                dragAttributes={dragAttributes}
                dragListeners={dragListeners}
@@ -96,7 +100,7 @@ export function StoryTagTrackerCard({ tracker, isEditing=false, isDrawerPreview,
             "card-type-tracker",
             "border-card-border bg-card-paper-bg text-card-paper-fg",
          )}>
-            {isEditing ? (
+            {isEffectivelyEditing ? (
                <>
                   <div className="flex-grow p-1">
                      <Input
