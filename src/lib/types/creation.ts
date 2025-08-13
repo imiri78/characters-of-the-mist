@@ -9,6 +9,7 @@ export interface CreateCardOptions {
    cardType: 'CHARACTER_THEME' | 'GROUP_THEME';
    themebook?: string;
    themeType?: LegendsThemeType;
+   mainTagName?: string;
    powerTagsCount: number;
    weaknessTagsCount: number;
 }

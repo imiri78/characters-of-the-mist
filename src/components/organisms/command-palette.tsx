@@ -490,7 +490,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
                      )}
                      {activePage === 'createCard_MainTag' && (
                         <CreateCard_InputPage inputValue={inputValue} onSelect={() => {
-                           setCardOptions(prev => ({ ...prev, title: inputValue }));
+                           setCardOptions(prev => ({ ...prev, mainTagName: inputValue }));
                            setPages(p => [...p, 'createCard_PowerTags']);
                            setInputValue('2');
                         }} />

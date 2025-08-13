@@ -17,6 +17,7 @@ This is mainly a patch adding a small requested feature I found particularly int
 * **Trackers can now be locked in edit mode**: Following another request, you can now globally lock trackers in edit mode from your app settings. (This means the "Add" button for statuses and story tags will always be visible, they will always be deletable, and their name will always be editable.)
 
 ### 🐛 Bugfixes
+* Command Palette's Create Card action did not properly assign chosen Main Tag name. Whoops.
 * Incorrect colors on the tracking button for a card's main tag.
 * The tracking button on tags was hard to notice when enabled, fixed with a new icon, and with tag underlining for good measure.
 * Some texts weren't properly aligned in the French locale, because of erroneously set alignment properties.
