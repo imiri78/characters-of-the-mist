@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 // -- Icon Imports --
-import { Trash2, GripVertical, RefreshCw, Edit2, Upload, Globe, FlipHorizontal, BookOpen, HeartCrack, Heart, ArrowDown, ArrowUp, GripHorizontal, BookPlus } from 'lucide-react';
+import { Trash2, GripVertical, RefreshCw, Edit2, Upload, Globe, FlipHorizontal, BookOpen, HeartCrack, Heart, ArrowDown, ArrowUp, GripHorizontal, BookPlus, BookMinus } from 'lucide-react';
 
 // -- Utils Imports --
 import { cn } from '@/lib/utils';
@@ -37,6 +37,7 @@ interface ToolbarHandleProps {
    onCycleViewMode?: () => void;
    onStoryTagNegative?: () => void;
    onUpgradeStoryTag?: () => void;
+   onDowngradeStoryTheme?: () => void;
    isStoryTagNegative?: boolean;
    cardViewMode?: CardViewMode | null;
    dragAttributes?: DraggableAttributes;
@@ -92,8 +93,10 @@ const ViewModeTooltip = ({ mode }: { mode: CardViewMode | null | undefined }) =>
 
 
 
-export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete, onFlip, onEditCard, onExport, onCycleViewMode, onStoryTagNegative,
-                                 onUpgradeStoryTag, isStoryTagNegative, cardViewMode, dragAttributes, dragListeners, side = "left" }: ToolbarHandleProps) {
+export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete,
+                              onFlip, onEditCard, onExport, onCycleViewMode,
+                              onStoryTagNegative, onUpgradeStoryTag, onDowngradeStoryTheme,
+                              isStoryTagNegative, cardViewMode, dragAttributes, dragListeners, side = "left" }: ToolbarHandleProps) {
    return (
       <AnimatePresence>
          {isHovered && (
@@ -182,6 +185,17 @@ export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete, onFli
                         onClick={onUpgradeStoryTag}
                      >
                         <BookPlus className="h-4 w-4"/>
+                     </Button>
+                  )}
+
+                  { onDowngradeStoryTheme && (
+                     <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-7 w-7 cursor-pointer bg-card-paper-bg text-card-paper-fg"
+                        onClick={onDowngradeStoryTheme}
+                     >
+                        <BookMinus className="h-4 w-4"/>
                      </Button>
                   )}
 

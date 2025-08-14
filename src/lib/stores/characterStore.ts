@@ -67,6 +67,7 @@ interface CharacterState {
       reorderStoryTags: (oldIndex: number, newIndex: number) => void;
       reorderStoryThemes: (oldIndex: number, newIndex: number) => void;
       upgradeStoryTagToTheme: (trackerId: string) => void;
+      downgradeStoryThemeToTag: (trackerId: string) => void;
       // --- Story Themes Tag Actions ---
       addTagToStoryTheme: (trackerId: string, listName: 'powerTags' | 'weaknessTags') => void;
       updateTagInStoryTheme: (trackerId: string, listName: 'mainTag' | 'powerTags' | 'weaknessTags', tagId: string, updatedTag: Partial<Tag>) => void;
@@ -682,6 +683,33 @@ export const useCharacterStore = create<CharacterState>()(
                               ...state.character.trackers,
                               storyTags: newStoryTags,
                               storyThemes: newStoryThemes,
+                           }
+                        }
+                     };
+                  });
+               },
+               downgradeStoryThemeToTag: (trackerId) => {
+                  set(state => {
+                     if (!state.character) return {};
+                     const storyThemeIndex = state.character.trackers.storyThemes.findIndex(t => t.id === trackerId);
+                     if (storyThemeIndex === -1) return {};
+                     const originalTheme = state.character.trackers.storyThemes[storyThemeIndex];
+                     const newStoryTag: StoryTagTracker = {
+                        id: cuid(),
+                        name: originalTheme.mainTag.name,
+                        game: originalTheme.game,
+                        trackerType: 'STORY_TAG',
+                        isScratched: originalTheme.mainTag.isScratched,
+                     };
+                     const newStoryThemes = state.character.trackers.storyThemes.filter(t => t.id !== trackerId);
+                     const newStoryTags = [...state.character.trackers.storyTags, newStoryTag];
+                     return {
+                        character: {
+                           ...state.character,
+                           trackers: {
+                              ...state.character.trackers,
+                              storyThemes: newStoryThemes,
+                              storyTags: newStoryTags,
                            }
                         }
                      };

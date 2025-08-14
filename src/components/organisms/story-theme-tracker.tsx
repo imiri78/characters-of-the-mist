@@ -87,6 +87,7 @@ export function StoryThemeTrackerCard({ tracker, isEditing = false, dragAttribut
             dragAttributes={dragAttributes}
             dragListeners={dragListeners}
             onDelete={() => actions.removeStoryTheme(tracker.id)}
+            onDowngradeStoryTheme={() => actions.downgradeStoryThemeToTag(tracker.id)}
             onExport={onExport}
             cardTheme='card-type-tracker'
             side="left"
@@ -105,7 +106,7 @@ export function StoryThemeTrackerCard({ tracker, isEditing = false, dragAttribut
                <div className="w-full text-center p-1 flex-shrink-0 flex items-center justify-between gap-2 border-b-2 border-card-accent/30 bg-card-header-bg text-card-header-fg">
                   {isEffectivelyEditing ? (
                      <Input
-                        className="text-lg font-bold text-center flex-grow border-0 shadow-none bg-card-paper-bg"
+                        className="text-lg font-bold text-center flex-grow border-0 shadow-none bg-card-paper-bg text-card-paper-fg"
                         placeholder={tThemeCard('placeholderName')}
                         value={localMainTagName}
                         onChange={(e) => setLocalMainTagName(e.target.value)}
@@ -129,11 +130,11 @@ export function StoryThemeTrackerCard({ tracker, isEditing = false, dragAttribut
                <div ref={scrollRef} className="flex-grow overflow-y-scroll overscroll-contain">
                   {/* Power Tags */}
                   {tracker.powerTags.map((tag, index) => <TagItem key={tag.id} trackerId={tracker.id} tag={tag} tagType="power" isEditing={isEffectivelyEditing} index={index} isTrackerTag />)}
-                  {isEffectivelyEditing && <Button variant="ghost" size="sm" className="m-2 border-1 border-dashed" onClick={() => actions.addTagToStoryTheme(tracker.id, 'powerTags')}><PlusCircle className="h-4 w-4 mr-2"/>{tThemeCard('addPowerTag')}</Button>}
+                  {isEffectivelyEditing && <div className="p-2"><Button variant="ghost" size="sm" className="w-full p-2 border-1 border-dashed" onClick={() => actions.addTagToStoryTheme(tracker.id, 'powerTags')}><PlusCircle className="h-4 w-4 mr-2"/>{tThemeCard('addPowerTag')}</Button></div>}
 
                   {/* Weakness Tags */}
                   {tracker.weaknessTags.map((tag, index) => <TagItem key={tag.id} trackerId={tracker.id} tag={tag} tagType="weakness" isEditing={isEffectivelyEditing} index={index} isTrackerTag />)}
-                  {isEffectivelyEditing && <Button variant="ghost" size="sm" className="m-2 border-1 border-dashed" onClick={() => actions.addTagToStoryTheme(tracker.id, 'weaknessTags')}><PlusCircle className="h-4 w-4 mr-2"/>{tThemeCard('addWeaknessTag')}</Button>}
+                  {isEffectivelyEditing && <div className="p-2"><Button variant="ghost" size="sm" className="w-full border-1 border-dashed" onClick={() => actions.addTagToStoryTheme(tracker.id, 'weaknessTags')}><PlusCircle className="h-4 w-4 mr-2"/>{tThemeCard('addWeaknessTag')}</Button></div>}
                </div>
             </div>
          </div>

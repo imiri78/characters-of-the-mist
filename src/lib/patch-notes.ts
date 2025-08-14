@@ -12,6 +12,10 @@ This patch adds a couple of suggested features.
 
 ### ✨ Features
 * **Negative Story Tags**: You can now mark a story tag as *negative*, it will visually render like a weakness tag, serving as a visual indicator.
+* **Story Themes**: You can now *evolve* a story tag into a story theme, and you can add any number of power or weakness tags to that story theme.
+
+### 🔧 Changes
+* **Adjusted Themes**: There is now a very slight luminance difference on some of the background colors to add a bit more depth to the general UI.
 
 `
    },

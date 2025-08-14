@@ -742,7 +742,7 @@ export default function CharacterSheetPage() {
                               </SortableContext>
                            </div>
 
-                           <div className="flex-shrink-0 max-w-[50%]">
+                           <div className="flex-shrink-0 max-w-128">
                               {/* Story Themes Group */}
                               <SortableContext items={character.trackers.storyThemes.map(tracker => tracker.id)} strategy={rectSortingStrategy}>
                                  <div className="flex flex-wrap justify-end gap-4">
