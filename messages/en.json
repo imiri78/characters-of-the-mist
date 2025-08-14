@@ -537,6 +537,9 @@
       "noQuest": "EMPTY QUEST TEXT",
       "questPlaceholder": "Write your quest text here...",
 
+      "addPowerTag": "Add Power Tag",
+      "addWeaknessTag": "Add Weakness Tag",
+
       "improvements": "Special Improvements",
       "addImprovement": "Add Improvement"
    },

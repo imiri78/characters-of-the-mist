@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 // -- Icon Imports --
-import { Trash2, GripVertical, RefreshCw, Edit2, Upload, Globe, FlipHorizontal, BookOpen } from 'lucide-react';
+import { Trash2, GripVertical, RefreshCw, Edit2, Upload, Globe, FlipHorizontal, BookOpen, HeartCrack, Heart, ArrowDown, ArrowUp, GripHorizontal, BookPlus } from 'lucide-react';
 
 // -- Utils Imports --
 import { cn } from '@/lib/utils';
@@ -35,6 +35,9 @@ interface ToolbarHandleProps {
    onEditCard?: () => void;
    onExport?: () => void;
    onCycleViewMode?: () => void;
+   onStoryTagNegative?: () => void;
+   onUpgradeStoryTag?: () => void;
+   isStoryTagNegative?: boolean;
    cardViewMode?: CardViewMode | null;
    dragAttributes?: DraggableAttributes;
    dragListeners?: SyntheticListenerMap;
@@ -89,7 +92,8 @@ const ViewModeTooltip = ({ mode }: { mode: CardViewMode | null | undefined }) =>
 
 
 
-export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete, onFlip, onEditCard, onExport, onCycleViewMode, cardViewMode, dragAttributes, dragListeners, side = "left" }: ToolbarHandleProps) {
+export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete, onFlip, onEditCard, onExport, onCycleViewMode, onStoryTagNegative,
+                                 onUpgradeStoryTag, isStoryTagNegative, cardViewMode, dragAttributes, dragListeners, side = "left" }: ToolbarHandleProps) {
    return (
       <AnimatePresence>
          {isHovered && (
@@ -120,7 +124,7 @@ export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete, onFli
                   side === 'bottom' && "border-b-2 rounded-b-lg",
                   "bg-card-popover-bg border-card-border"
                )}>
-                  {onFlip && (
+                  { onFlip && (
                      <Button 
                         variant="outline" 
                         size="icon" 
@@ -154,10 +158,34 @@ export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete, onFli
                   )}
 
                   <div className="flex items-center justify-center cursor-grab text-card-popover-fg h-7 w-7" {...dragAttributes} {...dragListeners}>
-                     <GripVertical />
+                     { side === "left" || side === "right" ? <GripVertical /> : <GripHorizontal /> }
                   </div>
 
-                  {onCycleViewMode && (
+                  { onStoryTagNegative && (
+                     <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-7 w-7 cursor-pointer bg-card-paper-bg text-card-paper-fg"
+                        onClick={onStoryTagNegative}
+                     >
+                        {
+                           isStoryTagNegative ? <ArrowDown className="h-4 w-4" /> : <ArrowUp className="h-4 w-4" />
+                        }
+                     </Button>
+                  )}
+
+                  { onUpgradeStoryTag && (
+                     <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-7 w-7 cursor-pointer bg-card-paper-bg text-card-paper-fg"
+                        onClick={onUpgradeStoryTag}
+                     >
+                        <BookPlus className="h-4 w-4"/>
+                     </Button>
+                  )}
+
+                  { onCycleViewMode && (
                      <Tooltip>
                         <TooltipTrigger asChild>
                            <Button

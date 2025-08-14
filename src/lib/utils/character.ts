@@ -29,7 +29,8 @@ export function createNewCharacter(name: string): Character {
       ],
       trackers: {
          statuses: [],
-         storyTags: []
+         storyTags: [],
+         storyThemes: []
       }
    };
 

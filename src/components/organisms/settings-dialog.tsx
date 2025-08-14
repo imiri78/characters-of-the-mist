@@ -186,6 +186,7 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
                         </SelectContent>
                      </Select>
                   </div>
+
                   <div className="grid grid-cols-3 items-center gap-4">
                      <Label htmlFor="theme-select" className="text-left">{t('accentColor')}</Label>
                      <Select value={colorTheme} onValueChange={setColorTheme}>
@@ -281,7 +282,7 @@ export function SettingsDialog({ isOpen, onOpenChange, onStartTour }: SettingsDi
 
                <Separator />
 
-               <div className="space-y-4 rounded-lg border border-destructive p-4">
+               <div className="space-y-4 rounded-lg border-2 border-destructive bg-destructive/5 p-4">
                   <div className="flex items-center gap-4">
                      <AlertTriangle className="h-6 w-6 text-destructive flex-shrink-0" />
                      <div>

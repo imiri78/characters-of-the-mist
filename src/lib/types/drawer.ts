@@ -15,6 +15,7 @@ export type GeneralItemType =
    | 'GROUP_THEME'
    | 'STATUS_TRACKER'
    | 'STORY_TAG_TRACKER'
+   | 'STORY_THEME_TRACKER'
    | 'FULL_CHARACTER_SHEET';
 
 export interface DrawerItem {
@@ -34,6 +35,7 @@ export interface Folder {
 
 
 export interface Drawer {
+   version?: string;
    folders: Folder[];
    rootItems: DrawerItem[];
 }

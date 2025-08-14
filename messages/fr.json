@@ -531,6 +531,9 @@
       "noQuest": "TEXTE DE QUÊTE VIDE",
       "questPlaceholder": "Entrez votre texte de Quête...",
 
+      "addPowerTag": "Créer Trait d'Atout",
+      "addWeaknessTag": "Créer Trait de Contrainte",
+
       "improvements": "Améliorations Spéciales",
       "addImprovement": "Ajouter une Amélioration"
    },

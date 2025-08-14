@@ -12,6 +12,7 @@ import { useAppGeneralStateStore } from './appGeneralStateStore';
 
 // -- Type Imports --
 import { Drawer, Folder, DrawerItem, DrawerItemContent, GeneralItemType, GameSystem } from '@/lib/types/drawer';
+import { harmonizeData } from '../harmonization';
 
 
 
@@ -301,7 +302,17 @@ export const useDrawerStore = create<DrawerState>()(
          }),
          {
             name: 'characters-of-the-mist_drawer-storage',
-            storage: createJSONStorage(() => localStorage),
+            storage: createJSONStorage(() => localStorage, {
+               reviver: (key, value) => {
+                  if (key === '' && value && (value as any).state?.drawer) {
+                     const drawerState = (value as any).state;
+                     console.log("Harmonizing drawer data via reviver...");
+                     drawerState.drawer = harmonizeData(drawerState.drawer, 'FULL_DRAWER');
+                     console.log("Drawer data harmonization complete.");
+                  }
+                  return value;
+               },
+            }),
             partialize: (state) => ({ drawer: state.drawer }),
          }
       )

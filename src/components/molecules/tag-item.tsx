@@ -25,23 +25,21 @@ import { Tag } from '@/lib/types/character';
 
 
 interface TagItemProps {
-   cardId: string;
    tag: Tag;
    tagType: 'power' | 'weakness';
    isEditing: boolean;
    index: number;
+   cardId?: string;
+   trackerId?: string;
+   isTrackerTag?: boolean;
 }
 
 
 
-export function TagItem({ cardId, tag, tagType, isEditing, index }: TagItemProps) {
+export function TagItem({ tag, tagType, isEditing, index, cardId, trackerId, isTrackerTag }: TagItemProps) {
    const t = useTranslations('TagItem');
-   const { updateTag, removeTag } = useCharacterActions();
+   const actions = useCharacterActions();
    const listName = tagType === 'power' ? 'powerTags' : 'weaknessTags';
-   
-   const handleUpdate = (updates: Partial<Tag>) => {
-      updateTag(cardId, listName, tag.id, updates);
-   };
 
    const isEvenRow = index % 2 === 0;
    const powerBg = isEvenRow ? 'bg-black/5' : 'bg-black/2';
@@ -58,15 +56,35 @@ export function TagItem({ cardId, tag, tagType, isEditing, index }: TagItemProps
    useEffect(() => {
       const handler = setTimeout(() => {
          if (tag.name !== localName) {
-            updateTag(cardId, listName, tag.id, { name: localName });
+         if (isTrackerTag && trackerId) {
+            actions.updateTagInStoryTheme(trackerId, listName, tag.id, { name: localName });
+         } else if (cardId) {
+            actions.updateTag(cardId, listName, tag.id, { name: localName });
+         }
          }
       }, 500);
       return () => clearTimeout(handler);
-   }, [localName, cardId, listName, tag.id, tag.name, updateTag]);
+   }, [localName, tag.name, tag.id, listName, cardId, trackerId, isTrackerTag, actions]);
 
-   useEffect(() => {
-      setLocalName(tag.name);
-   }, [tag.name]);
+   useEffect(() => { setLocalName(tag.name); }, [tag.name]);
+
+
+
+   const handleUpdate = (updates: Partial<Tag>) => {
+      if (isTrackerTag && trackerId) {
+         actions.updateTagInStoryTheme(trackerId, listName, tag.id, updates);
+      } else if (cardId) {
+         actions.updateTag(cardId, listName, tag.id, updates);
+      }
+   };
+
+   const handleRemove = () => {
+      if (isTrackerTag && trackerId) {
+         actions.removeTagFromStoryTheme(trackerId, listName, tag.id);
+      } else if (cardId) {
+         actions.removeTag(cardId, listName, tag.id);
+      }
+   };
 
 
 
@@ -101,7 +119,7 @@ export function TagItem({ cardId, tag, tagType, isEditing, index }: TagItemProps
 
          <div className="flex items-center justify-center w-6">
             {isEditing ? (
-               <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive cursor-pointer" onClick={() => removeTag(cardId, listName, tag.id)}>
+               <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive cursor-pointer" onClick={handleRemove}>
                   <Trash2 className="h-4 w-4" />
                </Button>
             ) : (

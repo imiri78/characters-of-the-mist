@@ -1,5 +1,6 @@
 import { Card, Tracker, Character } from '@/lib/types/character';
 import { Drawer, Folder, GameSystem, GeneralItemType } from '../types/drawer';
+import { APP_VERSION } from '../config';
 
 export type ExportableItemType = GeneralItemType
 export type ExportableContent = Card | Tracker | Character | Folder | Drawer;
@@ -7,6 +8,7 @@ export type ExportableContent = Card | Tracker | Character | Folder | Drawer;
 export interface ExportFile {
    fileType: ExportableItemType;
    game: GameSystem;
+   version?: string;
    content: ExportableContent;
 };
 
@@ -77,6 +79,7 @@ export function exportToFile(item: ExportableContent, type: ExportableItemType, 
    const exportData: ExportFile = {
       fileType: type,
       game: game,
+      version: APP_VERSION,
       content: item,
    };
 

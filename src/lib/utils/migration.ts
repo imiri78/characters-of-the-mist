@@ -13,45 +13,45 @@ import cuid from 'cuid';
 
 
 interface LegacyTag {
-  name: string;
-  isActive: boolean;
-  isBurnt: boolean;
+   name: string;
+   isActive: boolean;
+   isBurnt: boolean;
 }
 
 interface LegacyThemeContent {
-  themebook: string;
-  level: LegendsThemeType;
-  mainTag: LegacyTag;
-  powerTags: LegacyTag[];
-  weaknessTags: string[];
-  experience: number;
-  decay: number;
-  bio: { title: string; body: string };
-  improvement: { name: string, isUnlocked: boolean }[] | { name: string, isUnlocked: boolean };
+   themebook: string;
+   level: LegendsThemeType;
+   mainTag: LegacyTag;
+   powerTags: LegacyTag[];
+   weaknessTags: string[];
+   experience: number;
+   decay: number;
+   bio: { title: string; body: string };
+   improvement: { name: string, isUnlocked: boolean }[] | { name: string, isUnlocked: boolean };
 }
 
 interface LegacyTheme {
-  isEmpty: boolean;
-  content?: LegacyThemeContent;
+   isEmpty: boolean;
+   content?: LegacyThemeContent;
 }
 
 interface LegacyCharacter {
-  name: string;
-  compatibility: string;
-  themeOne: LegacyTheme;
-  themeTwo: LegacyTheme;
-  themeThree: LegacyTheme;
-  themeFour: LegacyTheme;
-  backpack: LegacyTag[];
-  statuses: { name: string; level: boolean[] }[];
+   name: string;
+   compatibility: string;
+   themeOne: LegacyTheme;
+   themeTwo: LegacyTheme;
+   themeThree: LegacyTheme;
+   themeFour: LegacyTheme;
+   backpack: LegacyTag[];
+   statuses: { name: string; level: boolean[] }[];
 }
 
 
 
 export interface MigratedCharacterPayload {
-  character: Character;
-  deconstructedCards: Card[];
-  deconstructedTrackers: StatusTracker[];
+   character: Character;
+   deconstructedCards: Card[];
+   deconstructedTrackers: StatusTracker[];
 }
 
 
@@ -152,6 +152,7 @@ export function transformLegacyCharacter(legacyData: LegacyCharacter): MigratedC
       trackers: {
          statuses: deconstructedTrackers,
          storyTags: [],
+         storyThemes: []
       },
    };
 

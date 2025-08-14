@@ -21,6 +21,7 @@ export function mapItemToStorableInfo(item: Card | Tracker): [GeneralItemType, G
       switch (item.trackerType) {
          case 'STATUS': return ['STATUS_TRACKER', game];
          case 'STORY_TAG': return ['STORY_TAG_TRACKER', game];
+         case 'STORY_THEME': return ['STORY_THEME_TRACKER', game];
          default: return null;
       }
    }

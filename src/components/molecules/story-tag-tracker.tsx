@@ -46,7 +46,7 @@ interface StoryTagTrackerCardProps {
 
 export function StoryTagTrackerCard({ tracker, isEditing=false, isDrawerPreview, dragAttributes, dragListeners, onExport }: StoryTagTrackerCardProps) {
    const t = useTranslations('Trackers');
-   const { updateStoryTag, removeStoryTag } = useCharacterActions();
+   const { updateStoryTag, removeStoryTag, upgradeStoryTagToTheme } = useCharacterActions();
    const [isHovered, setIsHovered] = useState(false);
 
    const isTrackersAlwaysEditable = useAppSettingsStore((s) => s.isTrackersAlwaysEditable);
@@ -88,6 +88,9 @@ export function StoryTagTrackerCard({ tracker, isEditing=false, isDrawerPreview,
                dragAttributes={dragAttributes}
                dragListeners={dragListeners}
                onExport={onExport}
+               onStoryTagNegative={() => updateStoryTag(tracker.id, { isWeakness: !tracker.isWeakness })}
+               isStoryTagNegative={tracker.isWeakness}
+               onUpgradeStoryTag={() => upgradeStoryTagToTheme(tracker.id)}
                cardTheme='card-type-tracker'
                side="top"
             />
@@ -97,8 +100,10 @@ export function StoryTagTrackerCard({ tracker, isEditing=false, isDrawerPreview,
             isHovered ? "z-1" : "z-0",
             "relative flex items-center justify-between h-[55px] w-[220px] p-2 rounded-lg border-2",
             {"pointer-events-none shadow-none border-2 border-border": isDrawerPreview},
-            "card-type-tracker",
-            "border-card-border bg-card-paper-bg text-card-paper-fg",
+            "card-type-tracker border-card-border",
+            tracker.isWeakness 
+               ? "bg-card-destructive-bg text-card-destructive-fg" 
+               : "bg-card-paper-bg text-card-paper-fg"
          )}>
             {isEffectivelyEditing ? (
                <>

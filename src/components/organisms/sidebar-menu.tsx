@@ -19,6 +19,7 @@ import { Edit, Dices, BookUser, Save, Download, Upload, Layers, Trash2, PanelLef
 // -- Utils Imports --
 import { cn } from '@/lib/utils';
 import { exportCharacterSheet, importFromFile } from '@/lib/utils/export-import';
+import { harmonizeData } from '@/lib/harmonization';
 
 // -- Component Imports --
 import { CharacterUndoRedoControls } from '../molecules/character-undo-redo-controls';
@@ -30,6 +31,7 @@ import { useDrawerActions } from '@/lib/stores/drawerStore';
 
 // -- Type Imports --
 import { Character, Card as CardData, Tracker } from '@/lib/types/character';
+
 
 
 
@@ -88,9 +90,10 @@ export function SidebarMenu({ isEditing, isDrawerOpen, isCollapsed, onToggleEdit
 
       try {
          const importedData = await importFromFile(file);
+         const migratedContent = harmonizeData(importedData.content, importedData.fileType);
 
          if (importedData.fileType === 'FULL_CHARACTER_SHEET') {
-            const newCharacter = importedData.content as Character;
+            const newCharacter = migratedContent as Character;
             loadCharacter(newCharacter);
             toast.success(tNotifications('character.imported'));
          } else {
@@ -110,16 +113,17 @@ export function SidebarMenu({ isEditing, isDrawerOpen, isCollapsed, onToggleEdit
 
       try {
          const importedData = await importFromFile(file);
+         const migratedContent = harmonizeData(importedData.content, importedData.fileType);
          const { fileType, content } = importedData;
 
          const isCardType = fileType === 'CHARACTER_CARD' || fileType === 'CHARACTER_THEME' || fileType === 'GROUP_THEME';
          const isTrackerType = fileType === 'STATUS_TRACKER' || fileType === 'STORY_TAG_TRACKER';
 
          if (isCardType) {
-            addImportedCard(content as CardData);
+            addImportedCard(migratedContent as CardData);
             toast.success(tNotifications('character.componentImported'));
          } else if (isTrackerType) {
-            addImportedTracker(content as Tracker);
+            addImportedTracker(migratedContent as Tracker);
             toast.success(tNotifications('character.componentImported'));
          } else {
             toast.error(tNotifications('general.importFailed'));
@@ -170,7 +174,7 @@ export function SidebarMenu({ isEditing, isDrawerOpen, isCollapsed, onToggleEdit
             </motion.section>
 
             <motion.section data-tour="menu-edit-drawer-buttons" layout transition={{ duration: 0.2 }} className={cn(
-               "flex flex-col items-center gap-2 py-4 border-b-1 border-border",
+               "flex flex-col items-center gap-2 py-4 bg-popover border-b-1 border-border",
                isCollapsed ? "px-0" : "px-4"
             )}>
                <SidebarButton data-tour="edit-mode-toggle" isCollapsed={isCollapsed} onClick={onToggleEditing} Icon={isEditing ? Dices : Edit}>
@@ -182,7 +186,7 @@ export function SidebarMenu({ isEditing, isDrawerOpen, isCollapsed, onToggleEdit
             </motion.section>
 
             <motion.section layout transition={{ duration: 0.2 }} className={cn(
-               "flex flex-col items-center gap-2 py-4 border-b-1 border-border",
+               "flex flex-col items-center gap-2 py-4 bg-popover border-b-1 border-border",
                isCollapsed ? "px-2" : "px-4"
             )}>
                <SidebarButton data-tour="save-character-button" isCollapsed={isCollapsed} onClick={handleSaveCharacterToDrawer} Icon={Save}>
@@ -203,7 +207,7 @@ export function SidebarMenu({ isEditing, isDrawerOpen, isCollapsed, onToggleEdit
             </motion.section>
 
             <motion.section layout transition={{ duration: 0.2 }} className={cn(
-               "flex flex-col items-center gap-2 py-4 border-b-1 border-border",
+               "flex flex-col items-center gap-2 py-4 bg-popover border-b-1 border-border",
                isCollapsed ? "px-2" : "px-4"
             )}>
                <SidebarButton data-tour="settings-button" isCollapsed={isCollapsed} onClick={onOpenSettings} Icon={Settings}>

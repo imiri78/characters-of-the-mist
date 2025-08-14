@@ -7,12 +7,13 @@ import cuid from 'cuid';
 // -- Utils Imports --
 import { createNewCharacter } from '../utils/character';
 import { deepReId } from '../utils/drawer';
+import { harmonizeData } from '../harmonization';
 
 // -- Store and Hook Imports --
 import { useAppGeneralStateStore } from './appGeneralStateStore';
 
 // -- Type Imports --
-import { Character, Card, Tag, LegendsThemeDetails, StatusTracker, StoryTagTracker, Tracker, LegendsHeroDetails, LegendsFellowshipDetails, FellowshipRelationship, BlandTag, CardDetails, CardViewMode } from '@/lib/types/character';
+import { Character, Card, Tag, LegendsThemeDetails, StatusTracker, StoryTagTracker, Tracker, LegendsHeroDetails, LegendsFellowshipDetails, FellowshipRelationship, BlandTag, CardDetails, CardViewMode, StoryThemeTracker } from '@/lib/types/character';
 import { GeneralItemType } from '../types/drawer';
 import { CreateCardOptions } from '../types/creation';
 
@@ -54,13 +55,22 @@ interface CharacterState {
       // --- Tracker Actions --- 
       addStatus: (name?: string) => void;
       addStoryTag: (name?: string) => void;
+      addStoryTheme: (name?: string) => void;
       addImportedTracker: (tracker: Tracker, index?: number) => void;
       removeStatus: (trackerId: string) => void;
       removeStoryTag: (trackerId: string) => void;
+      removeStoryTheme: (trackerId: string) => void;
       updateStatus: (trackerId: string, updates: Partial<StatusTracker>) => void;
       updateStoryTag: (trackerId: string, updates: Partial<StoryTagTracker>) => void;
+      updateStoryTheme: (trackerId: string, updates: Partial<StoryThemeTracker>) => void;
       reorderStatuses: (oldIndex: number, newIndex: number) => void;
       reorderStoryTags: (oldIndex: number, newIndex: number) => void;
+      reorderStoryThemes: (oldIndex: number, newIndex: number) => void;
+      upgradeStoryTagToTheme: (trackerId: string) => void;
+      // --- Story Themes Tag Actions ---
+      addTagToStoryTheme: (trackerId: string, listName: 'powerTags' | 'weaknessTags') => void;
+      updateTagInStoryTheme: (trackerId: string, listName: 'mainTag' | 'powerTags' | 'weaknessTags', tagId: string, updatedTag: Partial<Tag>) => void;
+      removeTagFromStoryTheme: (trackerId: string, listName: 'powerTags' | 'weaknessTags', tagId: string) => void;
       // --- Fellowship Relationship Actions --- 
       addRelationship: (cardId: string) => void;
       updateRelationship: (cardId: string, relationshipId: string, updates: Partial<FellowshipRelationship>) => void;
@@ -436,6 +446,30 @@ export const useCharacterStore = create<CharacterState>()(
                      };
                   });
                },
+               addStoryTheme: (name) => {
+                  set(state => {
+                     if (!state.character) return {};
+                     useAppGeneralStateStore.getState().actions.setLastModifiedStore('character');
+                     const newStoryTheme: StoryThemeTracker = {
+                        id: cuid(),
+                        name: name || '',
+                        game: state.character.game,
+                        trackerType: 'STORY_THEME',
+                        mainTag: { id: cuid(), name: '', isActive: false, isScratched: false },
+                        powerTags: [],
+                        weaknessTags: [],
+                     };
+                     return {
+                        character: {
+                           ...state.character,
+                           trackers: {
+                              ...state.character.trackers,
+                              storyThemes: [...state.character.trackers.storyThemes, newStoryTheme]
+                           }
+                        }
+                     };
+                  });
+               },
                addImportedTracker: (tracker, index) => {
                   set((state) => {
                      if (!state.character) return {};
@@ -458,6 +492,11 @@ export const useCharacterStore = create<CharacterState>()(
                         const insertionIndex = index ?? list.length;
                         list.splice(insertionIndex, 0, newTrackerCopy as StoryTagTracker);
                         newTrackers.storyTags = list;
+                     } else if (newTrackerCopy.trackerType === 'STORY_THEME') {
+                        const list = [...newTrackers.storyThemes];
+                        const insertionIndex = index ?? list.length;
+                        list.splice(insertionIndex, 0, newTrackerCopy as StoryThemeTracker);
+                        newTrackers.storyThemes = list;
                      }
                      
                      return {
@@ -498,6 +537,21 @@ export const useCharacterStore = create<CharacterState>()(
                      };
                   });
                },
+               removeStoryTheme: (trackerId) => {
+                  set(state => {
+                     if (!state.character) return {};
+                     useAppGeneralStateStore.getState().actions.setLastModifiedStore('character');
+                     return {
+                        character: {
+                           ...state.character,
+                           trackers: {
+                              ...state.character.trackers,
+                              storyThemes: state.character.trackers.storyThemes.filter(tracker => tracker.id !== trackerId)
+                           }
+                        }
+                     };
+                  });
+               },
                updateStatus: (trackerId, updates) => {
                   set(state => {
                      if (!state.character) return {};
@@ -523,6 +577,21 @@ export const useCharacterStore = create<CharacterState>()(
                            trackers: {
                               ...state.character.trackers,
                               storyTags: state.character.trackers.storyTags.map(tracker => tracker.id === trackerId ? { ...tracker, ...updates } : tracker)
+                           }
+                        }
+                     };
+                  });
+               },
+               updateStoryTheme: (trackerId, updates) => {
+                  set(state => {
+                     if (!state.character) return {};
+                     useAppGeneralStateStore.getState().actions.setLastModifiedStore('character');
+                     return {
+                        character: {
+                           ...state.character,
+                           trackers: {
+                              ...state.character.trackers,
+                              storyThemes: state.character.trackers.storyThemes.map(tracker => tracker.id === trackerId ? { ...tracker, ...updates } : tracker)
                            }
                         }
                      };
@@ -562,6 +631,124 @@ export const useCharacterStore = create<CharacterState>()(
                            }
                         }
                      };
+                  });
+               },
+               reorderStoryThemes: (oldIndex, newIndex) => {
+                  set(state => {
+                     if (!state.character) return {};
+                     useAppGeneralStateStore.getState().actions.setLastModifiedStore('character');
+                     const newItems = Array.from(state.character.trackers.storyThemes);
+                     const [moved] = newItems.splice(oldIndex, 1);
+                     newItems.splice(newIndex, 0, moved);
+                     return {
+                        character: {
+                           ...state.character,
+                           trackers: { ...state.character.trackers, storyThemes: newItems }
+                        }
+                     };
+                  });
+               },
+               upgradeStoryTagToTheme: (trackerId) => {
+                  set(state => {
+                     if (!state.character) return {};
+
+                     const storyTagIndex = state.character.trackers.storyTags.findIndex(t => t.id === trackerId);
+                     if (storyTagIndex === -1) return {};
+
+                     const originalTag = state.character.trackers.storyTags[storyTagIndex];
+
+                     const newStoryTheme: StoryThemeTracker = {
+                        id: cuid(),
+                        name: originalTag.name,
+                        game: originalTag.game,
+                        trackerType: 'STORY_THEME',
+                        mainTag: {
+                           id: cuid(),
+                           name: originalTag.name,
+                           isActive: false,
+                           isScratched: false,
+                        },
+                        powerTags: [],
+                        weaknessTags: [],
+                     };
+
+                     const newStoryTags = state.character.trackers.storyTags.filter(t => t.id !== trackerId);
+                     const newStoryThemes = [...state.character.trackers.storyThemes, newStoryTheme];
+
+                     return {
+                        character: {
+                           ...state.character,
+                           trackers: {
+                              ...state.character.trackers,
+                              storyTags: newStoryTags,
+                              storyThemes: newStoryThemes,
+                           }
+                        }
+                     };
+                  });
+               },
+               // --- Story Themes Tag Actions ---
+               addTagToStoryTheme: (trackerId, listName) => {
+                  set(state => {
+                     if (!state.character) return {};
+                     const newTag: Tag = { id: cuid(), name: '', isActive: false, isScratched: false };
+                     return {
+                        character: {
+                           ...state.character,
+                           trackers: {
+                              ...state.character.trackers,
+                              storyThemes: state.character.trackers.storyThemes.map(t => {
+                                 if (t.id === trackerId) {
+                                    return { ...t, [listName]: [...t[listName], newTag] };
+                                 }
+                                 return t;
+                              })
+                           }
+                        }
+                     }
+                  });
+               },
+               updateTagInStoryTheme: (trackerId, listName, tagId, updatedTag) => {
+                  set(state => {
+                     if (!state.character) return {};
+                     return {
+                        character: {
+                           ...state.character,
+                           trackers: {
+                              ...state.character.trackers,
+                              storyThemes: state.character.trackers.storyThemes.map(t => {
+                                 if (t.id === trackerId) {
+                                    if (listName === 'mainTag') {
+                                       return { ...t, mainTag: { ...t.mainTag, ...updatedTag }};
+                                    }
+                                    const updatedList = t[listName].map(tag => tag.id === tagId ? { ...tag, ...updatedTag } : tag);
+                                    return { ...t, [listName]: updatedList };
+                                 }
+                                 return t;
+                              })
+                           }
+                        }
+                     }
+                  });
+               },
+               removeTagFromStoryTheme: (trackerId, listName, tagId) => {
+                  set(state => {
+                     if (!state.character) return {};
+                     return {
+                        character: {
+                           ...state.character,
+                           trackers: {
+                              ...state.character.trackers,
+                              storyThemes: state.character.trackers.storyThemes.map(t => {
+                                 if (t.id === trackerId) {
+                                    const updatedList = t[listName].filter(tag => tag.id !== tagId);
+                                    return { ...t, [listName]: updatedList };
+                                 }
+                                 return t;
+                              })
+                           }
+                        }
+                     }
                   });
                },
                // --- Fellowship Relationship Actions ---
@@ -618,7 +805,17 @@ export const useCharacterStore = create<CharacterState>()(
          }),
          {
             name: 'characters-of-the-mist_character-storage',
-            storage: createJSONStorage(() => localStorage),
+            storage: createJSONStorage(() => localStorage, {
+               reviver: (key, value) => {
+                  if (key === '' && value && (value as any).state?.character) {
+                     const characterState = (value as any).state;
+                     console.log("Harmonizing character data via reviver...");
+                     characterState.character = harmonizeData(characterState.character, 'FULL_CHARACTER_SHEET');
+                     console.log("Character data harmonization complete.");
+                  }
+                  return value;
+               },
+            }),
             partialize: (state) => ({ character: state.character }),
          }
       )

@@ -27,6 +27,7 @@ import { cn } from '@/lib/utils';
 import { findFolder } from '@/lib/utils/drawer';
 import { customCollisionDetection, mapItemToStorableInfo } from '@/lib/utils/dnd';
 import { exportToFile, generateExportFilename, importFromFile } from '@/lib/utils/export-import';
+import { harmonizeData } from '@/lib/harmonization';
 
 // -- Component Imports --
 import { CommandPalette } from '@/components/organisms/command-palette';
@@ -34,6 +35,7 @@ import { LegendsThemeCard } from '@/components/organisms/legends-theme-card';
 import { HeroCard } from '@/components/organisms/hero-card';
 import { StatusTrackerCard } from '@/components/molecules/status-tracker';
 import { StoryTagTrackerCard } from '@/components/molecules/story-tag-tracker';
+import { StoryThemeTrackerCard } from '@/components/organisms/story-theme-tracker';
 import { AddCardButton } from '@/components/molecules/add-theme-card-button';
 import { CreateCardDialog } from '@/components/organisms/create-card-dialog';
 import { CompactItemEntry, Drawer } from '@/components/organisms/drawer';
@@ -135,6 +137,7 @@ function SortableTrackerItem({ tracker, isEditing, isBeingDragged, onExport }: {
          >
             {tracker.trackerType === 'STATUS' && <StatusTrackerCard tracker={tracker} isEditing={isEditing} dragAttributes={attributes} dragListeners={listeners} onExport={onExport} />}
             {tracker.trackerType === 'STORY_TAG' && <StoryTagTrackerCard tracker={tracker} isEditing={isEditing} dragAttributes={attributes} dragListeners={listeners} onExport={onExport} />}
+            {tracker.trackerType === 'STORY_THEME' && <StoryThemeTrackerCard tracker={tracker} isEditing={isEditing} dragAttributes={attributes} dragListeners={listeners} onExport={onExport} />}
          </motion.div>
       </div>
    );
@@ -150,8 +153,8 @@ export default function CharacterSheetPage() {
 
    // --- Data Stores ---
    const character = useCharacterStore((state) => state.character);
-   const { loadCharacter, addCard, updateCardDetails, reorderCards, updateCharacterName, addStatus, addStoryTag, reorderStatuses,
-            reorderStoryTags, addImportedCard, addImportedTracker } = useCharacterActions();
+   const { loadCharacter, addCard, updateCardDetails, reorderCards, updateCharacterName, addStatus, addStoryTag, addStoryTheme,
+            reorderStatuses, reorderStoryTags, reorderStoryThemes, addImportedCard, addImportedTracker } = useCharacterActions();
    const drawer = useDrawerStore((state) => state.drawer);
    const { initiateItemDrop, moveFolder, reorderFolders, moveItem, reorderItems } = useDrawerActions();
    const isCompactDrawer = useAppSettingsStore((state) => state.isCompactDrawer);
@@ -277,11 +280,12 @@ export default function CharacterSheetPage() {
 
       try {
          const importedData = await importFromFile(file);
-         const { fileType, content, game } = importedData;
+         const migratedContent = harmonizeData(importedData.content, importedData.fileType);
+         const { fileType, game } = importedData;
 
          // --- Full character sheet ---
          if (fileType === 'FULL_CHARACTER_SHEET') {
-            loadCharacter(content as Character);
+            loadCharacter(migratedContent as Character);
             toast.success(tNotifications('character.imported'));
             return;
          }
@@ -293,13 +297,13 @@ export default function CharacterSheetPage() {
          }
 
          const isCardType = fileType === 'CHARACTER_CARD' || fileType === 'CHARACTER_THEME' || fileType === 'GROUP_THEME';
-         const isTrackerType = fileType === 'STATUS_TRACKER' || fileType === 'STORY_TAG_TRACKER';
+         const isTrackerType = fileType === 'STATUS_TRACKER' || fileType === 'STORY_TAG_TRACKER' || fileType === 'STORY_THEME_TRACKER';
 
          if (isCardType) {
-            addImportedCard(content as CardData);
+            addImportedCard(migratedContent as CardData);
             toast.success(tNotifications('character.componentImported'));
          } else if (isTrackerType) {
-            addImportedTracker(content as Tracker);
+            addImportedTracker(migratedContent as Tracker);
             toast.success(tNotifications('character.componentImported'));
          } else {
             toast.error(tNotifications('general.importFailed'));
@@ -332,7 +336,7 @@ export default function CharacterSheetPage() {
          return;
       }
 
-      const allSheetItems = [...(character?.cards || []), ...(character?.trackers.statuses || []), ...(character?.trackers.storyTags || [])];
+      const allSheetItems = [...(character?.cards || []), ...(character?.trackers.statuses || []), ...(character?.trackers.storyTags || []), ...(character?.trackers.storyThemes || [])];
       const item = allSheetItems.find(i => i.id === active.id);
       if (item) {
          setActiveDragItem(item);
@@ -508,6 +512,7 @@ export default function CharacterSheetPage() {
             const isCardDrag = activeType === 'sheet-card';
             const isStatusDrag = (active.data.current?.item as Tracker)?.trackerType === 'STATUS';
             const isStoryTagDrag = (active.data.current?.item as Tracker)?.trackerType === 'STORY_TAG';
+            const isStoryThemeDrag = (active.data.current?.item as Tracker)?.trackerType === 'STORY_THEME';
             
             if (isCardDrag && overType === 'sheet-card') {
                const oldIndex = character.cards.findIndex(item => item.id === active.id);
@@ -521,6 +526,10 @@ export default function CharacterSheetPage() {
                const oldIndex = character.trackers.storyTags.findIndex(item => item.id === active.id);
                const newIndex = character.trackers.storyTags.findIndex(item => item.id === over.id);
                if (oldIndex !== -1 && newIndex !== -1) reorderStoryTags(oldIndex, newIndex);
+            } else if (isStoryThemeDrag && (over.data.current?.item as Tracker)?.trackerType === 'STORY_THEME') {
+               const oldIndex = character.trackers.storyThemes.findIndex(item => item.id === active.id);
+               const newIndex = character.trackers.storyThemes.findIndex(item => item.id === over.id);
+               if (oldIndex !== -1 && newIndex !== -1) reorderStoryThemes(oldIndex, newIndex);
             }
          }
       }
@@ -651,13 +660,13 @@ export default function CharacterSheetPage() {
             {/* Character Sheet Area */}
             <div {...getRootProps()} className="relative w-full h-full flex-1 flex flex-col">
                <main data-tour="character-sheet" className="absolute w-full h-full flex-1 flex flex-col overflow-y-auto overflow-x-hidden">
-                  <header className="p-4 border-b border-border">
+                  <header className="p-4 bg-popover border-b border-border">
                      <input
                         data-tour="character-name-input"
                         type="text"
                         value={localName}
                         onChange={(e) => setLocalName(e.target.value)}
-                        className="text-2xl font-bold bg-transparent focus:outline-none w-full"
+                        className="text-2xl text-popover-foreground font-bold bg-transparent focus:outline-none w-full"
                         placeholder={t('characterNamePlaceholder')}
                      />
                   </header>
@@ -668,67 +677,87 @@ export default function CharacterSheetPage() {
                            data-tour="trackers-section"
                            ref={setTrackersDropRef}
                            className={cn(
-                              "w-full bg-muted/50 rounded-lg p-4 border-2 border-border space-y-4 transition-colors",
+                              "flex gap-4",
+                              "w-full bg-muted/75 rounded-lg p-4 border-2 border-border transition-colors",
                               { "border-primary shadow-lg": isOverTrackers }
                            )}
                         >
-                           {/* Statuses Group */}
-                           <SortableContext items={character.trackers.statuses.map(tracker => tracker.id)} strategy={rectSortingStrategy}>
-                              <div className="flex flex-wrap gap-4">
-                                 {character.trackers.statuses.map(tracker => (
-                                    <SortableTrackerItem
-                                       key={tracker.id}
-                                       tracker={tracker}
-                                       isEditing={isEditing}
-                                       isBeingDragged={activeDragItem?.id === tracker.id}
-                                       onExport={() => handleExportComponent(tracker)}
-                                    />
-                                 ))}
-                                 {areTrackersEditable && (
-                                    <Button
-                                       data-tour="add-status-button"
-                                       variant="ghost"
-                                       onClick={() => addStatus()}
-                                       className={cn("cursor-pointer flex items-center justify-center w-[220px] h-[100px]",
-                                                      "rounded-lg border-2 border-dashed border-bg text-bg border-border text-muted-foreground bg-muted/50",
-                                                      "hover:text-foreground hover:border-foreground"
-                                       )}
-                                    >
-                                       <PlusCircle className="mr-2 h-4 w-4" />
-                                       {tTrackers('addStatus')}
-                                    </Button>
-                                 )}
-                              </div>
-                           </SortableContext>
+                           <div className="flex-1 min-w-0 space-y-4">
+                              {/* Statuses Group */}
+                              <SortableContext items={character.trackers.statuses.map(tracker => tracker.id)} strategy={rectSortingStrategy}>
+                                 <div className="flex flex-wrap gap-4">
+                                    {character.trackers.statuses.map(tracker => (
+                                       <SortableTrackerItem
+                                          key={tracker.id}
+                                          tracker={tracker}
+                                          isEditing={isEditing}
+                                          isBeingDragged={activeDragItem?.id === tracker.id}
+                                          onExport={() => handleExportComponent(tracker)}
+                                       />
+                                    ))}
+                                    {areTrackersEditable && (
+                                       <Button
+                                          data-tour="add-status-button"
+                                          variant="ghost"
+                                          onClick={() => addStatus()}
+                                          className={cn("cursor-pointer flex items-center justify-center w-[220px] h-[100px]",
+                                                         "rounded-lg border-2 border-dashed border-bg text-bg border-border text-muted-foreground bg-muted/50",
+                                                         "hover:text-foreground hover:border-foreground"
+                                          )}
+                                       >
+                                          <PlusCircle className="mr-2 h-4 w-4" />
+                                          {tTrackers('addStatus')}
+                                       </Button>
+                                    )}
+                                 </div>
+                              </SortableContext>
 
-                           {/* Story Tags Group */}
-                           <SortableContext items={character.trackers.storyTags.map(tracker => tracker.id)} strategy={rectSortingStrategy}>
-                              <div className="flex flex-wrap gap-4">
-                                 {character.trackers.storyTags.map(tracker => (
-                                    <SortableTrackerItem
-                                       key={tracker.id}
-                                       tracker={tracker}
-                                       isEditing={isEditing}
-                                       isBeingDragged={activeDragItem?.id === tracker.id}
-                                       onExport={() => handleExportComponent(tracker)}
-                                    />
-                                 ))}
-                                 {areTrackersEditable && (
-                                    <Button
-                                       data-tour="add-story-tag-button" 
-                                       variant="ghost" 
-                                       onClick={() => addStoryTag()} 
-                                       className={cn("cursor-pointer flex items-center justify-center w-[220px] h-[55px]",
-                                                      "rounded-lg border-2 border-dashed border-bg text-bg border-border text-muted-foreground bg-muted/50",
-                                                      "hover:text-foreground hover:border-foreground"
-                                       )}
-                                    >
-                                       <PlusCircle className="mr-2 h-4 w-4" />
-                                       {tTrackers('addStoryTag')}
-                                    </Button>
-                                 )}
-                              </div>
-                           </SortableContext>
+                              {/* Story Tags Group */}
+                              <SortableContext items={character.trackers.storyTags.map(tracker => tracker.id)} strategy={rectSortingStrategy}>
+                                 <div className="flex flex-wrap gap-4">
+                                    {character.trackers.storyTags.map(tracker => (
+                                       <SortableTrackerItem
+                                          key={tracker.id}
+                                          tracker={tracker}
+                                          isEditing={isEditing}
+                                          isBeingDragged={activeDragItem?.id === tracker.id}
+                                          onExport={() => handleExportComponent(tracker)}
+                                       />
+                                    ))}
+                                    {areTrackersEditable && (
+                                       <Button
+                                          data-tour="add-story-tag-button" 
+                                          variant="ghost" 
+                                          onClick={() => addStoryTag()} 
+                                          className={cn("cursor-pointer flex items-center justify-center w-[220px] h-[55px]",
+                                                         "rounded-lg border-2 border-dashed border-bg text-bg border-border text-muted-foreground bg-muted/50",
+                                                         "hover:text-foreground hover:border-foreground"
+                                          )}
+                                       >
+                                          <PlusCircle className="mr-2 h-4 w-4" />
+                                          {tTrackers('addStoryTag')}
+                                       </Button>
+                                    )}
+                                 </div>
+                              </SortableContext>
+                           </div>
+
+                           <div className="flex-shrink-0 max-w-[50%]">
+                              {/* Story Themes Group */}
+                              <SortableContext items={character.trackers.storyThemes.map(tracker => tracker.id)} strategy={rectSortingStrategy}>
+                                 <div className="flex flex-wrap justify-end gap-4">
+                                    {character.trackers.storyThemes.map(tracker => (
+                                       <SortableTrackerItem
+                                          key={tracker.id}
+                                          tracker={tracker}
+                                          isEditing={isEditing}
+                                          isBeingDragged={activeDragItem?.id === tracker.id}
+                                          onExport={() => handleExportComponent(tracker)}
+                                       />
+                                    ))}
+                                 </div>
+                              </SortableContext>
+                           </div>
                         </div>
 
                         <div
@@ -826,9 +855,9 @@ export default function CharacterSheetPage() {
                   ) : 'cardType' in activeDragItem ? (
                      <CardRenderer card={activeDragItem} isEditing={isEditing} isSnapshot={true}/>
                   ) : 'trackerType' in activeDragItem ? (
-                     (activeDragItem.trackerType === 'STATUS') ?
-                        <StatusTrackerCard tracker={activeDragItem} isEditing={isEditing} /> :
-                        <StoryTagTrackerCard tracker={activeDragItem} isEditing={isEditing} />
+                     (activeDragItem.trackerType === 'STATUS') ? <StatusTrackerCard tracker={activeDragItem} isEditing={isEditing} /> :
+                     (activeDragItem.trackerType === 'STORY_TAG') ? <StoryTagTrackerCard tracker={activeDragItem} isEditing={isEditing} /> :
+                     <StoryThemeTrackerCard tracker={activeDragItem} isEditing={isEditing} />
                   ) : 'game' in activeDragItem ? (
                      isCompactDrawer ? (
                         <CompactItemEntry item={activeDragItem as DrawerItem} isPreview={true} />

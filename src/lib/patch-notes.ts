@@ -5,6 +5,17 @@ export interface PatchNote {
 
 export const patchNotes: PatchNote[] = [
    {
+      version: '1.0.2',
+      content: `
+### Small patch with a few features
+This patch adds a couple of suggested features.
+
+### ✨ Features
+* **Negative Story Tags**: You can now mark a story tag as *negative*, it will visually render like a weakness tag, serving as a visual indicator.
+
+`
+   },
+   {
       version: '1.0.1',
       content: `
 ### Nothing too exciting here

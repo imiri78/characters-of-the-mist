@@ -33,9 +33,20 @@ export interface StoryTagTracker {
    game: GameSystem;
    trackerType: 'STORY_TAG';
    isScratched: boolean;
+   isWeakness?: boolean;
 }
 
-export type Tracker = StatusTracker | StoryTagTracker;
+export interface StoryThemeTracker {
+  id: string;
+  name: string;
+  game: GameSystem;
+  trackerType: 'STORY_THEME';
+  mainTag: Tag;
+  powerTags: Tag[];
+  weaknessTags: Tag[];
+}
+
+export type Tracker = StatusTracker | StoryTagTracker | StoryThemeTracker;
 
 
 
@@ -117,9 +128,11 @@ export interface Character {
    id: string;
    name: string;
    game: GameSystem;
+   version?: string;
    cards: Card[];
    trackers: {
       statuses: StatusTracker[];
       storyTags: StoryTagTracker[];
+      storyThemes: StoryThemeTracker[];
    };
 }

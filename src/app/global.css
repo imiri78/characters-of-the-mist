@@ -32,6 +32,8 @@
    --color-card-border: hsl(var(--card-border));
    --color-card-popover-bg: hsl(var(--card-popover-bg));
    --color-card-popover-fg: hsl(var(--card-popover-fg));
+   --color-card-destructive-bg: hsl(var(--card-destructive-bg));
+   --color-card-destructive-fg: hsl(var(--card-destructive-fg));
 }
 
 [class*="card-type-"] input::placeholder,
@@ -46,11 +48,11 @@
 /* ###   GAME AGNOSTIC THEMES   ### */
 /* ################################ */
 :root, .theme-neutral {
-   --background: 0 0% 100%;
+   --background: 0 0% 96%;
    --foreground: 222.2 84% 4.9%;
    --card: 0 0% 100%;
    --card-foreground: 222.2 84% 4.9%;
-   --popover: 0 0% 100%;
+   --popover: 0 0% 98%;
    --popover-foreground: 222.2 84% 4.9%;
    --primary: 222.2 47.4% 11.2%;
    --primary-foreground: 210 40% 98%;
@@ -69,11 +71,11 @@
 }
 
 .dark.theme-neutral {
-   --background: 222.2 84% 4.9%;
+   --background: 222.2 84% 8%;
    --foreground: 210 40% 98%;
-   --card: 222.2 84% 4.9%;
+   --card: 222.2 84% 4%;
    --card-foreground: 210 40% 98%;
-   --popover: 222.2 84% 4.9%;
+   --popover: 222.2 84% 6%;
    --popover-foreground: 210 40% 98%;
    --primary: 210 40% 98%;
    --primary-foreground: 222.2 47.4% 11.2%;
@@ -246,6 +248,20 @@
    --card-border: 214 14% 22%;
    --card-popover-bg: 44 42% 77%;
    --card-popover-fg: 43 31% 25%;
+   --card-destructive-bg: 10 79% 83%;
+   --card-destructive-fg: 214 14% 22%;
+}
+.card-type-story-theme {
+   --card-header-bg: 43 50% 40%;
+   --card-header-fg: 40 68% 92%;
+   --card-paper-bg: 39 62% 92%;
+   --card-paper-fg: 214 14% 22%;
+   --card-accent: 120 60% 25%;
+   --card-border: 214 14% 22%;
+   --card-popover-bg: 44 42% 77%;
+   --card-popover-fg: 43 31% 25%;
+   --card-destructive-bg: 10 79% 83%;
+   --card-destructive-fg: 214 14% 22%;
 }
 .card-type-origin {
    --card-header-bg: 131 8% 51%;

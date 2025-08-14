@@ -793,8 +793,8 @@ export function Drawer({ isDragHovering, activeDragId, overDragId }: { isDragHov
                         )}
                      </header>
 
-                     <div className="flex-grow overflow-y-auto space-y-1">
-                        <motion.div data-tour="drawer-folders" layout transition={{ duration: 0.1 }} className="flex flex-col w-full px-4 py-3 mb-3 bg-background border-b-2 border-border overflow-hidden">
+                     <div className="flex-grow bg-popover overflow-y-auto space-y-1">
+                        <motion.div data-tour="drawer-folders" layout transition={{ duration: 0.1 }} className="flex flex-col w-full px-4 py-3 mb-3 border-b-2 border-border overflow-hidden">
                            {currentFolderId && (
                               <motion.div
                                  layout
@@ -896,7 +896,7 @@ export function Drawer({ isDragHovering, activeDragId, overDragId }: { isDragHov
                         </motion.div>
                      </div>
 
-                     <div className="flex flex-col flex-shrink-0 p-2 mt-auto gap-2 border-t-2 border-border">
+                     <div className="flex flex-col flex-shrink-0 p-2 mt-auto gap-2 bg-card border-t-2 border-border">
                         <form ref={formRef} className="hidden">
                            <input
                               type="file"
