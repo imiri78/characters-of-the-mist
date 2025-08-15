@@ -244,7 +244,7 @@
             "description": "Vous êtes sur le point de réinitialiser l'application, ce qui va supprimer toutes vos données. Êtes vous absolument certain que c'est ce que vous voulez faire ?",
             "confirmationPrompt": "Pour procéder, veuillez écrire le texte suivant dans la zone d'entrée ci-dessous :",
 
-            "cancel": "Non, je veux prserver mes données",
+            "cancel": "Non, je veux préserver mes données",
             "confirm": "Oui, supprime tout."
          }
       }
