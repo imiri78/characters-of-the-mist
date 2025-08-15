@@ -446,15 +446,25 @@ export default function CharacterSheetPage() {
             const draggedItem = active.data.current?.item as DrawerItem;
             if (!draggedItem || draggedItem.game !== character.game) return;
 
-            const isTrackerType = draggedItem.type === 'STATUS_TRACKER' || draggedItem.type === 'STORY_TAG_TRACKER';
+            const isTrackerType = draggedItem.type === 'STATUS_TRACKER' || draggedItem.type === 'STORY_TAG_TRACKER' || draggedItem.type === 'STORY_THEME_TRACKER';
             const isCardType = draggedItem.type === 'CHARACTER_CARD' || draggedItem.type === 'CHARACTER_THEME' || draggedItem.type === 'GROUP_THEME';
             
             let insertionIndex: number | undefined = undefined;
             if (over.id !== 'card-drop-zone' && over.id !== 'tracker-drop-zone') {
-               if (isCardType) insertionIndex = character.cards.findIndex(card => card.id === over.id);
-               else if (isTrackerType) {
+               if (isCardType) {
+                  insertionIndex = character.cards.findIndex(card => card.id === over.id);
+               } else if (isTrackerType) {
                   const statusIndex = character.trackers.statuses.findIndex(tracker => tracker.id === over.id);
-                  insertionIndex = statusIndex !== -1 ? statusIndex : character.trackers.storyTags.findIndex(tracker => tracker.id === over.id);
+                  if (statusIndex !== -1) {
+                     insertionIndex = statusIndex;
+                  } else {
+                     const storyTagIndex = character.trackers.storyTags.findIndex(tracker => tracker.id === over.id);
+                     if (storyTagIndex !== -1) {
+                        insertionIndex = storyTagIndex;
+                     } else {
+                        insertionIndex = character.trackers.storyThemes.findIndex(tracker => tracker.id === over.id);
+                     }
+                  }
                }
             }
 
@@ -701,7 +711,7 @@ export default function CharacterSheetPage() {
                                           variant="ghost"
                                           onClick={() => addStatus()}
                                           className={cn("cursor-pointer flex items-center justify-center w-[220px] h-[100px]",
-                                                         "rounded-lg border-2 border-dashed border-bg text-bg border-border text-muted-foreground bg-muted/50",
+                                                         "rounded-lg border-2 border-dashed text-bg border-primary/25 text-muted-foreground bg-primary/5",
                                                          "hover:text-foreground hover:border-foreground"
                                           )}
                                        >
@@ -730,7 +740,7 @@ export default function CharacterSheetPage() {
                                           variant="ghost" 
                                           onClick={() => addStoryTag()} 
                                           className={cn("cursor-pointer flex items-center justify-center w-[220px] h-[55px]",
-                                                         "rounded-lg border-2 border-dashed border-bg text-bg border-border text-muted-foreground bg-muted/50",
+                                                         "rounded-lg border-2 border-dashed border-bg text-bg border-primary/25 text-muted-foreground bg-primary/5",
                                                          "hover:text-foreground hover:border-foreground"
                                           )}
                                        >
@@ -742,7 +752,14 @@ export default function CharacterSheetPage() {
                               </SortableContext>
                            </div>
 
-                           <div className="flex-shrink-0 max-w-128">
+                           <div 
+                              className="flex-shrink-0 max-w-[45%]"
+                              style={{ 
+                                 width: character.trackers.storyThemes.length >= 2 
+                                    ? '520px'
+                                    : 'auto'
+                              }}
+                           >
                               {/* Story Themes Group */}
                               <SortableContext items={character.trackers.storyThemes.map(tracker => tracker.id)} strategy={rectSortingStrategy}>
                                  <div className="flex flex-wrap justify-end gap-4">

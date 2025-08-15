@@ -98,8 +98,8 @@ export function useCommandPaletteActions({ onToggleEditMode, onToggleDrawer, onO
       // ##########################
       // ###   CREATION GROUP   ###
       // ##########################
-      { id: 'createCard', label: `CARD_NEW | ${t('commands.createCard')}`, icon: FilePlus, group: t('groups.creation'), pageId: 'createCard_Type' },
-      { id: 'createTracker', label: `TRCK_NEW | ${t('commands.createTracker')}`, icon: ListPlus, group: t('groups.creation'), pageId: 'createTracker_Type' },
+      { id: 'createCard', label: `NEW_CARD | ${t('commands.createCard')}`, icon: FilePlus, group: t('groups.creation'), pageId: 'createCard_Type' },
+      { id: 'createTracker', label: `NEW_TRCK | ${t('commands.createTracker')}`, icon: ListPlus, group: t('groups.creation'), pageId: 'createTracker_Type' },
    ];
    
    return staticCommands;

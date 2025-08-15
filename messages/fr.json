@@ -18,6 +18,9 @@
          "created": "Carte créée avec succès.",
          "updated": "Carte mise à jour avec succès."
       },
+      "tracker": {
+         "created": "Suivi créé avec succès."
+      },
       "drawer": {
          "itemCreated": "Objet créé dans le Tiroir.",
          "itemRenamed": "Objet renommé.",
@@ -144,7 +147,7 @@
       },
 
       "Types": {
-         "unavailablePreview": "Prévisualisation non disponible pour cet Objet.",
+         "unavailablePreview": "Prévisualisation indisponible pour cet Objet.",
 
          "LEGENDS": "Legends in the Mist",
          "OTHERSCAPE": "Otherscape",
@@ -156,6 +159,7 @@
          "LEGENDS_GROUP_THEME": "Thème de Compagnie",
          "LEGENDS_STATUS_TRACKER": "Suivi de Statut",
          "LEGENDS_STORY_TAG_TRACKER": "Suivi de Trait Narratif",
+         "LEGENDS_STORY_THEME_TRACKER": "Suivi de Thème Narratif",
 
          "cards": "Carte(s)",
          "trackers": "Suivi(s)"
@@ -429,7 +433,7 @@
       "characterName_content": "Vous pouvez modifier le nom de votre personnage ici à tout moment. Vos modifications sont sauvegardées automatiquement.",
 
       "trackers_title": "Suivis",
-      "trackers_content": "Cette zone contient vos suivis de Statut et de Trait Narratif. Vous pouvez en ajouter de nouveaux lorsque vous êtes en 'Mode Édition'. Chaque Suivi a une poignée de déplacement qui apparaît en le survolant avec votre souris. En l'utilisant, vous pouvez les déplacer ou les exporter.",
+      "trackers_content": "Cette zone contient vos suivis de Statut et de Trait Narratif, ainsi que vos Thèmes Narratifs. Vous pouvez en ajouter de nouveaux lorsque vous êtes en 'Mode Édition'. Chaque Suivi a une poignée de déplacement qui apparaît en le survolant avec votre souris. En l'utilisant, vous pouvez les déplacer ou les exporter.",
 
       "cards_title": "Cartes",
       "cards_content": "Cette zone contient les Cartes de votre personnage, que ce soit une Carte de Thème ou une Carte de Héros. Chaque Carte, comme les Suivis, a une poignée de déplacement qui apparaît au survol. Vous y trouverez une prise pour les déplacer et quelques boutons pour les retourner, les supprimer (en Mode Édition) ou les exporter.",
@@ -477,7 +481,7 @@
       "addStatus_content": "En Mode Édition, vous pouvez maintenant voir un bouton pour ajouter un nouveau suivi de Statut.",
 
       "addStoryTag_title": "Ajouter un Trait Narratif",
-      "addStoryTag_content": "De même, vous pouvez maintenant voir un bouton pour ajouter un nouveau suivi de Trait Narratif.",
+      "addStoryTag_content": "De même, vous pouvez maintenant voir un bouton pour ajouter un nouveau suivi de Trait Narratif. Vous pouvez faire évoluer un Trait Narratif en Thème Narratif à l'aide d'un bouton sur le bandeau qui apparaît en survolant le Suivi.",
 
       "addCard_title": "Ajouter de Nouvelles Cartes",
       "addCard_content": "De plus, ce bouton est maintenant apparu dans votre liste de cartes, ce qui vous permet de créer une Carte.",

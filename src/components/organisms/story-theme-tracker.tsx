@@ -38,6 +38,7 @@ import { StoryThemeTracker } from '@/lib/types/character';
 interface StoryThemeTrackerCardProps {
    tracker: StoryThemeTracker;
    isEditing?: boolean;
+   isDrawerPreview?: boolean;
    dragAttributes?: DraggableAttributes;
    dragListeners?: SyntheticListenerMap;
    onExport?: () => void;
@@ -45,7 +46,7 @@ interface StoryThemeTrackerCardProps {
 
 
 
-export function StoryThemeTrackerCard({ tracker, isEditing = false, dragAttributes, dragListeners, onExport }: StoryThemeTrackerCardProps) {
+export function StoryThemeTrackerCard({ tracker, isEditing = false, isDrawerPreview = false, dragAttributes, dragListeners, onExport }: StoryThemeTrackerCardProps) {
    const tThemeCard = useTranslations('ThemeCard');
    const actions = useCharacterActions();
    const [isHovered, setIsHovered] = useState(false);
@@ -81,28 +82,30 @@ export function StoryThemeTrackerCard({ tracker, isEditing = false, dragAttribut
          onHoverEnd={() => setIsHovered(false)}
          className="relative"
       >
-         <ToolbarHandle
-            isEditing={isEffectivelyEditing}
-            isHovered={isHovered}
-            dragAttributes={dragAttributes}
-            dragListeners={dragListeners}
-            onDelete={() => actions.removeStoryTheme(tracker.id)}
-            onDowngradeStoryTheme={() => actions.downgradeStoryThemeToTag(tracker.id)}
-            onExport={onExport}
-            cardTheme='card-type-tracker'
-            side="left"
-         />
+         { !isDrawerPreview &&
+            <ToolbarHandle
+               isEditing={isEffectivelyEditing}
+               isHovered={isHovered}
+               dragAttributes={dragAttributes}
+               dragListeners={dragListeners}
+               onDelete={() => actions.removeStoryTheme(tracker.id)}
+               onDowngradeStoryTheme={() => actions.downgradeStoryThemeToTag(tracker.id)}
+               onExport={onExport}
+               cardTheme='card-type-tracker'
+               side="top"
+            />
+         }
 
          <div className={cn(
             isHovered ? "z-1" : "z-0",
-            "relative z-0 flex flex-col h-[220px] w-[220px] border-2 rounded-lg overflow-hidden",
+            "relative z-0 flex flex-col h-[220px] w-[250px] border-2 rounded-lg overflow-hidden",
             "card-type-story-theme",
             "border-card-border bg-card-paper-bg text-card-paper-fg",
+            {"h-[120px] shadow-none pointer-events-none border-2 border-card-border": isDrawerPreview}
          )}>
 
-            {/* UPDATED: This container is no longer scrollable */}
             <div className="flex-grow flex flex-col min-h-0">
-               {/* Main Tag Section - Stays fixed at the top */}
+               {/* Main Tag Section */}
                <div className="w-full text-center p-1 flex-shrink-0 flex items-center justify-between gap-2 border-b-2 border-card-accent/30 bg-card-header-bg text-card-header-fg">
                   {isEffectivelyEditing ? (
                      <Input
@@ -116,7 +119,7 @@ export function StoryThemeTrackerCard({ tracker, isEditing = false, dragAttribut
                         <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => actions.updateTagInStoryTheme(tracker.id, 'mainTag', tracker.mainTag.id, { isActive: !tracker.mainTag.isActive })}>
                            {tracker.mainTag.isActive ? <Disc2 className="h-5 w-5 text-primary" /> : <Circle className="h-4 w-4" />}
                         </Button>
-                        <h3 className={cn("text-lg font-bold flex-grow", tracker.mainTag.isScratched && 'line-through opacity-50')}>
+                        <h3 className={cn("text-lg font-bold", tracker.mainTag.isScratched ? 'line-through opacity-50' : tracker.mainTag.isActive && 'underline')}>
                            {tracker.mainTag.name || `[${tThemeCard('noName')}]`}
                         </h3>
                         <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => actions.updateTagInStoryTheme(tracker.id, 'mainTag', tracker.mainTag.id, { isScratched: !tracker.mainTag.isScratched })}>
@@ -126,8 +129,14 @@ export function StoryThemeTrackerCard({ tracker, isEditing = false, dragAttribut
                   )}
                </div>
 
-               {/* UPDATED: New scrollable container for sub-tags */}
-               <div ref={scrollRef} className="flex-grow overflow-y-scroll overscroll-contain">
+               {/* Sub-tags */}
+               <div
+                  ref={scrollRef}
+                  className={cn(
+                     "flex-grow",
+                     isDrawerPreview ? "overflow-y-hidden" : "overflow-y-scroll overscroll-contain"
+                  )}
+               >
                   {/* Power Tags */}
                   {tracker.powerTags.map((tag, index) => <TagItem key={tag.id} trackerId={tracker.id} tag={tag} tagType="power" isEditing={isEffectivelyEditing} index={index} isTrackerTag />)}
                   {isEffectivelyEditing && <div className="p-2"><Button variant="ghost" size="sm" className="w-full p-2 border-1 border-dashed" onClick={() => actions.addTagToStoryTheme(tracker.id, 'powerTags')}><PlusCircle className="h-4 w-4 mr-2"/>{tThemeCard('addPowerTag')}</Button></div>}

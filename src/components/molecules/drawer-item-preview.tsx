@@ -18,6 +18,7 @@ import { CharacterSheetPreview } from '@/components/molecules/character-sheet-pr
 
 // -- Type Imports --
 import { DrawerItem, Folder as FolderType } from '@/lib/types/drawer';
+import { StoryThemeTrackerCard } from '../organisms/story-theme-tracker';
 
 
 
@@ -62,6 +63,9 @@ export function DrawerItemPreview({ item }: { item: DrawerItem }) {
             }
             if (content.trackerType === 'STORY_TAG') {
                return <StoryTagTrackerCard tracker={content} isDrawerPreview />;
+            }
+            if (content.trackerType === 'STORY_THEME') {
+               return <StoryThemeTrackerCard tracker={content} isDrawerPreview />;
             }
          }
 

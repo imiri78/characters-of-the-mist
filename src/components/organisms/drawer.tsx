@@ -22,7 +22,7 @@ import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 
 // -- Icon Imports --
-import { Folder, Plus, ArrowLeft, Inbox, MoreHorizontal, Pencil, Trash2, X, ArrowUpToLine, Move, GripVertical, Download, Upload, LayoutGrid, Rows, FileText, FileUser, IdCard, RectangleEllipsis, CreditCard, FileHeart } from 'lucide-react';
+import { Folder, Plus, ArrowLeft, Inbox, MoreHorizontal, Pencil, Trash2, X, ArrowUpToLine, Move, GripVertical, Download, Upload, LayoutGrid, Rows, FileText, FileUser, IdCard, RectangleEllipsis, CreditCard, FileHeart, WalletCards } from 'lucide-react';
 
 // -- Utils Imports --
 import { cn } from '@/lib/utils';
@@ -274,6 +274,8 @@ const getItemTypeIcon = (type: GeneralItemType) => {
          return <CreditCard className="h-5 w-5 flex-shrink-0 text-accent-foreground" />;
       case 'STORY_TAG_TRACKER':
          return <RectangleEllipsis className="h-5 w-5 flex-shrink-0 text-accent-foreground" />;
+      case 'STORY_THEME_TRACKER':
+         return <WalletCards className="h-5 w-5 flex-shrink-0 text-accent-foreground" />;
       default:
          return <FileText className="h-5 w-5 flex-shrink-0 text-accent-foreground" />;
    }
@@ -319,7 +321,11 @@ export function CompactItemEntry({ item, onRename, onDelete, onMove, isPreview =
          <motion.div
             layout="position"
             transition={{ duration: 0.1 }}
-            className={cn("group flex items-center justify-between gap-2 py-1 pl-1 pr-2 rounded hover:bg-muted", { "bg-muted": isMenuOpen })}
+            className={cn(
+               "group flex items-center justify-between gap-2 py-1 pl-1 pr-2 rounded hover:bg-muted",
+               { "bg-muted": isMenuOpen },
+               { "border-2 border-border bg-muted/50": isPreview }
+            )}
          >
             <div className="flex h-8 items-center gap-2 truncate">
                <GripVertical className="h-5 w-5 flex-shrink-0 text-accent-foreground cursor-grab" {...attributes} {...listeners} />

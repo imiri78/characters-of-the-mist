@@ -13,10 +13,10 @@ import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
 
 // -- Basic UI Imports --
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 // -- Icon Imports --
-import { Trash2, GripVertical, RefreshCw, Edit2, Upload, Globe, FlipHorizontal, BookOpen, HeartCrack, Heart, ArrowDown, ArrowUp, GripHorizontal, BookPlus, BookMinus } from 'lucide-react';
+import { Trash2, GripVertical, RefreshCw, Edit2, Upload, Globe, FlipHorizontal, BookOpen, GripHorizontal, BookPlus, BookMinus, ThumbsDown, ThumbsUp } from 'lucide-react';
 
 // -- Utils Imports --
 import { cn } from '@/lib/utils';
@@ -172,7 +172,7 @@ export function ToolbarHandle({ isEditing, isHovered, cardTheme, onDelete,
                         onClick={onStoryTagNegative}
                      >
                         {
-                           isStoryTagNegative ? <ArrowDown className="h-4 w-4" /> : <ArrowUp className="h-4 w-4" />
+                           isStoryTagNegative ? <ThumbsDown className="h-4 w-4" /> : <ThumbsUp className="h-4 w-4" />
                         }
                      </Button>
                   )}

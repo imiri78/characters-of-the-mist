@@ -528,7 +528,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
                         <CreateTracker_NamePage inputValue={inputValue} onSelect={() => {
                            if (trackerType === 'STATUS') addStatus(inputValue);
                            if (trackerType === 'STORY_TAG') addStoryTag(inputValue);
-                           toast.success(tNotify('card.created')); // Consider a more specific notification
+                           toast.success(tNotify('tracker.created'));
                            setCommandPaletteOpen(false);
                         }} />
                      )}

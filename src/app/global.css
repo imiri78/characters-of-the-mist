@@ -71,11 +71,11 @@
 }
 
 .dark.theme-neutral {
-   --background: 222.2 84% 8%;
+   --background: 222.2 84% 5%;
    --foreground: 210 40% 98%;
-   --card: 222.2 84% 4%;
+   --card: 222.2 84% 10%;
    --card-foreground: 210 40% 98%;
-   --popover: 222.2 84% 6%;
+   --popover: 222.2 84% 7.5%;
    --popover-foreground: 210 40% 98%;
    --primary: 210 40% 98%;
    --primary-foreground: 222.2 47.4% 11.2%;
@@ -98,11 +98,11 @@
 /* ###   LEGENDS IN THE MIST THEMES   ### */
 /* ###################################### */
 .theme-legends {
-   --background: 43 74% 90%;
+   --background: 43 60% 85%;
    --foreground: 43 31% 25%;
    --card: 43 74% 90%;
    --card-foreground: 43 31% 25%;
-   --popover: 44 42% 77%;
+   --popover: 44 65% 87.5%;
    --popover-foreground: 43 31% 25%;
    --primary: 43 31% 25%;
    --primary-foreground: 35 14% 91%;
@@ -121,7 +121,7 @@
 }
 
 .dark.theme-legends {
-   --background: 43 31% 15%;
+   --background: 43 31% 5%;
    --foreground: 43 30% 83%;
    --card: 43 31% 15%;
    --card-foreground: 43 30% 83%;
@@ -256,7 +256,7 @@
    --card-header-fg: 40 68% 92%;
    --card-paper-bg: 39 62% 92%;
    --card-paper-fg: 214 14% 22%;
-   --card-accent: 120 60% 25%;
+   --card-accent: 43 75% 60%;
    --card-border: 214 14% 22%;
    --card-popover-bg: 44 42% 77%;
    --card-popover-fg: 43 31% 25%;

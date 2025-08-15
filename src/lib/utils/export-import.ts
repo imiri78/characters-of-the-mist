@@ -65,6 +65,10 @@ export function generateExportFilename(game: GameSystem, type: ExportableItemTyp
       case "STORY_TAG_TRACKER":
          textType = "Story-Tag-Tracker"
          break;
+
+      case "STORY_THEME_TRACKER":
+         textType = "Story-Theme-Tracker"
+         break;
    }
 
    const baseName = textGame ? `${textGame}_${textType}` : textType;
