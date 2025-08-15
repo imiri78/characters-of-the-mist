@@ -69,47 +69,27 @@ export const customCollisionDetection: CollisionDetection = (args) => {
    // --- If dragging a drawer item ---
    if (activeDataType === 'drawer-item') {
       const folderDroppables = args.droppableContainers.filter(
-         (container) => container.data.current?.type === 'drawer-folder'
+         (container) => container.data.current?.type === 'drawer-folder' || container.id.toString().startsWith('drawer-back-button-')
       );
-
-      const pointerCollisions = pointerWithin({ ...args, droppableContainers: folderDroppables });
-      if (pointerCollisions.length > 0) {
-         return pointerCollisions;
+      const folderCollisions = pointerWithin({ ...args, droppableContainers: folderDroppables });
+      if (folderCollisions.length > 0) {
+         return folderCollisions;
       }
 
-      const fallbackDroppables = args.droppableContainers.filter((container) => {
-         const type = container.data.current?.type as string;
+      const sheetZoneDroppables = args.droppableContainers.filter((container) => {
          const id = container.id.toString();
-         return (
-            type === 'drawer-item' ||
-            id.startsWith('drawer-back-button-') ||
-            type === 'sheet-card' ||
-            type === 'sheet-tracker' ||
-            id === 'card-drop-zone' ||
-            id === 'tracker-drop-zone'
-         );
+         return id === 'character-sheet-main-drop-zone' || id === 'tracker-drop-zone' || id === 'card-drop-zone';
       });
-
-      return closestCenter({ ...args, droppableContainers: fallbackDroppables });
-   };
-
-   // --- If dragging a sheet card or tracker ---
-   if (activeDataType === 'sheet-card' || activeDataType === 'sheet-tracker') {
-      const folderDroppables = args.droppableContainers.filter(
-         (container) => container.data.current?.type === 'drawer-folder'
-      );
-      const pointerCollisions = pointerWithin({ ...args, droppableContainers: folderDroppables });
-
-      if (pointerCollisions.length > 0) {
-         return pointerCollisions;
+      const sheetZoneCollisions = pointerWithin({ ...args, droppableContainers: sheetZoneDroppables });
+      if (sheetZoneCollisions.length > 0) {
+         return sheetZoneCollisions;
       }
 
-      const fallbackDroppables = args.droppableContainers.filter((container) => {
+      const itemDroppables = args.droppableContainers.filter((container) => {
          const type = container.data.current?.type as string;
-         return type !== 'drawer-drop-zone' && type !== 'drawer-folder';
+         return type === 'drawer-item' || type === 'sheet-card' || type === 'sheet-tracker';
       });
-
-      return closestCenter({ ...args, droppableContainers: fallbackDroppables });
+      return closestCenter({ ...args, droppableContainers: itemDroppables });
    }
 
    return closestCenter(args);

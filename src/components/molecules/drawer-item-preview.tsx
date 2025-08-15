@@ -82,7 +82,7 @@ export function DrawerItemPreview({ item }: { item: DrawerItem }) {
    };
 
    return (
-      <div className="p-2 rounded-md hover:bg-muted transition-colors bg-popover/50 border-2 border-border">
+      <div className="p-2 rounded-md hover:bg-muted transition-colors bg-card/75 border-2 border-border">
          <p className="font-semibold truncate text-md mb-2 px-1">
             {item.name}
          </p>

@@ -178,14 +178,7 @@ export default function CharacterSheetPage() {
    const [activeDragItem, setActiveDragItem] = useState<CardData | Tracker | DrawerItem | FolderType | null>(null);
    const [overDragId, setOverDragId] = useState<string | null>(null);
 
-   const { isOver: isOverTrackers, setNodeRef: setTrackersDropRef } = useDroppable({
-      id: 'tracker-drop-zone',
-   });
-   const { isOver: isOverCards, setNodeRef: setCardsDropRef } = useDroppable({
-      id: 'card-drop-zone',
-   });
-  
-
+   
 
    // #########################################
    // ###   CARD CREATION DIALOG HANDLERS   ###
@@ -328,6 +321,19 @@ export default function CharacterSheetPage() {
    // ###   DRAG LOGIC HANDLERS   ###
    // ###############################
 
+   const { isOver: isOverTrackers, setNodeRef: setTrackersDropRef } = useDroppable({
+      id: 'tracker-drop-zone',
+      data: { type: 'tracker-drop-zone' }
+   });
+   const { isOver: isOverCards, setNodeRef: setCardsDropRef } = useDroppable({
+      id: 'card-drop-zone',
+      data: { type: 'card-drop-zone' }
+   });
+   const { isOver: isOverMain, setNodeRef: setMainDropRef } = useDroppable({
+      id: 'character-sheet-main-drop-zone',
+      data: { type: 'character-sheet-main-drop-zone' }
+   });
+
    function handleDragStart(event: DragStartEvent) {
       const { active } = event;
 
@@ -440,38 +446,35 @@ export default function CharacterSheetPage() {
          }
 
          // --- SCENARIO 1.3: Dropping ONTO the character sheet ---
-         if (overIdStr === 'tracker-drop-zone' || overIdStr === 'card-drop-zone' || overType?.startsWith('sheet-')) {
-            if (activeType !== 'drawer-item') return; // Folders cannot be dropped on the sheet.
+         const isOverSheet = overIdStr === 'character-sheet-main-drop-zone' ||
+                              overIdStr === 'tracker-drop-zone' ||
+                              overIdStr === 'card-drop-zone' ||
+                              overType === 'sheet-card' ||
+                              overType === 'sheet-tracker';
+
+         console.log('Drop target:', overIdStr, 'Drop type:', overType, 'Is over sheet:', isOverSheet);
+
+         if (isOverSheet) {
+            if (activeType !== 'drawer-item') return;
 
             const draggedItem = active.data.current?.item as DrawerItem;
             if (!draggedItem || draggedItem.game !== character.game) return;
 
+            console.log('Dragged item:', draggedItem.type);
+
             const isTrackerType = draggedItem.type === 'STATUS_TRACKER' || draggedItem.type === 'STORY_TAG_TRACKER' || draggedItem.type === 'STORY_THEME_TRACKER';
             const isCardType = draggedItem.type === 'CHARACTER_CARD' || draggedItem.type === 'CHARACTER_THEME' || draggedItem.type === 'GROUP_THEME';
-            
-            let insertionIndex: number | undefined = undefined;
-            if (over.id !== 'card-drop-zone' && over.id !== 'tracker-drop-zone') {
-               if (isCardType) {
-                  insertionIndex = character.cards.findIndex(card => card.id === over.id);
-               } else if (isTrackerType) {
-                  const statusIndex = character.trackers.statuses.findIndex(tracker => tracker.id === over.id);
-                  if (statusIndex !== -1) {
-                     insertionIndex = statusIndex;
-                  } else {
-                     const storyTagIndex = character.trackers.storyTags.findIndex(tracker => tracker.id === over.id);
-                     if (storyTagIndex !== -1) {
-                        insertionIndex = storyTagIndex;
-                     } else {
-                        insertionIndex = character.trackers.storyThemes.findIndex(tracker => tracker.id === over.id);
-                     }
-                  }
-               }
-            }
 
-            if ((over.id === 'tracker-drop-zone' || overType === 'sheet-tracker') && isTrackerType) {
-               addImportedTracker(draggedItem.content as Tracker, insertionIndex);
-            } else if ((over.id === 'card-drop-zone' || overType === 'sheet-card') && isCardType) {
-               addImportedCard(draggedItem.content as CardData, insertionIndex);
+            console.log('Is tracker:', isTrackerType, 'Is card:', isCardType);
+
+            if (isTrackerType) {
+               addImportedTracker(draggedItem.content as Tracker);
+               toast.success(tNotifications('character.componentImported'));
+            } else if (isCardType) {
+               addImportedCard(draggedItem.content as CardData);
+               toast.success(tNotifications('character.componentImported'));
+            } else {
+               console.log('Drop rejected - unsupported item type:', draggedItem.type);
             }
             return;
          }
@@ -682,7 +685,10 @@ export default function CharacterSheetPage() {
                   </header>
 
                   <div className="flex-1 p-4 md:p-8">
-                     <div className="flex flex-col items-center gap-8">
+                     <div ref={setMainDropRef} className={cn(
+                        "flex flex-col items-center gap-8 min-h-full",
+                        {"bg-muted/30 rounded-lg border-2 border-primary border-dashed": isOverMain}
+                     )}>
                         <div
                            data-tour="trackers-section"
                            ref={setTrackersDropRef}

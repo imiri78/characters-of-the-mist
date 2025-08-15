@@ -8,6 +8,7 @@ import cuid from 'cuid';
 import { createNewCharacter } from '../utils/character';
 import { deepReId } from '../utils/drawer';
 import { harmonizeData } from '../harmonization';
+import { STORE_VERSION } from '../config';
 
 // -- Store and Hook Imports --
 import { useAppGeneralStateStore } from './appGeneralStateStore';
@@ -833,22 +834,20 @@ export const useCharacterStore = create<CharacterState>()(
          }),
          {
             name: 'characters-of-the-mist_character-storage',
-            storage: createJSONStorage(() => localStorage, {
-               reviver: (key, value) => {
-                  // I don't like using "any", but it's a necessary evil here. We have no guarantee on the
-                  // shape of the persisted state before we run the migrator if running it is necessary.
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  if (key === '' && value && (value as any).state?.character) {
-                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                     const characterState = (value as any).state;
-                     console.log("Harmonizing character data via reviver...");
-                     characterState.character = harmonizeData(characterState.character, 'FULL_CHARACTER_SHEET');
-                     console.log("Character data harmonization complete.");
-                  }
-                  return value;
-               },
-            }),
+            storage: createJSONStorage(() => localStorage),
             partialize: (state) => ({ character: state.character }),
+            version: STORE_VERSION,
+            migrate: (persistedState, version) => {
+               const state = persistedState as Pick<CharacterState, 'character'>;
+
+               if (state.character) {
+                  console.log("Harmonizing character data via migrate function...");
+                  state.character = harmonizeData(state.character, 'FULL_CHARACTER_SHEET');
+                  console.log("Character data harmonization complete.");
+               }
+
+               return state;
+            },
          }
       )
    )
