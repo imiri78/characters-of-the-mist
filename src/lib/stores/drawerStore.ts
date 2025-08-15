@@ -304,7 +304,11 @@ export const useDrawerStore = create<DrawerState>()(
             name: 'characters-of-the-mist_drawer-storage',
             storage: createJSONStorage(() => localStorage, {
                reviver: (key, value) => {
+                  // I don't like using "any", but it's a necessary evil here. We have no guarantee on the
+                  // shape of the persisted state before we run the migrator if running it is necessary.
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   if (key === '' && value && (value as any).state?.drawer) {
+                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                      const drawerState = (value as any).state;
                      console.log("Harmonizing drawer data via reviver...");
                      drawerState.drawer = harmonizeData(drawerState.drawer, 'FULL_DRAWER');

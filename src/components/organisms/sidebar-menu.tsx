@@ -114,7 +114,7 @@ export function SidebarMenu({ isEditing, isDrawerOpen, isCollapsed, onToggleEdit
       try {
          const importedData = await importFromFile(file);
          const migratedContent = harmonizeData(importedData.content, importedData.fileType);
-         const { fileType, content } = importedData;
+         const { fileType } = importedData;
 
          const isCardType = fileType === 'CHARACTER_CARD' || fileType === 'CHARACTER_THEME' || fileType === 'GROUP_THEME';
          const isTrackerType = fileType === 'STATUS_TRACKER' || fileType === 'STORY_TAG_TRACKER';

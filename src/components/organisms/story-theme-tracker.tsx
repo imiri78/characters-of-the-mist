@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 // -- Icon Imports --
-import { Circle, Disc2, Flame, PlusCircle, Trash2 } from 'lucide-react';
+import { Circle, Disc2, Flame, PlusCircle } from 'lucide-react';
 
 // -- Utils Imports --
 import { cn } from '@/lib/utils';

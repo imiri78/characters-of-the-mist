@@ -835,7 +835,11 @@ export const useCharacterStore = create<CharacterState>()(
             name: 'characters-of-the-mist_character-storage',
             storage: createJSONStorage(() => localStorage, {
                reviver: (key, value) => {
+                  // I don't like using "any", but it's a necessary evil here. We have no guarantee on the
+                  // shape of the persisted state before we run the migrator if running it is necessary.
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   if (key === '' && value && (value as any).state?.character) {
+                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                      const characterState = (value as any).state;
                      console.log("Harmonizing character data via reviver...");
                      characterState.character = harmonizeData(characterState.character, 'FULL_CHARACTER_SHEET');

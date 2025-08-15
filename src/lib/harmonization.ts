@@ -7,13 +7,33 @@ import { Character } from './types/character';
 
 
 
-type MigrationFunction = (data: any) => any;
+function isDrawer(data: unknown): data is Drawer {
+  return !!data && typeof data === 'object' && 'rootItems' in data && 'folders' in data && !('content' in data);
+}
+function isFolder(data: unknown): data is Folder {
+  return !!data && typeof data === 'object' && 'items' in data && 'folders' in data && !('rootItems' in data);
+}
+function isDrawerItem(data: unknown): data is DrawerItem {
+  return !!data && typeof data === 'object' && 'content' in data && 'type' in data && 'id' in data;
+}
+function isCharacter(data: unknown): data is Character {
+  return !!data && typeof data === 'object' && 'cards' in data && 'trackers' in data;
+}
+function isVersionable(data: unknown): data is { version?: string } {
+    return !!data && typeof data === 'object' && 'version' in data;
+}
+
+
+
+type MigrationFunction = (data: unknown) => unknown;
 
 const MIGRATIONS: Record<string, Partial<Record<GeneralItemType, MigrationFunction>>> = {
    '1.0.2': {
-      FULL_CHARACTER_SHEET: (data: Character) => {
-         if (data && data.trackers && !data.trackers.storyThemes) {
-         data.trackers.storyThemes = [];
+      FULL_CHARACTER_SHEET: (data: unknown): unknown => {
+         if (isCharacter(data)) {
+            if (data.trackers && !data.trackers.storyThemes) {
+               data.trackers.storyThemes = [];
+            }
          }
          return data;
       },
@@ -29,10 +49,11 @@ export function harmonizeData<T extends object>(data: T, dataType: GeneralItemTy
       return data;
    }
 
+   let harmonizedData: unknown = data;
+
    // --- STEP 1: Harmonize the current object based on its specific type ---
-   // Check if the object itself is a type that can be versioned (top-level containers and sheets)
-   if ('version' in data || dataType === 'FULL_CHARACTER_SHEET' || dataType === 'FULL_DRAWER') {
-      let currentVersion = (data as any).version || '1.0.0';
+   if (isVersionable(harmonizedData) || isCharacter(harmonizedData) || isDrawer(harmonizedData)) {
+      let currentVersion = harmonizedData.version || '1.0.0';
 
       for (const targetVersion of MIGRATION_VERSIONS) {
          if (compare(targetVersion, currentVersion) > 0) {
@@ -40,39 +61,33 @@ export function harmonizeData<T extends object>(data: T, dataType: GeneralItemTy
             const migrate = versionMigrations[dataType];
 
             if (migrate) {
-               data = migrate(data);
+               harmonizedData = migrate(data);
             }
 
-            (data as any).version = targetVersion;
+            if (isVersionable(harmonizedData)) {
+                harmonizedData.version = targetVersion;
+            }
             currentVersion = targetVersion;
          }
       }
 
-      if (!(data as any).version || compare(APP_VERSION, (data as any).version) > 0) {
-         (data as any).version = APP_VERSION;
+      if (!isVersionable(harmonizedData) || !harmonizedData.version || compare(APP_VERSION, harmonizedData.version) > 0) {
+         if(isVersionable(harmonizedData)) {
+            harmonizedData.version = APP_VERSION;
+         }
       }
    }
 
    // --- STEP 2: Check for container properties and RECURSE ---
-   // Drawer. Recurse on its contents.
-   if (dataType === 'FULL_DRAWER') {
-      const drawer = data as any as Drawer;
-      drawer.rootItems = drawer.rootItems.map(item => harmonizeData(item, 'FOLDER'));
-      drawer.folders = drawer.folders.map(folder => harmonizeData(folder, 'FOLDER'));
+   if (isDrawer(harmonizedData)) {
+      harmonizedData.rootItems = harmonizedData.rootItems.map(item => harmonizeData(item, item.type));
+      harmonizedData.folders = harmonizedData.folders.map(folder => harmonizeData(folder, 'FOLDER'));
+   } else if (isFolder(harmonizedData)) {
+      harmonizedData.items = harmonizedData.items.map(item => harmonizeData(item, item.type));
+      harmonizedData.folders = harmonizedData.folders.map(subFolder => harmonizeData(subFolder, 'FOLDER'));
+   } else if (isDrawerItem(harmonizedData)) {
+      harmonizedData.content = harmonizeData(harmonizedData.content, harmonizedData.type);
    }
 
-   // Folder. Recurse on its contents.
-   if (dataType === 'FOLDER') {
-      const folder = data as any as Folder;
-      folder.items = folder.items.map(item => harmonizeData(item, 'FOLDER'));
-      folder.folders = folder.folders.map(subFolder => harmonizeData(subFolder, 'FOLDER'));
-   }
-
-   // DrawerItem. Grab its content and harmonize that.
-   if ('content' in data && 'type' in data) {
-      const item = data as any as DrawerItem;
-      item.content = harmonizeData(item.content, item.type);
-   }
-
-   return data;
+   return harmonizedData as T;
 }

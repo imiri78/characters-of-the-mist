@@ -153,7 +153,7 @@ export default function CharacterSheetPage() {
 
    // --- Data Stores ---
    const character = useCharacterStore((state) => state.character);
-   const { loadCharacter, addCard, updateCardDetails, reorderCards, updateCharacterName, addStatus, addStoryTag, addStoryTheme,
+   const { loadCharacter, addCard, updateCardDetails, reorderCards, updateCharacterName, addStatus, addStoryTag,
             reorderStatuses, reorderStoryTags, reorderStoryThemes, addImportedCard, addImportedTracker } = useCharacterActions();
    const drawer = useDrawerStore((state) => state.drawer);
    const { initiateItemDrop, moveFolder, reorderFolders, moveItem, reorderItems } = useDrawerActions();
