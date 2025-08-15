@@ -10,6 +10,15 @@ export const patchNotes: PatchNote[] = [
 ### Small patch with a few features
 This patch adds a couple of suggested features.
 
+### **⚠️ Important!**
+**This patch is the first that requires data harmonization**.
+
+To make story themes possible, a slight modification to the data structure of characters was necessary. This is **a breaking change**, however, I set up a data harmonization system that will check if your data is in need of an update, and do it automatically.
+
+This is the first opportunity I have to test this utility. If the app crashes for you, **DO NOT PANIC**, your data is safe as long as you don't clear your browser data or cache. Simply shoot me a message on Discord and we'll fix it together.
+
+Everything should work fine, as far as I've tested before deploying this change. But since it's the first time this utility is used in the full, public app, unexpected things can happen.
+
 ### ✨ Features
 * **Negative Story Tags**: You can now mark a story tag as *negative*, it will visually render like a weakness tag, serving as a visual indicator.
 * **Story Themes**: You can now *evolve* a story tag into a story theme, and you can add any number of power or weakness tags to that story theme. You can, of course, *devolve* a story theme into a tag, as well.
