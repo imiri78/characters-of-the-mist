@@ -1,45 +1,45 @@
 {
    "Notifications": {
       "general": {
-         "importFailed": "File import failed. The data may be incorrect or corrupted.",
-         "exportSuccess": "File exported.",
-         "invalidExportType": "This object cannot be exported.",
-         "appReset": "Application successfully reset. Reloading..."
+         "importFailed": "Datei-Import fehlgeschlagen. Daten können inkorrekt oder beschädigt sein.",
+         "exportSuccess": "Datei exportiert.",
+         "invalidExportType": "Dieses Objekt kann nicht exportiert werden.",
+         "appReset": "Anwendung erfolgreich zurückgesetzt. Läd erneut..."
       },
       "character": {
-         "savedToDrawer": "Current character has been saved to Drawer root.",
-         "exported": "Current character has been exported to downloads.",
-         "exportFailedNoChar": "Export failed, No character found.",
-         "imported": "Character file imported successfully.",
-         "reset": "Character sheet successfully reset.",
-         "componentImported": "Component file imported successfully."
+         "savedToDrawer": "Der aktuelle Charakter wurde im Drawer gespeichert.",
+         "exported": "Der aktuelle Charakter wurde in Downloads exportiert.",
+         "exportFailedNoChar": "Der Export is fehlgeschlagen. Es wurde kein Charakter gefunden.",
+         "imported": "Charakterdatei erfolgreich importiert.",
+         "reset": "Charakter erfolgreich zurückgesetzt.",
+         "componentImported": "Komponentendatei erfolgreich importiert."
       },
       "card": {
-         "created": "Card created successfully.",
-         "updated": "Card updated successfully."
+         "created": "Karte erfolgreich erstellt.",
+         "updated": "Karte erfolgreich aktualisiert."
       },
       "tracker": {
-         "created": "Tracker created successfully."
+         "created": "Tracker erfolgreich erstellt."
       },
       "drawer": {
-         "itemCreated": "Item created in Drawer.",
-         "itemRenamed": "Item renamed.",
-         "itemDeleted": "Item deleted.",
-         "itemMoved": "Item moved.",
-         "folderCreated": "Folder created in Drawer.",
-         "folderRenamed": "Folder renamed.",
-         "folderDeleted": "Folder deleted.",
-         "folderMoved": "Folder moved.",
-         "importSuccess": "File successfully imported to Drawer.",
-         "exported": "Drawer successfully exported.",
-         "deleted": "Drawer successfully deleted."
+         "itemCreated": "Objekt im Drawer erstellt.",
+         "itemRenamed": "Objekt umbenannt.",
+         "itemDeleted": "Objekt gelöscht.",
+         "itemMoved": "Objekt veschoben.",
+         "folderCreated": "Ordner im Drawer erstellt.",
+         "folderRenamed": "Ordner umbenannt.",
+         "folderDeleted": "Ordner gelöscht.",
+         "folderMoved": "Ordner verschoben.",
+         "importSuccess": "Datei erfolgreich in den Drawer importiert.",
+         "exported": "Drawer erfolgreich exportiert.",
+         "deleted": "Drawer erfolgreich gelöscht."
       },
       "migration": {
-         "legacyDataDownloaded": "Legacy data download sent.",
-         "success": "Migration successful.",
-         "failed": "There was an error during legacy character migration.",
-         "unsupported": "Your legacy character uses a game system that is not yet supported. Please keep the file safe and migrate again once support is added.",
-         "folderError": "Could not create the main MIGRATION folder."
+         "legacyDataDownloaded": "Legacy Daten Download geschickt.",
+         "success": "Migration erfolgreich.",
+         "failed": "Es hat einen Fehler während der Legacy Charakter Migration gegeben.",
+         "unsupported": "Dein Legacy Charakter benutzt ein Spielsystem das noch nicht unterstüzt wird. Bitte bewahre die Datei sicher auf, bis das System unterstützt wird und versuch es dann erneut.",
+         "folderError": "Connte den Hauptordner MIGRATION nicht erstellen."
       }
    },
    "Errors": {
