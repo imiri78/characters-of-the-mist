@@ -499,62 +499,62 @@ Vielen Dank an [Son of Oak Game Studio LLC](https://cityofmist.co) für die Erst
       "settings_title": "Einstellungen",
       "settings_content": "Dieser Button öffnet das Einstellungsmenü, wo Sie Funktionen wie die Auswahl der Farbpalette Ihrer App, den Wechsel zwischen Hell- und Dunkelmodus oder das Zurücksetzen aller Ihrer Daten nutzen können. Hier finden Sie auch das Migrationswerkzeug, mit dem Sie die Daten der Legacy Characters of the Mist in diese neue Version migrieren können.",
 
-      "appInfo_title": "App Info",
-      "appInfo_content": "This button opens up an information menu containing a general \"About\" section for this app, licensing information, and credits.",
+      "appInfo_title": "App Informaton",
+      "appInfo_content": "Dieser Button öffnet ein Informationsmenü, das einen allgemeinen „Über“-Bereich für diese App, Lizenzinformationen und Danksagungen enthält.",
 
-      "patchNotes_title": "Patch Notes",
-      "patchNotes_content": "This button opens up a menu where you can consult the app's patch notes history.",
+      "patchNotes_title": "Patch Notizen",
+      "patchNotes_content": "Dieser Button öffnet ein Menü, in dem Sie die Patch-Notizen-Historie der App einsehen können.",
       
-      "editMode_title": "Edit Mode",
-      "editMode_content": "This button lets you enter 'Edit Mode'. This allows you to add, remove and modify cards and trackers.",
+      "editMode_title": "Bearbeitungsmodus",
+      "editMode_content": "Dieser Button versetzt Sie in den 'Bearbeitungsmodus'. Dadurch können Sie Karten und Tracker hinzufügen, entfernen und bearbeiten.",
 
-      "playMode_title": "Play Mode",
-      "playMode_content": "When Edit Mode is enabled, the button now allows you to go back to 'Play Mode', a lightweight display of your cards and trackers. In Play Mode, only basic functionalities are available to avoid cluttering everything.",
+      "playMode_title": "Spielmodus",
+      "playMode_content": "Wenn der Bearbeitungsmodus aktiviert ist, ermöglicht der Button nun, zurück in den 'Spielmodus' zu wechseln, eine optimierte Anzeige deiner Karten und Tracker. Im Spielmodus sind nur grundlegende Funktionen verfügbar, um eine Überladung zu vermeiden.",
 
-      "addStatus_title": "Add Status",
-      "addStatus_content": "In Edit Mode, you can now see a button to add a new Status tracker.",
+      "addStatus_title": "Status hinzufügen",
+      "addStatus_content": "Im Bearbeitungsmodus sehen Sie jetzt eine Schaltfläche, um einen neuen Status-Tracker hinzuzufügen.",
 
-      "addStoryTag_title": "Add Story Tag",
-      "addStoryTag_content": "Similarly, you can now see a button to add a new Story Tag tracker. You can evolve a Story Tag into a Story Theme with a button on the toolbar that appears when hovering the tracker.",
+      "addStoryTag_title": "Handlungsmerkmal hinzufügen",
+      "addStoryTag_content": "Ebenso können Sie jetzt einen Button sehen, um einen neuen Handlungsmerkmal-Tracker hinzuzufügen. Sie können ein Handlungsmerkmal mit einem Button in der Werkzeugleiste, der erscheint, wenn Sie über den Tracker fahren, in ein Handlungsthema weiterentwickeln.",
     
-      "addCard_title": "Add New Cards",
-      "addCard_content": "Furthermore, this button has now appeared in your cards list, which allows you to create a Card.",
+      "addCard_title": "Neue Karten hinzufügen",
+      "addCard_content": "Dieser Button ist jetzt in Ihrer Kartenliste erschienen, wodurch Sie eine Karte erstellen können.",
 
-      "openAddCard_title": "Opening the Card Creator",
-      "openAddCard_content": "We're going to see how creating a Card works now.",
+      "openAddCard_title": "Öffne den Kartenersteller",
+      "openAddCard_content": "Wir werden jetzt sehen, wie die Erstellung einer Karte funktioniert.",
       
-      "creationDialog_title": "Card Creation",
-      "creationDialog_content": "This dialog allows you to define the new card's properties.",
+      "creationDialog_title": "Kartenerstellung",
+      "creationDialog_content": "Dieser Dialog ermöglicht es Ihnen, die Eigenschaften der neuen Karte festzulegen.",
 
-      "menuDrawer_title": "Opening/Closing the Drawer",
-      "menuDrawer_content": "This button opens the Drawer, where all your characters, themes, and items are stored. Let's go check out the Drawer.",
+      "menuDrawer_title": "Öffnen und Schließen des Drawer",
+      "menuDrawer_content": "Dieser Button öffnet die Drawer, in der alle deine Charaktere, Themen und Einträge gespeichert sind. Lass uns die Drawer ansehen.",
 
-      "drawer_title": "The Drawer",
-      "drawer_content": "This is your Drawer, a powerful storage system you can use to save, backup and organize individual items like Cards and Trackers, but also full Character Sheets. You can drop an external file here to import it.",
+      "drawer_title": "Der Drawer",
+      "drawer_content": "Dies ist dein Drawer, ein leistungsstarkes Speichersystem, das du verwenden kannst, um einzelne Elemente wie Karten und Tracker sowie vollständige Charakterblätter zu speichern, zu sichern und zu organisieren. Du kannst eine externe Datei hierher ziehen, um sie zu importieren.",
    
-      "drawerUndoRedo_title": "Undo/Redo",
-      "drawerUndoRedo_content": "Similarly to the side menu, the Drawer has a pair of Undo/Redo buttons. These buttons let you undo or redo actions within the Drawer. Just like with the Character Sheet, if your latest action was in the Drawer, you can use CTRL+Z and CTRL+Y.",
+      "drawerUndoRedo_title": "Rückgängig/Wiederherstellen",
+      "drawerUndoRedo_content": "Ähnlich wie im Seitenmenü verfügt die Drawer über ein Paar Rückgängig/Wiederholen-Buttons. Diese Buttons ermöglichen es Ihnen, Aktionen innerhalb der Drawer rückgängig zu machen oder wiederherzustellen. Genau wie beim Charakterblatt können Sie, wenn Ihre letzte Aktion in der Drawer war, auch die Tasten CTRL+Z und CTRL+Y verwenden.",
 
-      "drawerRichView_title": "Rich View",
-      "drawerRichView_content": "By default, the Drawer displays items with what Characters of the Mist calls a \"Rich View\". This is essentially a preview of the header of the card, or the full tracker. This can take a lot of space and prevent you from seeing a lot of items at once, so you can turn it on and off here.",
+      "drawerRichView_title": "Ausführliche Ansicht",
+      "drawerRichView_content": "Standardmäßig zeigt die Drawer-Ansicht die Elemente in dem, was Characters of the Mist als \„Ausführliche Ansicht\“ bezeichnet. Dies ist im Wesentlichen eine Vorschau des Headers der Karte oder des vollständigen Trackers. Dies kann viel Platz einnehmen und verhindern, dass Sie viele Elemente auf einmal sehen. Daher können Sie diese Funktion hier ein- und ausschalten.",
 
-      "drawerFolders_title": "Folders",
-      "drawerFolders_content": "This is where your Folders live. You will find an \"Add Folder\" button here, which will let you create a new folder in your current location. Folders have a context menu you can access by pressing the \"...\" on the right. You can drag folders around with the drag handle on the left!",
+      "drawerFolders_title": "Ordner",
+      "drawerFolders_content": "Dies ist der Ort, an dem Ihre Ordner gespeichert sind. Hier finden Sie eine Schaltfläche \„Ordner hinzufügen\“, mit der Sie einen neuen Ordner an Ihrem aktuellen Standort erstellen können. Ordner haben ein Kontextmenü, das Sie durch Drücken von \„...\“ auf der rechten Seite aufrufen können. Sie können Ordner mit dem Ziehgriff auf der linken Seite verschieben!",
 
-      "drawerItems_title": "Items",
-      "drawerItems_content": "This is where your Items live. Items are Character Sheets, Cards or Trackers. You can add Items by Saving your Character, or dragging and dropping them from your Character Sheet to the Drawer. Every Item also has a context menu with several options, and can be dragged around.",
+      "drawerItems_title": "Einträge",
+      "drawerItems_content": "Hier ist der Ort, an dem Ihre Items gespeichert sind. Items sind Charakterblätter, Karten oder Tracker. Sie können Einträge hinzufügen, indem Sie Ihren Charakter speichern oder sie von Ihrem Charakterblatt in die Schublade ziehen und ablegen. Jeder Eintrag verfügt außerdem über ein Kontextmenü mit verschiedenen Optionen und kann verschoben werden.",
 
-      "drawerImport_title": "Importing a File",
-      "drawerImport_content": "You can import an external file into your Drawer. The file has to be a valid Characters of the Mist file, that is, a Drawer, a Character Sheet, a Card, a Folder or a Tracker.",
+      "drawerImport_title": "Datei importieren",
+      "drawerImport_content": "Sie können eine externe Datei in Ihren Drawer importieren. Die Datei muss eine gültige Characters of the Mist-Datei sein, das heißt, ein Drawer, ein Charakterblatt, eine Karte, ein Ordner oder ein Tracker.",
 
-      "drawerExport_title": "Exporting your Drawer",
-      "drawerExport_content": "This button lets you export your FULL Drawer as a file.",
+      "drawerExport_title": "Deinen Drawer exportieren",
+      "drawerExport_content": "Dieser Button ermöglicht es Ihnen, Ihren gesamten Drawer als Datei zu exportieren.",
 
-      "commandPalette_title": "Command Palette",
-      "commandPalette_content": "While this tutorial won't expand on it too much, Characters of the Mist offers a powerful Command Palette which lets you use the app's features with nothing more than your keyboard! To use it, simply press CTRL+K. Keep in mind this feature is oriented towards power-users.",
+      "commandPalette_title": "Kommando Palette",
+      "commandPalette_content": "Characters of the Mist bietet eine leistungsstarke Kommando-Palette, mit der Sie die Funktionen der App nur mit Ihrer Tastatur nutzen können! Um sie zu verwenden, drücken Sie einfach CTRL+K. Beachten Sie, dass dieses Feature auf Power-User ausgerichtet ist.",
 
-      "closingWords_title": "The End",
-      "closingWords_content": "This is all this short tutorial has to teach you. Feel free to explore more complex features, and if you find a bug, or a problem, or need any form of help, don't hesitate to contact me on the Tools of the Mist official Discord. You can find the link in the \"App info\" section. Thank you so much for using Characters of the Mist!"
+      "closingWords_title": "Das Ende",
+      "closingWords_content": "Dies ist alles, was dieses kurze Tutorial Ihnen beibringen kann. Fühlen Sie sich frei, komplexere Funktionen zu erkunden, und wenn Sie einen Fehler finden, ein Problem haben oder Hilfe benötigen, zögern Sie nicht, mich im offiziellen Discord von Tools of the Mist zu kontaktieren. Den Link finden Sie im Abschnitt \„App-Info\“. Vielen Dank, dass Sie Characters of the Mist verwenden!"
    },
 
 
