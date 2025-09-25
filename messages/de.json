@@ -49,7 +49,7 @@
    "Tooltips": {
       "ViewMode": {
          "SideBySide": "Nebeneianderansicht wird erzwungen",
-         "Flipping": "Wechselansicht wird erzwungen",
+         "Flipping": "Umdrehansicht wird erzwungen",
          "Global": "Ansicht folgt den globalen Einstellungen"
       }
    },
@@ -169,140 +169,174 @@
 
 
    "CreateCardDialog": {
-      "title": "Create a Theme Card",
-      "editTitle": "Edit a Theme Card",
-      "description": "Use the following options to create a Theme Card. You can create a custom themebook if you wish.",
-      "editDescription": "Use the following options to modify the themebook or theme type of your Theme Card. You can create a custom themebook if you wish.",
-      "createButton": "Confirm Card",
-      "updateButton": "Confirm Modifications",
+      "title": "Themenkarte erstellen",
+      "editTitle": "Themenkarte bearbeiten",
+      "description": "Wähle eine der folgenden Optionen um eine Themenkatrte zu erstellen. Wenn du möchtest, kannst du eine eine individuelles Themenbuch erstellen.",
+      "editDescription": "Wähle einer der folgenden Optionen um ein Themenbuch zu bearbeiten oder die Themenart der Themenkarte zu verändern Use the following options to modify the themebook or theme type of your Theme Card. Wenn du möchtest, kannst du eine eine individuelles Themenbuch erstellen.",
+      "createButton": "Karte bestätigen",
+      "updateButton": "Anpassungen bestätigen",
 
-      "selectPlaceholder": "Card type...",
-      "cardTypeLabel": "Card type",
-      "themeCard": "Hero Theme",
-      "fellowshipCard": "Fellowship Theme",
+      "selectPlaceholder": "Kartenart...",
+      "cardTypeLabel": "Kartenart",
+      "themeCard": "Heldenthema",
+      "fellowshipCard": "Gefolgschaftsthema",
 
-      "selectThemeTypePlaceholder": "Select theme type...",
-      "themeTypeLabel": "Theme Type",
+      "selectThemeTypePlaceholder": "Wähle eine Themenart...",
+      "themeTypeLabel": "Themenart",
 
-      "selectThemebookPlaceholder": "Select or write a themebook...",
-      "searchThemebookPlaceholder": "Search or create a themebook...",
-      "noThemebookFound": "Themebook not found in defaults. You can still use it as a custom themebook!",
-      "themebookLabel": "Themebook",
+      "selectThemebookPlaceholder": "Wähle oder schreibe ein Themenbuch...",
+      "searchThemebookPlaceholder": "Suche oder erstelle ein Themenbuch...",
+      "noThemebookFound": "Themenbuch wurde in den Standards nicht gefunden. Sie können es jedoch als individuelles Themenbuch verwenden!",
+      "themebookLabel": "Themenbuch",
       
-      "startingTagsLabel": "Starting Tags",
-      "powerTagCountLabel": "Power Tags",
-      "weaknessTagCountLabel": "Weakness Tags"
+      "startingTagsLabel": "Merkmale beginnen",
+      "powerTagCountLabel": "Stärkemerkmal",
+      "weaknessTagCountLabel": "Schwächemerkmal"
    },
    "SettingsDialog": {
-      "title": "App Settings",
-      "description": "You will find adjustable settings for the app in general here, like the color theme, or light and dark mode.",
+      "title": "App Einstellungen",
+      "description": "Hier finden Sie allgemeine einstellbare Einstellungen für die App, wie das Farbschema oder den Hell- und Dunkelmodus.",
 
-      "language": "Language",
+      "language": "Sprache",
 
-      "accentColor": "Theme Palette",
-      "appearance": "Theme Mode",
+      "accentColor": "Themen Palette",
+      "appearance": "Themen Modi",
 
-      "light": "Light Mode",
-      "dark": "Dark Mode",
+      "light": "Heller Modus",
+      "dark": "Dunkler Nodus",
 
       "cardView": {
-         "title": "Card flipping",
-         "sideBySide": "Side by side",
-         "flipping": "Flip enabled"
+         "title": "Karte umdrehen",
+         "sideBySide": "Nebeneinander",
+         "flipping": "Umdrehen aktiviert"
       },
 
       "trackerEdit": {
-         "title": "Force Trackers in Edit Mode",
-         "unlocked": "Freed",
-         "locked": "Forced"
+         "title": "Tracker in den Baerbeitungsmodus setzen",
+         "unlocked": "nicht gesetzt",
+         "locked": "gesetzt"
       },
 
-      "tutorial": "App Tutorial",
-      "tutorialButton": "Launch the Tutorial",
+      "tutorial": "App Anleitung",
+      "tutorialButton": "Anleitung starten",
 
       "migration": {
-         "label": "Migrate data",
-         "button": "Migrate legacy character files"
+         "label": "Daten migrieren",
+         "button": "Legacy Character Dateien migrieren"
       },
 
       "dangerZone": {
-         "title": "Danger zone",
-         "description": "These options are extremely destructive, using them is at your own risk. You will be asked for confirmation.",
+         "title": "Gefahrenzone",
+         "description": "Diese Optionen sind äußerst zerstörerisch; ihre Verwendung erfolgt auf eigenes Risiko. Es wird um Bestätigung gebeten.",
 
 
-         "deleteDrawerButton": "Delete Drawer",
+         "deleteDrawerButton": "Drawer löschen",
          "deleteDrawerDialog": {
-            "title": "Delete Full Drawer",
-            "description": "You are about to completely delete your drawer, including every item and folder stored within. Are you absolutely certain that is what you want to do?",
+            "title": "Den gesamten Drawer löschen",
+            "description": "Sie stehen kurz davor, Ihre Schublade vollständig zu löschen, einschließlich aller darin gespeicherten Elemente und Ordner. Sind Sie sich absolut sicher, dass Sie das tun möchten?",
 
-            "confirm": "Yes, delete my Drawer"
+            "confirm": "Ja, lösche meinen Drawer"
          },
 
-         "resetButton": "Full App Reset",
+         "resetButton": "App vollständig zurücksetzen",
          "resetDialog": {
-            "title": "Full App Reset",
-            "description": "You are about to completely reset the app, deleting all of your data in the process. Are you absolutely certain that is what you want to do?",
-            "confirmationPrompt": "To be able to proceed, please write the following in the box below:",
+            "title": "App vollständig zurücksetzen",
+            "description": "Sie sind dabei, die App vollständig zurückzusetzen, wodurch alle Ihre Daten gelöscht werden. Sind Sie sich absolut sicher, dass Sie das tun möchten?",
+            "confirmationPrompt": "Um fortzufahren, bitte schreiben Sie Folgendes in das untenstehende Feld:",
 
-            "cancel": "No, I want to keep my data",
-            "confirm": "Yes, delete everything"
+            "cancel": "Nein, ich möchte meine Daten behalten",
+            "confirm": "Ja, lösche alles"
          }
       }
    },
    "InfoDialog": {
-      "title": "About Characters of the Mist",
-      "description": "Information, credits, and licensing for this application.",
-      "close": "Close",
+      "title": "Über Characters of the Mist",
+      "description": "Informationen, Credits und Lizenzierung für diese Anwendung.",
+      "close": "Schließen",
       "tabs": {
-         "about": "About",
-         "license": "License",
-         "credits": "Credits"
+         "about": "Über",
+         "license": "Lizenz",
+         "credits": "Würdigungen"
       },
       "content": {
-         "about": "#### What is Characters of the Mist?\n\nCharacters of the Mist is an **unofficial**, fan-made character creator and manager for the TTRPGs from [Amit Moshe and Son of Oak Game Studio LLC](https://cityofmist.co). It's built from the ground up with a modern and responsive design, and all your data is saved directly in your browser for complete privacy and control. This tool is in no way endorsed by Amit Moshe or Son of Oak Game Studio LLC.\n\n---\n\n#### What can this tool do?\n\nThis tool is meant to help you create and update your character sheet quickly and easily. It allows you to edit your Theme Cards, Statuses, and Name, and save everything automatically. Beyond the basics, it's packed with powerful features to make managing your character a breeze:\n\n* A versatile **Drawer** that acts like a complete file system for your character components, with full drag-and-drop organization and a compact view for managing many items.\n\n* Intuitive **drag-and-drop** for almost everything: reorder your cards and trackers, move items between folders, or even load an entire character by dragging it from the drawer.\n\n* A fully **dynamic character sheet** with flexible cards. You can even switch to a **side-by-side view** if you prefer to see the front and back of cards at the same time.\n\n* A powerful **Undo & Redo system** (`Ctrl+Z` / `Ctrl+Y`) that will allow you to fix your mistakes whether they happened in the Drawer or on your Character Sheet.\n\n* A **Command Palette** (`Ctrl+K` or `Cmd+K`) that lets you find and use any feature in the app without touching your mouse.\n\n* **Game-related personalization** with multiple color themes assorted to Mist TTRPGs and a light/dark mode toggle to make the app feel like your own.\n\n---\n\n#### Can this tool be used as a VTT?\n\nAs it is right now, this tool is only a character manager. It doesn't support battlemaps, handouts, dice rollers or further automatization. You are free to fork this project and add those features, as long as the license terms are respected.\n\n---\n\n#### Can I report a problem with the app?\n\nYou can send me a message on [the official Tools of the Mist discord](https://discord.gg/c7GBPyTcWW) should you encounter a problem with the app, and I will see what I can do about it. Keep in mind however that this app is distributed AS-IS, with no guarantees whatsoever.",
-         "license": "#### What license is this code under?\n\nThis app is under the [Creative Commons 4.0 BY-NC-SA License](http://creativecommons.org/licenses/by-nc-sa/4.0/).\n\nThis means you are free to copy, redistribute, remix, transform, and build upon the material. However, you must give appropriate credit, provide a link to the license, indicate if changes were made, not use the code for commercial purposes, and distribute your contributions under the same license.",
-         "credits": "#### Credits & Attributions\n\nThank you to [Son of Oak Game Studio LLC](https://cityofmist.co) for creating City of Mist, Metro:OTHERSCAPE and Legends in the Mist.",
-         "localization": "#### Localization\n\nThank you to everyone who helped make Characters of the Mist available in languages other than English!",
-         "support": "#### Do you like this application?\n\nPlease consider supporting me!"
+         "about": "#### Was ist Characters of the Mist?
+
+Characters of the Mist ist ein **inoffizieller**, von Fans erstellter Charaktergenerator und -manager für die TTRPGs von [Amit Moshe und Son of Oak Game Studio LLC](https://cityofmist.co). Es wurde von Grund auf mit einem modernen und responsiven Design entwickelt, und alle Ihre Daten werden direkt in Ihrem Browser gespeichert, um vollständige Privatsphäre und Kontrolle zu gewährleisten. Dieses Tool wird in keiner Weise von Amit Moshe oder Son of Oak Game Studio LLC unterstützt.
+
+---
+
+#### Was kann dieses Tool tun?
+
+Dieses Tool soll Ihnen helfen, Ihr Charakterblatt schnell und einfach zu erstellen und zu aktualisieren. Es ermöglicht Ihnen, Ihre Theme Cards, Status und Namen zu bearbeiten und alles automatisch zu speichern. Neben den Grundlagen ist es mit leistungsstarken Funktionen ausgestattet, um das Verwalten Ihres Charakters zu erleichtern:
+
+* Ein vielseitiger **Drawer**, der wie ein komplettes Dateisystem für Ihre Charakterkomponenten funktioniert, mit vollständiger Drag-and-Drop-Organisation und einer kompakten Ansicht zum Verwalten vieler Elemente.
+
+* Intuitives **Drag-and-Drop** für fast alles: Ordnen Sie Ihre Karten und Tracker neu, verschieben Sie Elemente zwischen Ordnern oder laden Sie sogar einen ganzen Charakter, indem Sie ihn aus dem Drawer ziehen.
+
+* Ein vollständig **dynamisches Charakterblatt** mit flexiblen Karten. Sie können sogar zu einer **nebeneinander Ansicht** wechseln, wenn Sie die Vorder- und Rückseite der Karten gleichzeitig sehen möchten.
+
+* Ein leistungsstarkes **Undo & Redo-System** (`Ctrl+Z` / `Ctrl+Y`), das es Ihnen ermöglicht, Ihre Fehler zu beheben, egal ob sie im Drawer oder auf Ihrem Charakterblatt passiert sind.
+
+* Eine **Command Palette** (`Ctrl+K` oder `Cmd+K`), die Ihnen ermöglicht, jede Funktion in der App zu finden und zu nutzen, ohne Ihre Maus zu berühren.
+
+* **Spielbezogene Personalisierung** mit mehreren Farbthemen, die auf Mist TTRPGs abgestimmt sind, und einem Licht-/Dunkelmodus-Umschalter, um die App wie Ihre eigene zu gestalten.
+
+---
+
+#### Kann dieses Tool als VTT verwendet werden?
+
+Aktuell ist dieses Tool nur ein Charaktermanager. Es unterstützt keine Battlemaps, Handouts, Würfelroller oder weitere Automatisierung. Sie sind frei, dieses Projekt zu forken und diese Funktionen hinzuzufügen, solange die Lizenzbedingungen respektiert werden.
+
+---
+
+#### Kann ich ein Problem mit der App melden?
+
+Sie können mir eine Nachricht auf [dem offiziellen Tools of the Mist Discord](https://discord.gg/c7GBPyTcWW) senden, wenn Sie ein Problem mit der App haben, und ich werde sehen, was ich tun kann. Bedenken Sie jedoch, dass diese App AS-IS verteilt wird, ohne jegliche Garantien.",
+         "license": "#### Unter welcher Lizenz steht dieser Code?\n\nDiese App steht unter der [Creative Commons 4.0 BY-NC-SA Lizenz](http://creativecommons.org/licenses/by-nc-sa/4.0/).\n\nDas bedeutet, dass Sie das Material kopieren, weiterverbreiten, remixen, transformieren und darauf aufbauen dürfen. Sie müssen jedoch angemessene Anerkennung geben, einen Link zur Lizenz bereitstellen, angeben, ob Änderungen vorgenommen wurden, den Code nicht für kommerzielle Zwecke verwenden und Ihre Beiträge unter derselben Lizenz verteilen.",
+         "credits": "#### Credits & Attributions
+
+Vielen Dank an [Son of Oak Game Studio LLC](https://cityofmist.co) für die Erstellung von City of Mist, Metro: OTHERSCAPE und Legends in the Mist.",
+         "localization": "#### Localization\n\nVielen Dank an alle, die dazu beigetragen haben, dass Characters of the Mist in anderen Sprachen als Englisch verfügbar ist!",
+         "support": "Gefällt Ihnen diese Anwendung? Bitte ziehen Sie in Betracht, mich zu unterstützen!"
       },
-      "license_credit": "Characters of the Mist was created and is being maintained by Altervayne (Discord: @altervayne) and is under the Creative Commons 4.0 BY-NC-SA License.",
-      "kofi_alt": "Support me on Ko-fi"
+      "license_credit": "Characters of the Mist wurde von Altervayne (Discord: @altervayne) erstellt und wird von ihm gepflegt. Es steht unter der Creative Commons 4.0 BY-NC-SA Lizenz.",
+      "kofi_alt": "Unterstütze mich auf Ko-fi"
    },
    "PatchNotesDialog": {
-      "title": "Characters of the Mist - Patch Notes",
-      "description": "You will see the patch notes for the latest versions in this window.",
+      "title": "Characters of the Mist - Patch Hinweise",
+      "description": "Sie werden die Patch-Notizen für die neuesten Versionen in diesem Fenster sehen.",
 
       "versionLabel": "Version",
-      "selectVersion": "Select a version...",
+      "selectVersion": "Wähle eine Version...",
 
-      "pageCounterLabel": "Page",
+      "pageCounterLabel": "Seite",
 
-      "close": "Close"
+      "close": "Schließen"
    },
    "MigrationDialog": {
-      "title": "Migrate legacy character data",
-      "description": "Here, you can migrate legacy character files from the alpha version of Characters of the Mist to the new, polished version. The Migrator will place the updated files at the root of your Drawer.",
-      "thankYou": "If you are here, you most likely used the alpha version of Characters of the Mist. I would like to personally thank you for using my app, despite its many flaws. Much love,",
+      "title": "Legacy Charakter Daten migrieren",
+      "description": "Hier können Sie alte Charakterdateien aus der Alpha-Version von Characters of the Mist in die neue, optimierte Version migrieren. Der Migrator platziert die aktualisierten Dateien im Wurzelverzeichnis Ihres Drawer",
+      "thankYou": "Wenn Sie hier sind, haben Sie höchstwahrscheinlich die Alpha-Version von Characters of the Mist verwendet. Ich möchte mich persönlich bei Ihnen bedanken, dass Sie meine App genutzt haben, trotz ihrer vielen Mängel. Viel Liebe,",
 
       "dropzone": {
-         "inactive": "Waiting for a file...",
-         "active": "File detected!",
-         "fileTypes": "legacy .json files"
+         "inactive": "Warte auf Datei...",
+         "active": "Datei gefunden!",
+         "fileTypes": "Legacy .json Dateien"
       },
 
-      "cancel": "Close Migrator",
-      "migrateButton": "Start Migration"
+      "cancel": "Schließe den Migrator",
+      "migrateButton": "Migration beginnen"
    },
    "LegacyDataDialog": {
-      "title": "Legacy data found!",
-      "info": "Legacy data from the old, Alpha version of Characters of the Mist was found in your browser storage.",
-      "description": "The App is going to delete this data as a cleanup measure. Before that, you can download your old data to use with the migration tools if you want.",
-      "warning": "If you press Dismiss, the data will be deleted and lost forever. You cannot undo this. Pressing Download will trigger a browser download of the legacy data.",
+      "title": "Legacy Daten gefunden!",
+      "info": "Legacy-Daten aus der alten Alpha-Version von Characters of the Mist wurden in Ihrem Browser-Speicher gefunden.",
+      "description": "Die App wird diese Daten als Bereinigungsmaßnahme löschen. Vorher kannst du deine alten Daten herunterladen, um sie bei den Migrationstools zu verwenden, wenn du möchtest.",
+      "warning": "Wenn Sie auf Verwerfen drücken, werden die Daten gelöscht und für immer verloren sein. Diese Aktion kann nicht rückgängig gemacht werden. Durch Drücken von Herunterladen wird ein Download der Legacy-Daten im Browser ausgelöst.",
 
-      "confirmationLabel": "If you wish to dismiss your data, write the following confirmation text in the field below:",
+      "confirmationLabel": "Wenn Sie Ihre Daten verwerfen wolllen dann geben sie den folgenden Bestätigungstext in das Feld unten ein:",
 
-      "dismissButton": "Dismiss",
-      "downloadButton": "Download legacy data"
+      "dismissButton": "Verwerfen",
+      "downloadButton": "Legacy Daten herrunterladen"
    },
    "WelcomeDialog": {
       "title": "Welcome to Characters of the Mist!",
