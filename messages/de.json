@@ -67,82 +67,82 @@
       "dropToImport": "Ziehe die Datei hier hin um die Komponente in das Charakterblatt zu importieren. Wenn du einen Charakter hier hin ziehst, wird es den aktiven Charakter ersetzen.",
 
       "SidebarMenu": {
-         "sidebarTitle": "Menu",
+         "sidebarTitle": "Menü",
 
-         "editMode": "Edit Mode",
-         "playMode": "Play Mode",
+         "editMode": "Editiermodus",
+         "playMode": "Spielmodus",
 
-         "openDrawer": "Open Drawer",
-         "closeDrawer": "Close Drawer",
+         "openDrawer": "Drawer öffnen",
+         "closeDrawer": "Drawer schließen",
 
-         "saveToDrawer": "Save Character",
-         "exportCharacter": "Export Character",
-         "importCharacter": "Import Character",
-         "importComponent": "Import Component",
+         "saveToDrawer": "Save Charakter speichern",
+         "exportCharacter": "Charakter exportieren",
+         "importCharacter": "Charakter importieren",
+         "importComponent": "Komponente importieren",
 
-         "resetCharacter": "Reset Character",
-         "resetConfirmTitle": "Are you sure you want to reset your character?",
-         "resetConfirmDescription": "This action is destructive. Your active character will be deleted and replaced with a blank character. If you don't reload the app, you can still recover your old character with the undo functionality.",
-         "resetConfirmCancelButton": "Cancel",
-         "resetConfirmButton": "Reset the Character",
+         "resetCharacter": "Charakter zurücksetzen",
+         "resetConfirmTitle": "Sind Sie sicher, dass Sie den Charakter zurücksetzen wollen?",
+         "resetConfirmDescription": "Diese Aktion ist zerstörend. Ihr aktiver Charakter wird gelöscht und mit einem leeren Charakter ersetzt. Wenn sie die App nicht neu laden, können Sie den den alten Charakter mit der Rückgängig Funktion immernoch wiederherstellen.",
+         "resetConfirmCancelButton": "Abbrechen",
+         "resetConfirmButton": "Charakter wurde zurückgesetzt.",
 
-         "settings": "Settings",
-         "info": "App Info",
-         "patchNotes": "Patch Notes"
+         "settings": "Einstellngen",
+         "info": "App Information",
+         "patchNotes": "Patch Hinweise"
       }
    },
    "Actions": {
-      "undo": "Undo",
-      "redo": "Redo"
+      "undo": "Rückgängig",
+      "redo": "Widerherstellen"
    },
    "Drawer": {
       "title": "Drawer",
-      "toggleView": "Toggle view mode between rich preview and list entry for Drawer Items",
+      "toggleView": "Wechsele den Ansichtsmodus zwischen ausführlicher Vorschau und Listenansicht der Elemente des Drawer",
 
-      "emptyFolder": "This Folder is empty. Time to fill it!",
-      "addFolder": "Add Folder",
+      "emptyFolder": "Dieser Ordner ist leer; Zeit ihn zu füllen!",
+      "addFolder": "Ordner hinzufügen",
 
-      "dropToImport": "Drop file here to import it to your Drawer",
+      "dropToImport": "Ziehe die Datei hierhin um sie in den Drawer zu importieren.",
 
       "Actions": {
-         "addFolderTitle": "Create a new Folder",
-         "createFolder": "Create Folder",
+         "addFolderTitle": "Neuen Ordner erstellen",
+         "createFolder": "Ordner erstellen",
 
-         "nameItemTitle": "What would you like to name this Item?",
+         "nameItemTitle": "Wie möchten Sie den Eintrag nennen?",
 
-         "rename": "Rename",
-         "renameFolderTitle": "You are renaming this Folder.",
-         "renameItemTitle": "You are renaming this Item.",
-         "saveChanges": "Save",
+         "rename": "Umbenennen",
+         "renameFolderTitle": "Sie benennen den Ordner um.",
+         "renameItemTitle": "Sie bennennen den Eintrag um.",
+         "saveChanges": "Speichern",
 
-         "delete": "Delete",
-         "deleteFolderTitle": "Are you sure you want to delete this Folder?",
-         "deleteItemTitle": "Are you sure you want to delete this Item?",
-         "deleteFolderMessage": "The Folder and everything contained within will be deleted forever.",
-         "deleteItemMessage": "The Item will be deleted forever.",
-         "confirmDelete": "Delete",
+         "delete": "Löschen",
+         "deleteFolderTitle": "Sind sie sicher, dass Sie den Ordner löschen wollen?",
+         "deleteItemTitle": "Sind sie sicher, dass Sie den Eintrag löschen wollen?",
+         "deleteFolderMessage": "Der Ordner und seine Inhalte werden für immer gelöscht.",
+         "deleteItemMessage": "Der Eintrag wird für immer gelöscht.",
+         "confirmDelete": "Löschen",
 
-         "move": "Move",
-         "moveVerb": "Currently moving",
-         "moveHere": "Move here",
-         "moveFolderTitle": "Moving a Folder through the Drawer",
-         "moveItemTitle": "Moving an Item through the Drawer",
-         "moveToRoot": "Go to Drawer root",
-         "moveUp": "Back",
+         "move": "Verschieben",
+         "moveVerb": "Es wird verschoben...",
+         "moveHere": "Hierher verschieben",
+         "moveFolderTitle": "Einen ordner über den Drawer verschieben",
+         "moveItemTitle": "Einen Eintrag über den Drawer verschieben",
+         "moveToRoot": "Gehe zum Ursprungsverzeichnis des Drawer",
+         "moveUp": "Zurück",
 
-         "export": "Export",
-         "exportFull": "Export your entire Drawer",
-         "import": "Import a file into the current Folder",
-         "cancel": "Cancel",
+         "export": "Exportieren",
+         "exportFull": "Den gesamten Drawer exportieren",
+         "import": "Datei in den aktuelleln Ordner importieren",
+         "cancel": "Abbrechen",
 
          "defaultNames": {
-            "characterCard": "Character Card",
-            "fullSheet": "Full Character Sheet",
-            "characterTheme": "Theme Card",
-            "groupTheme": "Group Theme Card",
+            "characterCard": "Charakter Karte",
+            "fullSheet": "Vollständiger Charakterbogen",
+            "characterTheme": "Themenkarte",
+            "groupTheme": "Gruppen Themenkarte",
             "statusTracker": "Status Tracker",
-            "storyTagTracker": "Story Tag Tracker",
-            "defaultItem": "New Item"
+            "storyTagTracker": "Handlungsmerkmal Tracker",
+            "defaultItem": "Neuer Eintrag"
          }
       },
 
