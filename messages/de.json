@@ -147,22 +147,22 @@
       },
 
       "Types": {
-         "unavailablePreview": "Preview is unavailable for this item.",
+         "unavailablePreview": "Für diesen Eintrag ist die Vorschau nicht verfügbar.",
 
          "LEGENDS": "Legends in the Mist",
          "OTHERSCAPE": "Otherscape",
          "CITY": "City of Mist",
 
-         "LEGENDS_FULL_CHARACTER_SHEET": "Character Sheet",
-         "LEGENDS_CHARACTER_CARD": "Hero Card",
-         "LEGENDS_CHARACTER_THEME": "Hero Theme",
-         "LEGENDS_GROUP_THEME": "Fellowship Theme",
+         "LEGENDS_FULL_CHARACTER_SHEET": "Charakterbogen",
+         "LEGENDS_CHARACTER_CARD": "Heldenkarte",
+         "LEGENDS_CHARACTER_THEME": "Heldenthema",
+         "LEGENDS_GROUP_THEME": "Gefolgschaftsthema",
          "LEGENDS_STATUS_TRACKER": "Status Tracker",
-         "LEGENDS_STORY_TAG_TRACKER": "Story Tag Tracker",
-         "LEGENDS_STORY_THEME_TRACKER": "Story Theme Tracker",
+         "LEGENDS_STORY_TAG_TRACKER": "Handlungsmerkmal Tracker",
+         "LEGENDS_STORY_THEME_TRACKER": "Handlungsthema Tracker",
 
-         "cards": "Card(s)",
-         "trackers": "Tracker(s)"
+         "cards": "Karten(n)",
+         "trackers": "Tracker"
       }
    },
 
