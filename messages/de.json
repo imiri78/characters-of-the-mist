@@ -39,18 +39,18 @@
          "success": "Migration erfolgreich.",
          "failed": "Es hat einen Fehler während der Legacy Charakter Migration gegeben.",
          "unsupported": "Dein Legacy Charakter benutzt ein Spielsystem das noch nicht unterstüzt wird. Bitte bewahre die Datei sicher auf, bis das System unterstützt wird und versuch es dann erneut.",
-         "folderError": "Connte den Hauptordner MIGRATION nicht erstellen."
+         "folderError": "Konnte den Hauptordner MIGRATION nicht erstellen."
       }
    },
    "Errors": {
-      "localStorageDisabled_title": "Critical Storage Error",
-      "localStorageDisabled_description": "It seems that for one reason or another, your browser's local storage is not accessible for the App. Characters of the Mist relies solely on browser local storage for data management and persistance, and does not use a server at all. This means that in your case, it cannot run."
+      "localStorageDisabled_title": "Kritischer Speicherfehler",
+      "localStorageDisabled_description": "Ihr Browser kann den lokalen Speicher für die App nicht nutzen. Characters of the Mist benötigt diesen Speicher für die Datenverwaltung und verwendet keinen Server. Daher kann die App in Ihrem Fall nicht ausgeführt werden."
    },
    "Tooltips": {
       "ViewMode": {
-         "SideBySide": "Side by Side view mode forced",
-         "Flipping": "Flipping view mode forced",
-         "Global": "View mode follows global settings"
+         "SideBySide": "Nebeneianderansicht wird erzwungen",
+         "Flipping": "Wechselansicht wird erzwungen",
+         "Global": "Ansicht folgt den globalen Einstellungen"
       }
    },
 
