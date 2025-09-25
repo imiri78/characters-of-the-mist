@@ -57,14 +57,14 @@
 
 
    "CharacterSheetPage": {
-      "loading": "Loading Character...",
+      "loading": "Charakter läd...",
 
-      "newCharacterName": "New Character",
-      "characterNamePlaceholder": "Character Name...",
+      "newCharacterName": "Neuer Charakter",
+      "characterNamePlaceholder": "Charakter Name...",
 
-      "addCard": "Add Card",
-      "dropToLoadCharacter": "Drop Character Sheet Item here to load the full character. Be careful, this will replace your currently active character.",
-      "dropToImport": "Drop your file here to import the component into your character sheet. If you drop a full character, it will replace your currently active character.",
+      "addCard": "Karte hinzufügen",
+      "dropToLoadCharacter": "Ziehe den Character hier hin um ihn vollständig zu laden. Aber vorsicht, dass wird den bisher aktiven Charakter ersetzen.",
+      "dropToImport": "Ziehe die Datei hier hin um die Komponente in das Charakterblatt zu importieren. Wenn du einen Charakter hier hin ziehst, wird es den aktiven Charakter ersetzen.",
 
       "SidebarMenu": {
          "sidebarTitle": "Menu",
