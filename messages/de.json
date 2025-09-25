@@ -347,7 +347,7 @@ Vielen Dank an [Son of Oak Game Studio LLC](https://cityofmist.co) für die Erst
       "feature3": "Ein vollständiges Dateisystem in der Drawer zur Organisation deiner Charaktere und Komponenten.",
       "feature4": "Ein robustes Rückgängig/Wiederherstellen-System, um Fehler zu beheben.",
       "callToAction": "Es gibt ein einfaches Anfänger-Tutorial, das Sie mit der Schaltfläche unten starten können. Alternativ können Sie die Patch-Notizen lesen. Wenn Sie direkt zur App möchten, können Sie einfach dieses Fenster schließen.",
-      "needHelp": "Wenn Sie Hilfe benötigen oder einen Fehler finden, können Sie den Tools of the Mist Discord für Unterstützung kontaktieren. Sie finden einen Link im Abschnitt „Über“ des App-Info-Fensters. Vielen Dank, dass Sie Characters of the Mist verwenden, viel Spaß!",
+      "needHelp": "Wenn Sie Hilfe benötigen oder einen Fehler finden, können Sie den Tools of the Mist Discord für Unterstützung kontaktieren. Sie finden einen Link im Abschnitt \„Über\“ des App-Info-Fensters. Vielen Dank, dass Sie Characters of the Mist verwenden, viel Spaß!",
       "startTutorialButton": "Tutorial beginnen",
       "patchNotesButton": "Patch Hinweise ansehen"
    },
@@ -454,50 +454,50 @@ Vielen Dank an [Son of Oak Game Studio LLC](https://cityofmist.co) für die Erst
       }
    },
    "Tutorial": {
-      "welcome_title": "Welcome to Characters of the Mist!",
-      "welcome_content": "This short tour will guide you through the main features. You can exit at any time by pressing the 'X' at the top right of this small window, or anywhere outside. If you exit by accident, you can start the tutorial again from the Settings menu.",
+      "welcome_title": "Wilkommen zu Characters of the Mist!",
+      "welcome_content": "Diese kurze Tour führt Sie durch die Hauptfunktionen. Sie können jederzeit aussteigen, indem Sie auf das 'X' oben rechts in diesem kleinen Fenster oder außerhalb klicken. Wenn Sie versehentlich aussteigen, können Sie das Tutorial erneut im Einstellungsmenü starten.",
       
-      "sidebar_title": "Main Sidebar",
-      "sidebar_content": "This is the main sidebar. It contains global actions like toggling edit mode, opening the file drawer, and accessing settings.",
+      "sidebar_title": "Hauptseitenleiste",
+      "sidebar_content": "Dies ist die Hauptseitenleiste. Sie enthält globale Aktionen wie das Umschalten des Bearbeitungsmodus, das Öffnen der Dateiansicht und den Zugriff auf die Einstellungen.",
 
-      "playArea_title": "Character Sheet",
-      "playArea_content": "This is what Characters of the Mist can refer to as your \"Play Area\" or \"Character Sheet\". It holds your Trackers and Cards. They are all draggable, which lets you reorder them, or store them in the Drawer. More on that later. You can drop an external file here to import it.",
+      "playArea_title": "Charakterbogen",
+      "playArea_content": "Characters of the Mist kann sich auf deinen \„Spielbereich\“ oder \„Charakterbogen\“ beziehen. Er enthält deine Tracker und Karten, die du zum Neuanordnen oder zur Ablage im Drawer ziehen kannst. Du kannst hier auch eine externe Datei ablegen, um sie zu importieren.",
       
-      "characterName_title": "Character Name",
-      "characterName_content": "You can edit your character's name here at any time. Your changes are saved automatically.",
+      "characterName_title": "Charaktername",
+      "characterName_content": "Du kannst den Namen deines Charakters hier jederzeit ändern. Deine Änderungen werden automatisch gespeichert.",
       
       "trackers_title": "Trackers",
-      "trackers_content": "This area holds your Status and Story Tag trackers, along with your Story Theme trackers. You can add new ones when in 'Edit Mode'. Each Tracker has a sliding handle that appears upon hovering them with your mouse. Using it, you can move them around or export them.",
+      "trackers_content": "Dieser Bereich enthält Ihre Status- und Handlungsmerkaml-Tracker sowie Ihre Handlungsthemen-Tracker. Sie können neue hinzufügen, wenn Sie sich im 'Bearbeitungsmodus' befinden. Jeder Tracker verfügt über einen Verschiebegriff, der erscheint, wenn Sie mit der Maus darüber fahren. Damit können Sie sie verschieben oder exportieren.",
 
-      "cards_title": "Cards",
-      "cards_content": "This area holds your character's Cards, whether it is a Theme Card, or a Character Card. Each Card, like the Trackers, has a sliding handle that appears upon hovering. You will find a dragging grip to move them around and a few buttons to flip, delete (in Edit mode) or export the Card.",
+      "cards_title": "Karten",
+      "cards_content": "Dieser Bereich enthält die Karten deines Charakters, sei es eine Themenkarte oder eine Charakterkarte. Jede Karte verfügt, ähnlich wie die Tracker, über einen Verschiebegriff, der beim Hovering erscheint. Du findest einen Ziehgriff, um sie herumzubewegen, sowie einige Tasten zum Drehen, Löschen (im Bearbeitungsmodus) oder Exportieren der Karte.",
 
-      "menuCollapse_title": "Collapsing",
-      "menuCollapse_content": "This button lets you collapse the Sidebar into a much thinner version, with only icons on the buttons.",
+      "menuCollapse_title": "Reduzieren",
+      "menuCollapse_content": "Dieser Button ermöglicht es Ihnen, die Seitenleiste in eine viel dünnere Version zu reduzieren, die nur Symbole auf den Schaltflächen anzeigt.",
 
-      "menuUndoRedo_title": "Undo/Redo",
-      "menuUndoRedo_content": "These buttons let you Undo and Redo actions on your Character Sheet. If your latest action was in the Character Sheet, you can also use CTRL+Z and CTRL+Y.",
+      "menuUndoRedo_title": "Rückgängig/Wiederherstellen",
+      "menuUndoRedo_content": "Diese Schaltflächen ermöglichen es Ihnen, Aktionen auf Ihrem Charakterblatt rückgängig zu machen und wiederherzustellen. Wenn Ihre letzte Aktion im Charakterblatt war, können Sie auch CTRL+Z und CTRL+Y verwenden.",
 
-      "menuEditDrawer_title": "Edit Mode and Drawer",
-      "menuEditDrawer_content": "These two buttons let you enable Edit Mode or open your Drawer. We'll get back to them in a bit.",
+      "menuEditDrawer_title": "Bearbeitungsmodus und Drawer",
+      "menuEditDrawer_content": "Diese beiden Schaltflächen ermöglichen es Ihnen, den Bearbeitungsmodus zu aktivieren oder Ihren Drawer zu öffnen. Wir werden später darauf zurückkommen.",
 
-      "saveCharacter_title": "Saving a Character",
-      "saveCharacter_content": "This button lets you save your current Character as a file inside your Drawer, more on that later.",
+      "saveCharacter_title": "Einen Charakter speichern",
+      "saveCharacter_content": "Dieser Button ermöglicht es dir, deinen aktuellen Charakter als Datei in deinem Drawer zu speichern, mehr dazu später.",
 
-      "exportCharacter_title": "Exporting a Character",
-      "exportCharacter_content": "This button lets you export your current Character, prompting your browser to download a file.",
+      "exportCharacter_title": "Einen Charakter exportieren",
+      "exportCharacter_content": "Dieser Button ermöglicht es Ihnen, Ihren aktuellen Charakter zu exportieren, wodurch Ihr Browser zum Herunterladen einer Datei aufgefordert wird.",
 
-      "importCharacter_title": "Importing a Character",
-      "importCharacter_content": "This button prompts you to choose a file. If you give it a Character file from Characters of the Mist, it will load that file into the app as your new active Character.",
+      "importCharacter_title": "Einen Charakter importieren",
+      "importCharacter_content": "Dieser Button fordert Sie auf, eine Datei auszuwählen. Wenn Sie eine Charakterdatei von Characters of the Mist auswählen, wird diese Datei in die App als Ihr neuer aktiver Charakter geladen.",
 
-      "importComponent_title": "Importing a Component",
-      "importComponent_content": "This button also prompts you to choose a file. If you give it a Card or Tracker file from Characters of the Mist, it will load it and add it to your current Character.",
+      "importComponent_title": "Eine Komponente importieren",
+      "importComponent_content": "Dieser Button fordert Sie ebenfalls auf, eine Datei auszuwählen. Wenn Sie eine Karten- oder Tracker-Datei aus Characters of the Mist auswählen, wird sie geladen und zu Ihrem aktuellen Charakter hinzugefügt.",
 
-      "resetCharacter_title": "Resetting your Character",
-      "resetCharacter_content": "This button completely deletes your active Character, turning your Character Sheet into a fresh blank slate to start over from.",
+      "resetCharacter_title": "Charakter zurücksetzen",
+      "resetCharacter_content": "Dieser Button löscht deinen aktiven Charakter vollständig und verwandelt dein Charakterblatt in eine frische leere Vorlage, um von vorne zu beginnen.",
 
-      "settings_title": "Settings",
-      "settings_content": "This button opens up the Settings menu, where you can access features like choosing your app's color palette, light or dark mode, or reset all your data. This is also where you will find the Migration tool, which lets you migrate Legacy Characters of the Mist data to this new version.",
+      "settings_title": "Einstellungen",
+      "settings_content": "Dieser Button öffnet das Einstellungsmenü, wo Sie Funktionen wie die Auswahl der Farbpalette Ihrer App, den Wechsel zwischen Hell- und Dunkelmodus oder das Zurücksetzen aller Ihrer Daten nutzen können. Hier finden Sie auch das Migrationswerkzeug, mit dem Sie die Daten der Legacy Characters of the Mist in diese neue Version migrieren können.",
 
       "appInfo_title": "App Info",
       "appInfo_content": "This button opens up an information menu containing a general \"About\" section for this app, licensing information, and credits.",
