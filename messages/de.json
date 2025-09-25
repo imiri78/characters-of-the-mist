@@ -560,115 +560,115 @@ Vielen Dank an [Son of Oak Game Studio LLC](https://cityofmist.co) für die Erst
 
 
    "CardRenderer": {
-      "themeCardPlaceholder": "Theme Card: {title}",
-      "listCardPlaceholder": "List Card: {title}"
+      "themeCardPlaceholder": "Themenkarte: {title}",
+      "listCardPlaceholder": "Kartenliste: {title}"
    },
    "ThemeCard": {
-      "fellowshipTitle": "Fellowship Theme",
+      "fellowshipTitle": "Gefolgschaftsthema",
 
-      "placeholderName": "Write your main tag...",
-      "noName": "NO NAME",
-      "power": "POWER",
-      "weakness": "WEAKNESS",
+      "placeholderName": "SChreibe dein Hauptmerkmal...",
+      "noName": "KEIN NAME",
+      "power": "STRÄKE",
+      "weakness": "SCHWÄCHE",
       
-      "questTitle": "Quest",
-      "noQuest": "EMPTY QUEST TEXT",
-      "questPlaceholder": "Write your quest text here...",
+      "questTitle": "Aufgabe",
+      "noQuest": "LEERER AUFGABENTEXT",
+      "questPlaceholder": "Schreibe deinen Aufgabentext hier...",
 
-      "addPowerTag": "Add Power Tag",
-      "addWeaknessTag": "Add Weakness Tag",
+      "addPowerTag": "Stärkemerkmal hinzufügen",
+      "addWeaknessTag": "Schwächemerkmal hinzufügen",
 
-      "improvements": "Special Improvements",
-      "addImprovement": "Add Improvement"
+      "improvements": "Spezialverbesserung",
+      "addImprovement": "Verbesserung hinzufügen"
    },
    "TagItem": {
-      "placeholder": "Write your tag...",
-      "noName": "NO TAG"
+      "placeholder": "Schreib das Merkmal...",
+      "noName": "NO MERKMAL"
    },
    "PipTracker": {
-      "abandon": "ABANDON",
-      "improve": "IMPROVE",
-      "milestone": "MILESTONE",
-      "promise": "PROMISE"
+      "abandon": "VERNACHLÄSSIGUNG",
+      "improve": "VERBESSERUNG",
+      "milestone": "MEILENSTEIN",
+      "promise": "VERSPRECHEN"
    },
    "HeroCard": {
-      "title": "Hero Card",
-      "noName": "NO HERO NAME",
-      "characterNamePlaceholder": "Character Name...",
+      "title": "HEldenkarte",
+      "noName": "KEIN HELDENNAME",
+      "characterNamePlaceholder": "Charaktername...",
 
-      "relationships": "Fellowship relationships",
-      "addRelationship": "Add relationship",
-      "companion": "Companion",
-      "companionPlaceholder": "Fellow",
-      "relationship": "Relationship",
-      "relationshipCompanionNoName": "NO NAME",
-      "relationshipPlaceholder": "Relation",
-      "relationshipRelationNoName": "NO TAG",
+      "relationships": "Beziehungen der Gefolgschaft",
+      "addRelationship": "Beziehung hinzufügen",
+      "companion": "Begleiter",
+      "companionPlaceholder": "Gefolge",
+      "relationship": "Beziehung",
+      "relationshipCompanionNoName": "KEIN NAME",
+      "relationshipPlaceholder": "Beziehung",
+      "relationshipRelationNoName": "KEIN MERKMAL",
 
-      "quintessences": "Quintessences",
-      "addQuintessence": "Add Quintessence"
+      "quintessences": "Quintessenzen",
+      "addQuintessence": "Quintessenz hinzufügen"
    },
    "backpack": {
-      "title": "Backpack",
-      "addItem": "Add Item",
-      "noName": "NO ITEM",
-      "placeholder": "Write your item..."
+      "title": "Rucksack",
+      "addItem": "Eintrag hinzufügen",
+      "noName": "KEIN EINTRAG",
+      "placeholder": "Schreibe den Eintrag..."
    },
    "quintessences": {
-      "placeholder": "Write your quintessence...",
-      "noName": "NO QUINTESSENCE"
+      "placeholder": "Schreibe die Quintessenz...",
+      "noName": "KEINE QUINTESSENz"
    },
    "improvements": {
-      "placeholder": "Write your improvement...",
-      "noName": "NO IMPROVEMENT"
+      "placeholder": "Schreibe die Verbesserung...",
+      "noName": "KEINE VERBESSERUNG"
    },
    "Trackers": {
-      "addStatus": "Add Status",
-      "addStoryTag": "Add Story Tag",
-      "statusPlaceholder": "Fill your status...",
-      "statusNoName": "NO STATUS",
-      "storyTagPlaceholder": "Fill your story tag...",
-      "storyTagNoName": "NO STORY TAG"
+      "addStatus": "Status hinzufügen",
+      "addStoryTag": "Handlungsmerkmal hinzufügen",
+      "statusPlaceholder": "Gib den Status ein...",
+      "statusNoName": "KEIN STATUS",
+      "storyTagPlaceholder": "Gib das Handlungsmerkmal ein...",
+      "storyTagNoName": "KEIN HANDLUNGSMERKMAL"
    },
 
 
 
    "LegendsData": {
       "themebook": {
-         "circumstance": "Circumstance",
-         "devotion": "Devotion",
-         "past": "Past",
-         "people": "People",
-         "personality": "Personality",
-         "skillOrTrade": "Skill or Trade",
-         "trait": "Trait",
+         "circumstance": "Umstände",
+         "devotion": "Hingabe",
+         "past": "Vergangenheit",
+         "people": "Völker",
+         "personality": "Persönlichkeit",
+         "skillOrTrade": "Fähigkeit oder Handwerk",
+         "trait": "Eigenschaft",
 
-         "duty": "Duty",
-         "influence": "Influence",
-         "knowledge": "Knowledge",
-         "prodigiousAbility": "Prodigious Ability",
-         "relic": "Relic",
-         "uncannyBeing": "Uncanny Being",
+         "duty": "Pflicht",
+         "influence": "Einfluss",
+         "knowledge": "Wissen",
+         "prodigiousAbility": "Außergewöhnliche Begabung",
+         "relic": "Relikt",
+         "uncannyBeing": "Ungewöhnliches Wesen",
 
-         "destiny": "Destiny",
-         "dominion": "Dominion",
-         "mastery": "Mastery",
-         "monstrosity": "Monstrosity",
+         "destiny": "Schicksal",
+         "dominion": "Herrschaftsgebiet",
+         "mastery": "Meisterschaft",
+         "monstrosity": "Monströsität",
 
-         "companion": "Companion",
-         "magic": "Magic",
-         "possessions": "Possessions"
+         "companion": "Begleiter",
+         "magic": "Magie",
+         "possessions": "Besitztümer"
       }
    },
    "ThemeTypes": {
-      "Origin": "Origin",
-      "Adventure": "Adventure",
-      "Greatness": "Greatness",
+      "Origin": "Ursprung",
+      "Adventure": "Abenteuer",
+      "Greatness": "Grossartigkeit",
 
       "Logos": "Logos",
       "Mythos": "Mythos",
 
-      "Self": "Self",
-      "Noise": "Noise"
+      "Self": "Ego",
+      "Noise": "Rauschen"
    }
 }
